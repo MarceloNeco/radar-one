@@ -832,7 +832,7 @@ function rota(){
   if(!VIEWS.some(function(v){return v[0]===base;})&&/^g-/.test(base)){
     alvoIG=base;base="infograficos";
   }
-  if(!VIEWS.some(function(v){return v[0]===base;})&&MODOS_V.indexOf(base)<0)base="inicio";
+  if(!VIEWS.some(function(v){return v[0]===base;})&&MODOS_V.indexOf(base)<0&&!(window.Rotas&&Rotas.cuida(base)))base="inicio";   /* F1-PR5: #hoje, #explorar e #salvos são do shell (modulos/rotas.js) */
   if(base==="colinha"&&window.colinhaOff&&colinhaOff())base="hub";   /* Colinha desligada no RootifyONE */
   if(base==="macrotemas"&&partes[1]&&MACRO[partes[1]]&&partes[1]!==mtAtual){mtAtual=partes[1];marca();render();}
   VIEWS.forEach(function(v){
