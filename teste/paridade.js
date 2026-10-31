@@ -14,7 +14,7 @@
    índice e a identidade do snapshot (sha256 do bloco <script id="ig">).
 
    Uso (precisa do Playwright; o Chromium já vem no container de teste):
-     node teste/paridade.js capturar <nome> [--raiz <pasta do site>] [--pagina index.html]
+     node teste/paridade.js capturar <nome> [--raiz <pasta do site>] [--pagina index.html] [--idioma en]
      node teste/paridade.js comparar <A> <B>
      node teste/paridade.js autoteste [--raiz <pasta do site>]
         → captura o site atual duas vezes e compara (tem de dar 0 diferenças);
@@ -35,6 +35,7 @@ const cmd = args[0];
 function opt(nome, padrao) { const i = args.indexOf(nome); return i > -1 && args[i + 1] ? args[i + 1] : padrao; }
 const RAIZ = path.resolve(opt('--raiz', path.join(__dirname, '..')));
 const PAGINA = opt('--pagina', 'index.html');
+const IDIOMA = opt('--idioma', 'pt');            /* F1-PR4: um HTML só; 'en' abre index.html?lang=en e lê dados/en/ */
 const PORTA = +opt('--porta', 8123);
 const SAIDA = path.join(__dirname, 'paridade');
 const TIPOS = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.jpg': 'image/jpeg', '.png': 'image/png', '.mp3': 'audio/mpeg', '.pdf': 'application/pdf', '.css': 'text/css; charset=utf-8' };
@@ -53,7 +54,7 @@ function blocoJSON(html, id) {
 }
 /* F1-PR2: os blocos saíram do HTML para dados/<id>.json (e dados/en/ para a página em inglês); o app antigo ainda os tem
    dentro do HTML. Esta função serve os dois casos, aplicando a mesma transformação que o servidor aplica ao arquivo. */
-function arquivoDados(id) { return path.join(RAIZ, (/en\.html$/.test(PAGINA) && id !== 'traden') ? 'dados/en' : 'dados', id + '.json'); }
+function arquivoDados(id) { return path.join(RAIZ, IDIOMA === 'en' ? 'dados/en' : 'dados', id + '.json'); }
 function textoDados(id, html, transforma) {
   if (html.indexOf('<script id="' + id + '" type="application/json">') > -1) return blocoJSON(html, id);
   const arq = arquivoDados(id), t = fs.readFileSync(arq, 'utf8');
@@ -84,7 +85,7 @@ async function capturar(nome, transforma) {
   const igTxt = textoDados('ig', htmlServido, transforma);
   const ig = JSON.parse(igTxt);
   const dados = JSON.parse(textoDados('dados', htmlServido, transforma));
-  const snapshot = { ig_sha256: sha(igTxt), versao_app: dados.versao || '', pagina: PAGINA };
+  const snapshot = { ig_sha256: sha(igTxt), versao_app: dados.versao || '', pagina: PAGINA, idioma: IDIOMA };
   const titulos = ig.graficos.map(g => g.titulo);
   const esperados = titulos.map(slugG);
 
@@ -114,7 +115,7 @@ async function capturar(nome, transforma) {
   const page = await ctx.newPage();
   const erros = [];
   page.on('pageerror', e => erros.push(String(e && e.message || e)));
-  await page.goto(base + '/' + PAGINA + '#infograficos', { waitUntil: 'load' });
+  await page.goto(base + '/' + PAGINA + (IDIOMA === 'en' ? '?lang=en' : '') + '#infograficos', { waitUntil: 'load' });
   await page.waitForSelector('#v-infograficos .ig', { timeout: 30000 });
   /* todos os blocos já existem? (pinta() cria os 43 de uma vez) */
   await page.waitForFunction(n => document.querySelectorAll('#v-infograficos .ig').length >= n, esperados.length, { timeout: 30000 });
@@ -169,7 +170,7 @@ async function capturar(nome, transforma) {
     extras[id] = el ? { existe: true, sha256: sha(await page.$eval('#' + id, e => (e.innerText || '').replace(/\s+/g, ' '))) } : { existe: false };
   }
   const totalIndice = await page.$$eval('#v-infograficos .ig', l => l.length);
-  const resumo = { nome, capturado_em: new Date().toISOString(), url: base + '/' + PAGINA + '#infograficos', snapshot, total_graficos_no_ig: ig.graficos.length, blocos_na_pagina: totalIndice, extras, erros_js: erros, blocos };
+  const resumo = { nome, capturado_em: new Date().toISOString(), url: base + '/' + PAGINA + (IDIOMA === 'en' ? '?lang=en' : '') + '#infograficos', snapshot, total_graficos_no_ig: ig.graficos.length, blocos_na_pagina: totalIndice, extras, erros_js: erros, blocos };
   fs.writeFileSync(path.join(dir, 'resumo.json'), JSON.stringify(resumo, null, 1), 'utf8');
   await browser.close(); servidor.close();
   const comCsv = blocos.filter(b => b.modo === 'csv').length, comTxt = blocos.filter(b => b.modo === 'texto').length, faltam = blocos.filter(b => !b.existe).length;

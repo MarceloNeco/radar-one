@@ -15,12 +15,11 @@ Feito no F1-PR2 (31/10/2026). O que há aqui:
 
 | Arquivo | O que é | Inglês |
 |---|---|---|
-| `traden.json` | dicionário PT → EN (vira `i18n/en.json` no PR4) | o mesmo para as duas páginas |
 | `dados.json` | versão do app, candidaturas, fichas, planos, macrotemas, novidades | `en/dados.json` |
 | `ig.json` | as 49 séries, os 43 gráficos, marcos, governos e dimensões dos infográficos | `en/ig.json` |
 | `bio.json`, `glos.json`, `patr.json`, `dlinks.json`, `proc.json` | biografias, glossário, patrimônio, links dos documentos, processos | `en/<bloco>.json` |
 
-Quem lê é `modulos/dados.js`: busca os oito arquivos (rede primeiro, com `cache: "no-cache"` para furar o cache do Pages),
+Quem lê é `modulos/dados.js`: busca os sete arquivos (mais o dicionário `i18n/en.json`) (rede primeiro, com `cache: "no-cache"` para furar o cache do Pages),
 guarda uma cópia no Cache Storage do aparelho (`dgo-radar-one-dados-v1`) e, se a rede falhar ou demorar mais de 4 s havendo
 cópia, usa a cópia. Sem cópia e sem rede, a página avisa em PT ou EN e para. Os textos entram no DOM como
 `<script id="…" type="application/json">`, do mesmo jeito que estavam no HTML, e o código antigo não muda.

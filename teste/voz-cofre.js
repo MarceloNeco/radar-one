@@ -1,4 +1,4 @@
-/* Teste das chaves de voz no cofre (cofre.js 1.5.0, com SolverCofre.proteger), nas DUAS páginas (index.html e index-en.html).
+/* Teste das chaves de voz no cofre (cofre.js 1.5.0, com SolverCofre.proteger), nas DUAS páginas (index.html e index.html?lang=en).
    Chaves de mentira em planos2026:voz e em ch_config (as que o Contador deixava aqui) e provedores simulados.
      - ao criar o PIN as chaves vão para o cofre e SAEM dos dois lugares (o resto de cada um fica)
      - ▶ com Gemini usa a chave que veio do cofre

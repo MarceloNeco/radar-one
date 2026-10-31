@@ -1,5 +1,5 @@
 /* Teste dos dados fora do HTML (F1-PR2), nas DUAS páginas:
-     - 1ª visita: os 8 blocos vêm de dados/*.json (dados/en/ no inglês), entram no DOM como <script id="…"> e window.__IG__ existe;
+     - 1ª visita: os 8 blocos vêm de dados/*.json (dados/en/ no inglês; o dicionário de i18n/en.json), entram no DOM como <script id="…"> e window.__IG__ existe;
        o texto do bloco "ig" é byte a byte o arquivo dados/ig.json (mesmo snapshot do harness de paridade)
      - 2ª visita com a rede dos JSON cortada: abre pela cópia guardada (Cache Storage), sem aviso
      - aparelho sem cópia e sem rede: aviso "sem internet e sem cópia guardada" em PT ou EN, e nada quebra
@@ -13,9 +13,9 @@ const { falhas, conferir } = relatorio();
   const srv = await servir(PORTA);
   const browser = await chromium.launch({ executablePath: process.env.CHROME || undefined });
   const erros = [];
-  for (const [arq] of PAGINAS) {
+  for (const [arq, lg] of PAGINAS) {
     const L = arq + ': ';
-    const en = /en\.html$/.test(arq);
+    const en = lg === 'en';
     const igArquivo = fs.readFileSync(path.join(__dirname, '..', en ? 'dados/en/ig.json' : 'dados/ig.json'), 'utf8');
     const ctx = await novoContexto(browser, 1100, []);
     await semear(ctx, { 'planos2026:prefs': { aoVisto: true, telaCiente: true }, 'planos2026:novidade-colinha': 1 });
