@@ -2,6 +2,19 @@
   "app": "radar-one",
   "versoes": [
     {
+      "versao": "2.6.7",
+      "data": "31/Out/2026",
+      "hora": "12:36:56",
+      "itens": {
+        "pt": [
+          "Seus dados neste aparelho (preferências, favoritos, Colinha) passam a ser guardados também no formato do RadarONE, com versão; a cópia antiga continua e dá para voltar atrás em Configurações → Opções deste aparelho"
+        ],
+        "en": [
+          "Your data on this device (preferences, favourites, cheat sheet) is now also kept in the RadarONE format, with a version; the old copy stays and you can go back in Settings → This device"
+        ]
+      }
+    },
+    {
       "versao": "2.6.6",
       "data": "31/Out/2026",
       "hora": "12:31:37",

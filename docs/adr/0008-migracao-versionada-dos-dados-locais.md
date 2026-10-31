@@ -1,6 +1,6 @@
 # ADR 0008 — Migração versionada e reversível dos dados locais da pessoa (T06)
 
-**Estado:** proposta (F0, 22/10/2026) · **Vale a partir da:** F1 (PR "migração local")
+**Estado:** aceita e implementada na F1-PR9 (31/10/2026): `modulos/migracao.js`, esquema 1, duplo gravar, "Voltar para a versão anterior" · **Vale a partir da:** F1 (PR "migração local")
 
 ## Contexto
 
