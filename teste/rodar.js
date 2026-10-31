@@ -17,12 +17,13 @@
     14. resultado.js (F1-PR6b: tela Resultado e apuração com o TSE simulado: turno, cargo e lugar, tabela por votos, eleito(a), link da fonte, link direto, 404 e cópia guardada sem rede)
     15. ciclo.js (F1-PR7, ADR 0010: modo manual ou automático, fases pré-campanha/pós/acompanhamento pelo relógio simulado, calendário de 2028, recurso indicadores desligado, recursos-do-app.json e cadência)
     16. offline.js (F1-PR8: manifesto e ícones, service worker de verdade, Salvar no aparelho, segunda visita sem rede com o selo, aviso da Samsung, iPhone, offline.json e versoes.json)
+    17. migracao.js (F1-PR9, ADR 0008: planos2026:* → radar-one:* com esquema, duplo gravar ao trocar de tela, abrir de novo não reconverte, Voltar para a versão anterior)
    Uso: node teste/rodar.js   (precisa do Playwright: npm install -D playwright) */
 const { spawnSync } = require('child_process');
 const path = require('path');
 let falhou = false;
 
-for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js', 'links-antigos.js', 'resultado.js', 'ciclo.js', 'offline.js']) {
+for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js', 'links-antigos.js', 'resultado.js', 'ciclo.js', 'offline.js', 'migracao.js']) {
   console.log('\n▶ ' + t);
   if (spawnSync(process.execPath, [path.join(__dirname, t)], { stdio: 'inherit' }).status !== 0) falhou = true;
 }

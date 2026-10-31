@@ -1539,6 +1539,7 @@ function pintaPainelOC(){
 
   /* Sobre: versão, o que mudou e aviso de uso — leitura, não ajuste, mas é aqui
      que a pessoa procura quando quer saber o que este site é */
+  if(window.Migracao)try{host.appendChild(Migracao.secao());}catch(e){}   /* F1-PR9: Opções deste aparelho (modulos/migracao.js) */
   if(window.Offline)try{host.appendChild(Offline.secao());}catch(e){}   /* F1-PR8: Usar sem internet e atalho na tela inicial (modulos/offline.js) */
   var s4=el("div","oc-sec");
   s4.appendChild(el("span","oc-rot","Sobre este site"));

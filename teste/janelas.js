@@ -110,7 +110,9 @@ async function ciclo(p, j, arq, w) {
   await p.keyboard.press('Escape');
   conferir(await fechouVoltando(p, j), L + 'fecha pelo Esc');
   await reabre();
-  /* 3. Voltar do celular */
+  /* 3. Voltar do celular: só depois de a janela terminar a conversa com o histórico (logo após um reload, o pushState dela
+     ainda pode estar a caminho e o Voltar cairia no endereço anterior em vez de fechá-la) */
+  await quieto(p);
   await p.evaluate(() => history.back());
   conferir(await fechouVoltando(p, j), L + 'fecha pelo Voltar do celular');
   conferir(await p.evaluate(() => location.href) === url0, L + 'o Voltar não mudou de tela (o endereço é o mesmo)');
