@@ -36,7 +36,7 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 | `docs/plano-F1.md` | os 10 PRs da F1, com prova e modelo | sim |
 | `docs/ARQUITETURA-eleicoes-2.5.3.md`, `docs/PENDENCIAS-eleicoes-2.5.3.md` | os dois arquivos do app atual, intactos | só pelos PRs da F1 |
 | `teste/paridade.js`, `teste/paridade/` | harness de paridade (captura o CSV de cada um dos 43 blocos e compara duas capturas) e os resumos do autoteste de 22/10/2026 | sim |
-| `.github/workflows/teste.yml` | CI: as 913 verificações e o autoteste de paridade rodam sozinhos em todo PR (F1-PR1) | sim, só pelos PRs da F1 |
+| `.github/workflows/teste.yml` | CI em todo PR: as 913 verificações, o autoteste de paridade (F1-PR1) e a auditoria de acessibilidade do Lighthouse nas quatro telas do shell, perfil de celular (F1-PR5) | sim, só pelos PRs da F1 |
 | `.editorconfig` | padrão de edição (UTF-8, LF, 2 espaços; Python com 4) | raramente |
 | `modulos/` | o código do site em módulos ES, um arquivo por bloco de antes (F1-PR3, 31/10/2026) mais `rotas.js`, o shell com os quatro destinos (F1-PR5); o `app.js` dá a ordem; lista e o que cada um expõe em `modulos/LEIA-ME.md` e `docs/modulos-contrato.md` | só pelos PRs da F1 |
 | `dados/` | os 8 blocos de dados do site em arquivos JSON (PT na raiz, EN em `dados/en/`), lidos por `modulos/dados.js` com cópia no Cache Storage (F1-PR2, 31/10/2026); `dados/ig.json` é o snapshot que o harness de paridade confere | o acervo manual, sim; o que vier de robô, nunca à mão |
