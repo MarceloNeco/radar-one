@@ -38,8 +38,13 @@ function pinta(){
 }
 /* o cartão da eleição em Hoje: o texto vem do calendário e muda sozinho com a fase ("Eleição 2026 · encerrada") */
 function cartaoEleicao(){
-  var t=document.getElementById("hoje-el-t");if(!t||!window.Calendario)return;
-  try{t.textContent=Calendario.cabecalho();}catch(e){}
+  var t=document.getElementById("hoje-el-t"),s=document.getElementById("hoje-el-s");if(!t||!window.Calendario)return;
+  try{t.textContent=Calendario.cabecalho();
+    /* F1-PR7: a linha de baixo acompanha a fase (ADR 0010): antes da eleição não há Colinha nem resultado para prometer */
+    if(s){var f=Calendario.fase();s.textContent=f==="pre-campanha"?T("Candidaturas, planos e Congresso","Candidates, plans and Congress")
+      :typeof f==="number"?T("Colinha, planos, Congresso e Presidência","Cheat sheet, plans, Congress and Presidency")
+      :T("Arquivo da eleição: resultado, planos, Colinha e Congresso","Election archive: results, plans, cheat sheet and Congress");}
+  }catch(e){}
 }
 function dispara(){var ev;try{ev=new HashChangeEvent("hashchange");}catch(e){ev=document.createEvent("Event");ev.initEvent("hashchange",false,false);}dispatchEvent(ev);}
 function vai(d){

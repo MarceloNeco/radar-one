@@ -40,7 +40,7 @@ window.Calendario=(function(){
   var MES={pt:["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"],
     en:["January","February","March","April","May","June","July","August","September","October","November","December"]};
   var MC={pt:["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],en:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]};
-  function en(){return /^en/i.test(document.documentElement.getAttribute("lang")||"");}
+  function en(){return (window.IDIOMA||"")==="en"||/^en/i.test(document.documentElement.getAttribute("lang")||"");}   /* F1-PR7: o IDIOMA vem antes dos módulos; o lang do <html> chega depois */
   function obj(x){return !!x&&typeof x==="object"&&!Array.isArray(x);}
   /* o de fábrica com o que veio do RootifyONE por cima; turnos inválidos (sem data AAAA-MM-DD) ficam com os de fábrica */
   function cfg(){

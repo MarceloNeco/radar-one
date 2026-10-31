@@ -65,8 +65,8 @@ const grupos = async p => { await p.click('#nav-h'); await p.waitForTimeout(500)
       await ctx.close(); }
     /* 4. manual em pré-campanha: Eleições ligadas, Colinha escondida */
     { const { ctx, p } = await abrir(browser, arq, { data: '2026-09-01T15:00:00Z', comp: { 'eleicao.modo': 'manual', 'eleicao.fase': 'pre-campanha' } }, erros);
-      const t = await p.evaluate(() => (document.getElementById('hoje-el-t') || {}).textContent || '');
-      conferir(await attr(p, 'data-fase') === 'pre-campanha' && await temAttr(p, 'data-colinha-pos') && await vis(p, '#hoje-eleicao') === 1 && /pré-campanha|pre-campaign/.test(t) && await p.evaluate(() => colinhaOff()), L + 'manual em pré-campanha: cartão "' + t + '" em Hoje e Colinha escondida');
+      const t = await p.evaluate(() => (document.getElementById('hoje-el-t') || {}).textContent || ''), sub = await p.evaluate(() => (document.getElementById('hoje-el-s') || {}).textContent || '');
+      conferir(await attr(p, 'data-fase') === 'pre-campanha' && await temAttr(p, 'data-colinha-pos') && await vis(p, '#hoje-eleicao') === 1 && /pré-campanha|pre-campaign/.test(t) && /Candidaturas|Candidates/.test(sub) && await p.evaluate(() => colinhaOff()), L + 'manual em pré-campanha: cartão "' + t + ' · ' + sub + '" em Hoje e Colinha escondida');
       await ctx.close(); }
     /* 5. automático ignora eleicao.fase */
     { const { ctx, p } = await abrir(browser, arq, { data: '2026-09-01T15:00:00Z', comp: { 'eleicao.modo': 'automatico', 'eleicao.fase': '2' } }, erros);
