@@ -4,11 +4,25 @@
    - histórico por camada (diretriz "Botão Voltar do celular"): trocar de aba não empilha (replaceState); de Hoje para uma aba é
      uma camada; na tela inicial o Voltar avisa "toque de novo para sair" e só o segundo toque sai
    - sem # no endereço, abre em #hoje
-   O que sai daqui: window.Rotas = { cuida, destino, vai }; o principal.js pergunta cuida(base) para não cair em "inicio". */
+   O que sai daqui: window.Rotas = { cuida, destino, vai, eleicoesLigado, rotaEleitoral, eleicoes }; o principal.js pergunta
+   cuida(base) para não cair em "inicio". Desde o F1-PR6 este módulo carrega antes do principal.js: sem # no endereço, Hoje
+   liga aqui e a capa não chega a aparecer. */
 (function(){
 "use strict";
 var DEST={hoje:"hoje",explorar:"explorar",indicadores:"infograficos",salvos:"salvos"};
 var PROPRIAS=["hoje","explorar","salvos"];
+/* F1-PR6: as telas da eleição (hub, Colinha, Congresso, Presidência e as páginas de 2026) ficam no módulo eleicoes/, que só
+   carrega quando o interruptor "eleicoes" está ligado ou quando um link direto pede; desligado, o cartão de Hoje, os atalhos e o
+   grupo do ☰ somem pelo data-recurso="eleicoes" (recursos.js), mas os links antigos continuam abrindo (ADR 0009) */
+var ELEICAO=["hub","colinha","congresso","mandato","inicio","historico","macrotemas","score","documentos","metodo","glossario"];
+function eleicoesLigado(){return !window.SolverRecursos||SolverRecursos.ligado("eleicoes",true);}
+function rotaEleitoral(b){b=b||base();return ELEICAO.indexOf(b)>-1||/^gl-/.test(b);}
+var carregando=null;
+function eleicoes(){
+  if(!carregando)carregando=import("./eleicoes/congresso.js").then(function(){return import("./eleicoes/colinha.js");})
+    .then(function(){document.documentElement.setAttribute("data-eleicoes","carregado");});
+  return carregando;
+}
 var EN=(window.IDIOMA||"pt")==="en";
 function T(pt,en){return EN?en:pt;}
 function base(){return (location.hash||"#hoje").slice(1).split("/")[0];}
@@ -45,11 +59,11 @@ function aviso(txt){
 }
 document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest(".barra a[data-dest]"):null;if(!a)return;e.preventDefault();vai(a.getAttribute("data-dest"));});
 addEventListener("hashchange",pinta);
-window.Rotas={cuida:cuida,destino:destino,vai:vai};   /* antes de qualquer hashchange: o principal.js pergunta cuida() */
+window.Rotas={cuida:cuida,destino:destino,vai:vai,eleicoesLigado:eleicoesLigado,rotaEleitoral:rotaEleitoral,eleicoes:eleicoes};   /* antes de qualquer hashchange: o principal.js pergunta cuida() */
 /* entrada: sem # abre em Hoje; a primeira entrada do histórico fica marcada para o aviso do Voltar */
 if(!location.hash){try{history.replaceState({inicio:1},"","#hoje");}catch(e){location.hash="#hoje";}dispara();}
 else if(base()==="hoje"){try{history.replaceState(Object.assign({},history.state||{},{inicio:1}),"",location.href);}catch(e){}}
-else if(cuida(base()))dispara();   /* link direto para #explorar ou #salvos: o principal.js já rodou antes deste módulo e deixou a capa ligada; roda de novo */
+else if(cuida(base()))dispara();   /* link direto para #explorar ou #salvos: liga a vista já aqui (o principal.js chega depois e respeita cuida()) */
 /* a guarda: o Chrome ignora pushState sem toque da pessoa, por isso ela nasce no primeiro toque (e volta depois do aviso) */
 var guarda=false;
 addEventListener("pointerdown",function(){if(guarda)return;guarda=true;if(base()==="hoje"){try{history.pushState({guarda:1},"",location.href);}catch(e){}}},{capture:true});

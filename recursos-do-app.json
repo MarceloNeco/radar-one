@@ -1,14 +1,15 @@
 {
   "formato": 1,
   "app": "eleicoes-2026",
-  "versao": "2.5.1",
-  "atualizado": "2026-10-18",
+  "versao": "2.6.3",
+  "atualizado": "2026-10-31",
   "nota": {
     "pt": "O que este app lê do Controle dos apps do RootifyONE (recursos/global.json e recursos/eleicoes-2026.json). Desligado o AssistONE, somem o botão, o balão, as dicas e os itens do ☰ que só abrem o assistente (Procurar, AssistONE, Tour rápido). O calendário eleitoral (eleicao.calendario) diz o ano, os turnos, as datas, os cargos de cada turno, onde há 2º turno e a fase; sem ele, vale o padrão de fábrica abaixo (eleição de 2026).",
     "en": "What this app reads from RootifyONE's App control (recursos/global.json and recursos/eleicoes-2026.json). With AssistONE off, the button, the balloon, the tips and the ☰ items that only open the assistant (Search, AssistONE, Quick tour) disappear. The election calendar (eleicao.calendario) sets the year, rounds, dates, offices per round, where there is a second round and the phase; without it, the factory default below (2026 election) applies."
   },
   "recursos": [
     "assistone",
+    {"id": "eleicoes", "padrao": true, "nome": {"pt": "Eleições (módulo eleitoral)", "en": "Elections (electoral module)"}, "onde": {"pt": "Entrada contextual em Hoje, item do ☰, busca e AssistONE; telas Colinha, Presidência, Congresso (afinidade), planos, macrotemas, posições e prioridades. Desligado: vira arquivo histórico acessível por link direto; nenhum infográfico ou comparador é afetado.", "en": "Contextual entry on Today, ☰ item, search and AssistONE; Cheat sheet, Presidency, Congress (affinity), plans, macro-themes, positions and priorities screens. Off: becomes a historical archive reachable by direct link; no chart or comparator is affected."}},
     { "id": "colinha", "nome": { "pt": "Colinha da eleição", "en": "Election cheat sheet" }, "onde": { "pt": "Destaque no início, botão na barra do celular, item do menu de partes, ☰, busca, AssistONE e o aviso \"Novidade!\". Desligada, #colinha volta para o início. No pós-eleição (calendário) ela some sozinha.", "en": "Highlight on the start screen, phone bar button, parts menu item, ☰, search, AssistONE and the \"New!\" notice. When off, #colinha goes back to the start screen. After the election (calendar) it hides on its own." } }
   ],
   "comportamentos": [
