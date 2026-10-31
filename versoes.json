@@ -1,0 +1,560 @@
+{
+  "app": "radar-one",
+  "versoes": [
+    {
+      "versao": "2.6.6",
+      "data": "31/Out/2026",
+      "hora": "12:31:37",
+      "itens": {
+        "pt": [
+          "Usar sem internet: o site pode ser instalado como app (ícone na tela inicial) e, sem sinal, abre a cópia guardada no aparelho; em Configurações → \"Usar sem internet\", Salvar no aparelho, situação da cópia e o atalho na tela inicial. No navegador da Samsung, aviso para instalar pelo Chrome"
+        ],
+        "en": [
+          "Use without internet: the site can be installed as an app (icon on the home screen) and, without signal, opens the copy saved on the device; in Settings → \"Use without internet\", Save on this device, copy status and the home-screen shortcut. In the Samsung browser, a notice to install through Chrome"
+        ]
+      }
+    },
+    {
+      "versao": "2.6.5",
+      "data": "31/Out/2026",
+      "hora": "15:19:17",
+      "itens": {
+        "pt": [
+          "Ciclo eleitoral pelo RootifyONE (ADR 0010): modo manual ou automático e fase própria (pré-campanha, turnos, pós-eleição, acompanhamento); da posse em diante a eleição sai da navegação sozinha e os indicadores continuam. O calendário já aceita o ciclo municipal de 2028. A cadência de atualização dos dados aparece no ⓘ Sobre este relatório"
+        ],
+        "en": [
+          "Election cycle from RootifyONE (ADR 0010): manual or automatic mode and a phase of its own (pre-campaign, rounds, post-election, monitoring); from inauguration on, the election leaves the navigation by itself and the indicators stay. The calendar already accepts the 2028 municipal cycle. The data refresh cadence appears in the About this report ⓘ"
+        ]
+      }
+    },
+    {
+      "versao": "2.6.4",
+      "data": "31/Out/2026",
+      "hora": "15:06:44",
+      "itens": {
+        "pt": [
+          "Nova tela Resultado e apuração: os votos e a porcentagem de cada candidatura, por cargo e lugar, nos dois turnos, como o TSE divulgou, com data da apuração e link da fonte (no ☰, em Explorar e no cartão da eleição em Hoje)"
+        ],
+        "en": [
+          "New Results and count screen: votes and percentage for each candidate, by office and place, in both rounds, as published by the electoral court, with the count date and the source link (in ☰, in Explore and on the election card in Today)"
+        ]
+      }
+    },
+    {
+      "versao": "2.6.3",
+      "data": "31/Out/2026",
+      "hora": "14:47:31",
+      "itens": {
+        "pt": [
+          "A tela Hoje aparece direto, sem a capa piscar antes. O módulo das Eleições 2026 só carrega quando o interruptor Eleições do RootifyONE está ligado ou quando um link direto pede; os links antigos continuam abrindo"
+        ],
+        "en": [
+          "The Today screen appears right away, with no cover flashing first. The 2026 Elections module only loads when the Elections switch in RootifyONE is on or when a direct link asks for it; old links keep working"
+        ]
+      }
+    },
+    {
+      "versao": "2.6.2",
+      "data": "31/Out/2026",
+      "hora": "14:35:14",
+      "itens": {
+        "pt": [
+          "Textos mais curtos na capa, nos Indicadores e no rodapé: a explicação completa fica atrás do ⓘ, a um toque. Nenhuma ressalva nem crédito foi retirado"
+        ],
+        "en": [
+          "Shorter texts on the cover, in Indicators and in the footer: the full explanation sits behind the ⓘ, one tap away. No caveat or credit was removed"
+        ]
+      }
+    },
+    {
+      "versao": "2.6.1",
+      "data": "31/Out/2026",
+      "hora": "14:04:45",
+      "itens": {
+        "pt": [
+          "Letras novas em todo o site: a Nunito, mais arredondada e leve, guardada no próprio site (nenhum pedido ao Google para carregar fonte). Números alinhados nas tabelas."
+        ],
+        "en": [
+          "New typeface across the site: Nunito, rounder and lighter, hosted on the site itself (no request to Google to load fonts). Numbers aligned in tables."
+        ]
+      }
+    },
+    {
+      "versao": "2.6.0",
+      "data": "31/Out/2026",
+      "hora": "11:11:31",
+      "itens": {
+        "pt": [
+          "RadarONE ganha a barra com quatro destinos: Hoje, Explorar, Indicadores e Salvos. Tudo o que existia continua no mesmo lugar: a eleição de 2026 fica em Hoje e no menu ☰"
+        ],
+        "en": [
+          "RadarONE gets a bar with four destinations: Today, Explore, Indicators and Saved. Everything that existed stays where it was: the 2026 election is in Today and in the ☰ menu"
+        ]
+      }
+    },
+    {
+      "versao": "2.5.4",
+      "data": "31/Out/2026",
+      "hora": "08:49:15",
+      "itens": {
+        "pt": [
+          "O endereço do site passou a ser solverone.com.br/radar-one: o link que a Colinha manda pelo WhatsApp e o rodapé das imagens exportadas apontam para lá"
+        ],
+        "en": [
+          "The site address is now solverone.com.br/radar-one: the link the cheat sheet sends on WhatsApp and the footer of exported images point there"
+        ]
+      }
+    },
+    {
+      "versao": "2.5.3",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "A janela do cofre da voz não dispara mais a digital sozinha: com a digital ligada, você escolhe \"👆 Abrir com a digital\", \"Digitar o PIN\" ou \"Agora não\"; sem digital, abre direto no PIN",
+          "O cabeçalho do site não pula mais quando uma janela abre"
+        ],
+        "en": [
+          "The voice vault window no longer triggers the fingerprint on its own: with the fingerprint on, you choose \"👆 Open with fingerprint\", \"Type the PIN\" or \"Not now\"; without it, it goes straight to the PIN",
+          "The site header no longer jumps when a window opens"
+        ]
+      }
+    },
+    {
+      "versao": "2.5.2",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Na Colinha da eleição, a barra de baixo ficou em uma linha só e mais fina: Compartilhar, Texto e Imprimir. No celular estreito, Texto e Imprimir viram só o ícone, e a barra não cobre mais o texto da página"
+        ],
+        "en": [
+          "In the election cheat sheet, the bottom bar is now a single, slimmer row: Share, Text and Print. On narrow phones, Text and Print show only the icon, and the bar no longer covers the text on the page"
+        ]
+      }
+    },
+    {
+      "versao": "2.5.1",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "O site abre sem pedir PIN nem digital, mesmo quando o cofre de chaves deste aparelho tem chaves de outro app da SolverONE. O PIN aparece só quando você toca ▶ com uma voz da internet que usa chave guardada",
+          "Na janela do PIN da voz, \"Agora não\" deixa a leitura seguir com a voz do aparelho, sem a chave"
+        ],
+        "en": [
+          "The site opens without asking for a PIN or fingerprint, even when this device's key vault holds keys from another SolverONE app. The PIN only shows up when you tap ▶ with an online voice that uses a saved key",
+          "In the voice PIN window, \"Not now\" lets the reading continue with the device voice, without the key"
+        ]
+      }
+    },
+    {
+      "versao": "2.5.0",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "A Colinha da eleição segue o calendário eleitoral: até o dia do 1º turno, os seis votos; do dia seguinte até o dia do 2º turno, só governador e presidente (governador só nos estados que têm 2º turno); depois da eleição, ela some sozinha",
+          "No 2º turno, a lista de cada cargo mostra só os dois finalistas, conferidos nos resultados oficiais do TSE (no máximo uma vez por hora; a última cópia fica guardada no aparelho). Se o TSE não responder, aparecem todos os candidatos, com o aviso para conferir na urna",
+          "Se o candidato que você tinha escolhido não está no 2º turno, a Colinha avisa e pede para escolher de novo. A sua cola do 1º turno continua guardada, do jeito que você deixou",
+          "A tela de Início e a aba Mandato da Presidência mostram sozinhas a data e o turno certos"
+        ],
+        "en": [
+          "The election cheat sheet follows the election calendar: up to first-round day, all six votes; from the next day until second-round day, only governor and president (governor only in states with a second round); after the election, it hides on its own",
+          "In the second round, each office lists only the two finalists, checked against the electoral court's official results (at most once an hour; the latest copy stays on the device). If the court does not answer, every candidate is listed, with a note to check at the ballot box",
+          "If the candidate you had chosen is not in the second round, the cheat sheet says so and asks you to choose again. Your first-round sheet stays saved, just as you left it",
+          "The Start screen and the Presidency's In office tab show the right date and round on their own"
+        ]
+      }
+    },
+    {
+      "versao": "2.4.0",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Todas as janelas do site (Configurações, glossário, novidades, aviso de uso, o \"i\" das dimensões, a ajuda da voz, a Colinha, o menu ☰, o AssistONE e os menus de idioma, compartilhar, seleção e Presidência/Congresso) passam a seguir a mesma regra: a página de trás não rola nem recebe toque; a janela fecha pelo ✕, pelo Esc, pelo Voltar do celular ou tocando na parte escura; e, se você digitou algo, ela pergunta antes de descartar. \"Apagar a cola?\" e o aviso da imagem baixada deixaram de usar as caixinhas do navegador",
+          "O cofre de chaves passou para a versão 1.4.0: com chave guardada, o PIN é pedido ao abrir e ao recarregar a página, e o cofre se tranca sozinho ao sair do site, ao ficar escondido por mais de 1 minuto e com 5 minutos sem uso (a voz tocando só adia o trancar). As Configurações ganharam o painel da digital do cofre"
+        ],
+        "en": [
+          "All windows on the site (Settings, glossary, what's new, terms of use, the \"i\" on dimensions, voice help, the Cheat sheet, the ☰ menu, AssistONE and the language, share, selection and Presidency/Congress menus) now follow the same rule: the page behind does not scroll or take taps; the window closes with ✕, Esc, the phone's Back button or a tap on the dark area; and if you typed something, it asks before discarding. \"Clear the whole memo?\" and the downloaded-image notice no longer use the browser's plain boxes",
+          "The key vault moved to version 1.4.0: with a key saved, the PIN is asked when you open and when you reload the page, and the vault locks itself when you leave the site, when it stays hidden for over 1 minute and after 5 minutes without use (voice playback only delays locking). Settings gained the vault's fingerprint panel"
+        ]
+      }
+    },
+    {
+      "versao": "2.3.0",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "As chaves de voz (Gemini, OpenAI e ElevenLabs) agora ficam trancadas no cofre de chaves da SolverONE, com PIN, em vez de em texto aberto no navegador. As que já estavam salvas aqui ou no Contador de Histórias passam para o cofre na primeira vez que você criar o PIN, e a chave do cofre vale para os dois apps. Tocar ▶ com uma voz da internet pede o PIN se o cofre estiver trancado; a voz do aparelho nunca pede nada",
+          "A Colinha da eleição passou a poder ser desligada pelo RootifyONE (Controle dos apps): desligada, ela some do início, da barra, dos menus e da busca"
+        ],
+        "en": [
+          "Voice keys (Gemini, OpenAI and ElevenLabs) are now locked in the SolverONE key vault, with a PIN, instead of sitting in plain text in the browser. Keys already saved here or in the Story Teller move into the vault the first time you create the PIN, and the vault key works for both apps. Tapping ▶ with an internet voice asks for the PIN if the vault is locked; the device voice never asks for anything",
+          "The election cheat sheet can now be switched off from RootifyONE (App control): when off, it disappears from the start screen, the bar, the menus and search"
+        ]
+      }
+    },
+    {
+      "versao": "2.2.6",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "O site passa a obedecer aos interruptores da administração da SolverONE: quando o AssistONE ou as dicas por tela são desligados para todos, eles somem daqui também"
+        ],
+        "en": [
+          "The site now follows the SolverONE administration switches: when AssistONE or the per-screen tips are turned off for everyone, they disappear here too"
+        ]
+      }
+    },
+    {
+      "versao": "2.2.5",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Trilha sonora ligada por padrão: começa no primeiro toque na página (o navegador não deixa tocar antes) e quem desligar no botão 🔊 fica com ela desligada nas próximas visitas"
+        ],
+        "en": [
+          "Soundtrack on by default: it starts at the first tap on the page (browsers don't allow it before) and whoever turns it off with the 🔊 button keeps it off on later visits"
+        ]
+      }
+    },
+    {
+      "versao": "2.2.4",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "No celular, o botão da trilha sonora fica visível no topo, ao lado do compartilhar e dos ajustes"
+        ],
+        "en": [
+          "On phones, the soundtrack button is visible at the top, next to share and settings"
+        ]
+      }
+    },
+    {
+      "versao": "2.2.3",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Colinha impressa sempre em fundo branco, legível e gastando pouca tinta, mesmo com o tema escuro ligado: ao imprimir, escolha 1 cola (1/4 da folha) ou 4 colas na mesma folha, com linha tracejada para recortar"
+        ],
+        "en": [
+          "Printed cheat sheet always on a white background, easy to read and light on ink, even with the dark theme on: when printing, choose 1 sheet (1/4 of the page) or 4 on the same page, with a dashed line to cut"
+        ]
+      }
+    },
+    {
+      "versao": "2.2.2",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Colinha impressa em uma folha só, sem o topo e o rodapé do site"
+        ],
+        "en": [
+          "Printed cheat sheet fits on a single page, without the site header and footer"
+        ]
+      }
+    },
+    {
+      "versao": "2.2.1",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Colinha com a foto oficial de cada candidato também na imagem do WhatsApp (as fotos do TSE agora ficam no próprio site) e o endereço do site na mensagem; no celular, barra fixa no topo para trocar entre Início, Colinha, Presidência e Congresso com um toque"
+        ],
+        "en": [
+          "Cheat sheet with each candidate's official photo also in the WhatsApp image (the electoral court photos now live on the site itself) and the site address in the message; on phones, a fixed bar at the top to switch between Start, Cheat sheet, Presidency and Congress with one tap"
+        ]
+      }
+    },
+    {
+      "versao": "2.2",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Colinha da eleição, em destaque na tela de entrada: monte os números de presidente, governador, os 2 senadores, deputado federal e estadual (ou distrital), na ordem da urna e com a foto do TSE; busque por nome sem precisar de acento, por número ou por partido, edite quando quiser e compartilhe como imagem no WhatsApp, em texto ou impressa",
+          "Aviso de novidade na primeira visita e o AssistONE já explica a colinha"
+        ],
+        "en": [
+          "Election cheat sheet, featured on the start screen: build the numbers for president, governor, the 2 senators, federal and state (or district) deputy, in ballot order and with the electoral court photo; search by name without accents, by number or by party, edit any time and share it as an image on WhatsApp, as text or printed",
+          "A news pop-up on the first visit, and AssistONE now explains the cheat sheet"
+        ]
+      }
+    },
+    {
+      "versao": "2.1",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Nova aba Mandato na Presidência (promessas × entregas): os compromissos específicos do plano do presidente eleito (propostas com especificidade 4 ou 5), com a situação de cada um anotada só a partir de ato oficial, e os projetos e medidas provisórias do Executivo no mesmo tema desde a posse; até o resultado, dá para ver como ficaria para cada candidatura",
+          "Nova aba Mandato no Congresso: eleitos do seu estado, votações novas dos seus favoritos desde a última visita (com aviso 🔔 no menu), presença nas votações, quanto votou com o próprio partido e com o Governo, propostas na legislatura e o antes × depois de cada tema",
+          "Tudo troca sozinho com o calendário: resultado do TSE, posse do presidente em 05/Jan/2027 e nova legislatura em 01/Fev/2027"
+        ],
+        "en": [
+          "New Mandate tab in the Presidency (promises × delivery): the president-elect's specific plan commitments (proposals with specificity 4 or 5), with each one's status recorded only from an official act, and the Executive's bills and provisional measures on the same topic since inauguration; until the result, you can see how it would look for each candidacy",
+          "New In office tab in Congress: winners in your state, your favourites' new roll calls since your last visit (with a 🔔 alert in the menu), attendance at votes, how often they voted with their own party and with the Government, bills in the legislature and the before × after on each topic",
+          "Everything switches on its own with the calendar: electoral court result, presidential inauguration on Jan/05/2027 and the new legislature on Feb/01/2027"
+        ]
+      }
+    },
+    {
+      "versao": "2.0",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Nova tela de entrada: escolha entre Presidência (os oito planos, como antes) e Congresso; o botão com o nome da parte, no topo, troca entre elas a qualquer momento, e o site lembra a última parte usada",
+          "Nova parte Congresso, com abas próprias: Início (o que fazem deputados e senadores e por que o voto pesa), Afinidade, Favoritos, Comparar e Método, mais a ficha de cada candidato a senador e deputado federal do seu estado (currículo, patrimônio, votos e propostas)",
+          "Afinidade: arraste 10 pautas na ordem de prioridade e escolha um lado (ou Neutro / Não sei) em 9 temas; a lista de candidatos muda na hora, com base em votos nominais reais da Câmara e do Senado desde 2019 e nas propostas de cada um, e mostra quando um número é estimativa",
+          "Favoritos com a sua cola para a urna (2 senadores e 1 deputado federal), comparação de até 3 candidaturas lado a lado e botão Atualizar com a data dos dados oficiais, conferidos todo dia",
+          "Congresso: botões 🔊 para ouvir cada parte, abas Pautas · Posições · Lista no celular, setas A→Z / Z→A e maior/menor nas listas, filtro do que mostrar na comparação, foto oficial da Câmara, do Senado ou do TSE, e botão \"Conferir nas fontes oficiais\" que confere ao vivo os votos na Câmara e no Senado e a data das candidaturas no TSE, com data e hora da última sincronização e do último dado novo"
+        ],
+        "en": [
+          "New start screen: choose between Presidency (the eight plans, as before) and Congress; the button with the part's name, at the top, switches between them at any time, and the site remembers the last part used",
+          "New Congress part with its own tabs: Home (what deputies and senators do and why the vote matters), Affinity, Favourites, Compare and Method, plus a record for each Senate and federal Chamber candidate in your state (career, assets, votes and bills)",
+          "Affinity: drag 10 priorities into order and pick a side (or Neutral / Not sure) on 9 topics; the candidate list changes instantly, based on real roll-call votes in the Chamber and the Senate since 2019 and on each one's bills, and it shows when a number is an estimate",
+          "Favourites with your ballot memo (2 senators and 1 federal deputy), side-by-side comparison of up to 3 candidacies and a Refresh button with the date of the official data, checked every day",
+          "Congress: 🔊 buttons to listen to each part, Priorities · Positions · List tabs on phones, A→Z / Z→A and highest/lowest arrows on lists, a filter for what to show when comparing, the official photo from the Chamber, the Senate or the electoral court, and a \"Check the official sources\" button that checks the votes live at the Chamber and the Senate and the candidacy date at the electoral court, with date and time of the last sync and of the last new data"
+        ]
+      }
+    },
+    {
+      "versao": "1.9",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "AssistONE com o personagem padrão da SolverONE (ajuda-botao.png) no lugar da interrogação: botão redondo de 58 px no canto de baixo à direita, fundo escuro nos dois temas, anel dourado e balanço leve que para com o balão aberto e com \"Reduzir animações\""
+        ],
+        "en": [
+          "AssistONE with the standard SolverONE character (ajuda-botao.png) instead of the question mark: round 58 px button in the bottom-right corner, dark background in both themes, golden ring and a gentle float that stops when the balloon is open and with \"Reduce animations\""
+        ]
+      }
+    },
+    {
+      "versao": "1.8",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "AssistONE: assistente no canto de baixo à direita que diz em que tela você está, explica os avisos recolhidos (\"Como ler\", \"Ressalvas\") em palavras simples, lê a tela em voz alta, procura telas, temas, candidatos e siglas, muda ajustes rápidos e faz um tour de um minuto; liga e desliga em Configurações",
+          "Menu ☰ no celular com as oito páginas e uma linha dizendo o que há em cada uma, ações rápidas (procurar, compartilhar, ouvir, ajustes), tema, idioma e ajuda; o botão Voltar do celular fecha o menu em vez de sair do site",
+          "Compartilhar no cabeçalho: link desta tela pelo WhatsApp, Telegram, e-mail ou copiando; no celular abre o compartilhamento do aparelho",
+          "\"Copiar citação\" em cada cartão dos macrotemas: o trecho vai com o nome, a página e o link",
+          "Acessibilidade em Configurações: texto maior (A+ e A++) e reduzir animações",
+          "Textos de interface reescritos em português mais direto: capa, avisos, cabeçalhos das abas, rodapé e notas das Configurações; o quadro \"feita para tela larga\" só aparece em tela estreita"
+        ],
+        "en": [
+          "AssistONE: an assistant in the bottom-right corner that says which screen you are on, explains the collapsed notices (\"How to read\", \"Caveats\") in plain words, reads the screen aloud, searches screens, topics, candidates and acronyms, changes quick settings and gives a one-minute tour; switch it on or off in Settings",
+          "☰ menu on phones with the eight pages and a line saying what is in each one, quick actions (search, share, listen, settings), theme, language and help; the phone's Back button closes the menu instead of leaving the site",
+          "Share in the header: this screen's link via WhatsApp, Telegram, e-mail or by copying; on phones it opens the device's share sheet",
+          "\"Copy quotation\" on every macro-topic card: the passage goes with the name, the page and the link",
+          "Accessibility in Settings: larger text (A+ and A++) and reduce animations",
+          "Interface texts rewritten in more direct Portuguese: cover, notices, tab headers, footer and Settings notes; the \"made for a wide screen\" box now appears only on narrow screens"
+        ]
+      }
+    },
+    {
+      "versao": "1.7",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Leitura em voz alta: botão ▶ ao lado de cada título, com voz do aparelho ou voz natural (Gemini, OpenAI, ElevenLabs) e preferências em Configurações",
+          "Comparadores no topo da aba Infográficos, com índice clicável de todos os gráficos",
+          "Novo comparador: impacto estimado de marcos regulatórios — até seis marcos no mesmo radar, com o governo de cada um, e leitura por dimensão",
+          "Sugestões prontas nos dois comparadores, que marcam os filtros e se desligam sozinhas quando a escolha muda",
+          "Salário mínimo desde o real, e o reajuste de cada ano ao lado do INPC",
+          "Comparador de marcos: agregado por governo, sugestão \"Liberdades individuais\", leitura automática da comparação e botão \"i\" explicando cada dimensão",
+          "\"Alcance dos marcos\": lista do mais recente para o mais antigo, filtros por governo e ano, e botão Limpar",
+          "Textos, tabelas e caixas usam a largura toda em telas grandes; botão ▶ também nas caixas que abrem e fecham"
+        ],
+        "en": [
+          "Read aloud: a ▶ button next to each heading, with the device voice or a natural voice (Gemini, OpenAI, ElevenLabs) and preferences in Settings",
+          "Comparison tools at the top of the Charts tab, with a clickable index of every chart",
+          "New comparison tool: estimated impact of regulatory milestones — up to six milestones on the same radar, with each one's government, and a by-dimension reading",
+          "Ready-made suggestions in both comparison tools, which set the filters and switch off by themselves when the choice changes",
+          "Minimum wage since the real, and each year's increase beside the INPC",
+          "Milestone comparison: aggregate by government, an \"Individual liberties\" suggestion, an automatic reading of the comparison and an \"i\" button explaining each dimension",
+          "\"Reach of milestones\": list from newest to oldest, filters by government and year, and a Clear button",
+          "Text, tables and boxes use the full width on large screens; ▶ button also on boxes that open and close"
+        ]
+      }
+    },
+    {
+      "versao": "1.6",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Sobrepor indicadores: montar um gráfico próprio com até seis séries, em valores, índice de base 100 ou faixa 0-100",
+          "Filtros de categoria e tema no comparador, e categoria de cada indicador visível na lista",
+          "Estatais federais: contagem oficial recuada a 2005 e resultado por empresa recuado a 2001",
+          "Tempo de abertura de empresas completo desde 2019, ao lado da régua do Banco Mundial desde 2007",
+          "Retratos dos presidentes e linha do tempo comum nos gráficos que estavam sem",
+          "Origem legal dos descontos associativos do INSS: autorizados em 1991, proibidos em 2026",
+          "Voto de qualidade no CARF: os quatro atos de 2009 a 2023 nos marcos legais, e as ações ainda sem julgamento no infográfico do STF",
+          "Tema JUDICIÁRIO separado de MARCOS LEGAIS no índice",
+          "Ícone próprio no botão de compartilhar",
+          "Redata — lei dos data centers, de setembro de 2026, nos marcos legais",
+          "Os quatro atos do voto de qualidade no CARF viram uma sequência numerada, com atalho entre eles",
+          "Clicar na barra de um governo abre a lista daquele período",
+          "Correções de inglês: rodapé de versão, rótulo 'Todas', mandato interino e datas por extenso",
+          "Direitos dos trabalhadores domésticos: emenda de 2013, regulamentação de 2015 e a lei de 2026, em sequência",
+          "Barras da linha do tempo e faixas de governo também levam à lista daquele período",
+          "Períodos do Temer reunidos num só grupo",
+          "Compartilhar em primeiro, com destaque próprio"
+        ],
+        "en": [
+          "Overlay indicators: build your own chart with up to six series, in values, base-100 index or 0-100 range",
+          "Category and theme filters in the comparison tool, with each indicator's category visible in the list",
+          "Federal state companies: official count pushed back to 2005 and results by company back to 2001",
+          "Full company-opening time since 2019, alongside the World Bank's yardstick since 2007",
+          "Presidents' portraits and a shared timeline on the charts that lacked them",
+          "Legal origin of INSS association deductions: authorised in 1991, prohibited in 2026",
+          "The CARF casting vote: the four acts from 2009 to 2023 in the legal milestones, and the cases still awaiting judgment in the Supreme Court infographic",
+          "JUDICIARY split from LANDMARK LAWS as its own theme in the index",
+          "A proper icon on the share button",
+          "Redata — the September 2026 data-centre law, in the legal milestones",
+          "The four acts on the CARF casting vote become a numbered sequence, with shortcuts between them",
+          "Clicking a government's bar opens the list for that period",
+          "English fixes: version footer, the 'All' label, the acting term and spelled-out dates",
+          "Domestic workers' rights: the 2013 amendment, the 2015 regulation and the 2026 law, as a sequence",
+          "Timeline bars and government bands also lead to that period's list",
+          "Temer's two periods merged into a single group",
+          "Share button first, with a look of its own"
+        ]
+      }
+    },
+    {
+      "versao": "1.5",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Fotos oficiais do TSE de cada candidato e de seu vice na ficha do Currículo",
+          "Bloco de atividade privada nas oito candidaturas, com o critério da lista declarado",
+          "Instituto Cidadania, Instituto Lula e a empresa de palestras na trajetória de Lula",
+          "Marca do cabeçalho encurtada e chamada da capa reescrita para cobrir as três camadas do site",
+          "Correção: as descrições de organizações não estavam sendo traduzidas para o inglês"
+        ],
+        "en": [
+          "Official TSE photographs of each candidate and their running mate in the Background profile",
+          "Private-activity block on all eight candidacies, with the list's criterion stated",
+          "Instituto Cidadania, Instituto Lula and the lecture company added to Lula's career",
+          "Shorter header wordmark and a rewritten cover line covering all three layers of the site",
+          "Fix: organisation descriptions were not being translated into English"
+        ]
+      }
+    },
+    {
+      "versao": "1.4",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Entradas e saídas de estatais federais por mandato, com opção de linha do tempo",
+          "Série estendida até 1990, com os governos Collor e Itamar Franco e seus retratos",
+          "Busca do índice passa a encontrar privatizações e desestatização",
+          "Correção: rótulos repetidos que roubavam largura das barras"
+        ],
+        "en": [
+          "Federal state-company entries and exits by presidential term, with a timeline option",
+          "Series extended back to 1990, with the Collor and Itamar Franco governments and their portraits",
+          "The index search now finds privatisation and denationalisation",
+          "Fix: repeated labels that were stealing width from the bars"
+        ]
+      }
+    },
+    {
+      "versao": "1.3",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Privatizações e criações de estatais federais, ano a ano, desde 1994",
+          "Quantas estatais existem, pelas três contagens oficiais disponíveis",
+          "Lista de quais empresas entraram e quais saíram, ano a ano",
+          "Trilha sonora ligada e desligada por ícone no cabeçalho",
+          "Correção: o aviso do gráfico reaparecia a cada clique no filtro"
+        ],
+        "en": [
+          "Privatisations and creations of federal state companies, year by year, since 1994",
+          "How many state companies exist, by the three official counts available",
+          "List of which companies joined and which left, year by year",
+          "Soundtrack switched on and off by an icon in the header",
+          "Fix: the chart notice reappeared on every filter click"
+        ]
+      }
+    },
+    {
+      "versao": "1.2",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Mortes por causa (CID) desde 1998, em gráfico agregado e por doença",
+          "Covid-19 na série de doenças e opção de agrupar por família de causa",
+          "Índice de gráficos com coluna Tipo ordenável e categorias reorganizadas"
+        ],
+        "en": [
+          "Deaths by cause (ICD) since 1998, in an aggregate chart and by disease",
+          "Covid-19 added to the disease series, with an option to group by family of cause",
+          "Chart index with a sortable Type column and reorganised categories"
+        ]
+      }
+    },
+    {
+      "versao": "1.1",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Arrecadação federal ano a ano, em valores correntes e corrigidos",
+          "Impostos federais — o que cada governo mexeu, com 33 atos datados",
+          "Cores por efeito do ato (reduz, aumenta, substitui) nas barras e na linha do tempo"
+        ],
+        "en": [
+          "Federal tax revenue year by year, in current and inflation-adjusted values",
+          "Federal taxes — what each government changed, with 33 dated measures",
+          "Colour by the effect of each measure (cuts, raises, replaces) on the bars and the timeline"
+        ]
+      }
+    },
+    {
+      "versao": "1.0",
+      "data": "",
+      "hora": "",
+      "itens": {
+        "pt": [
+          "Primeira publicação",
+          "Oito planos de governo, com o trecho citado, a página e conferência por script contra o PDF",
+          "Vinte macrotemas, índice sob medida e comparação lado a lado",
+          "Currículo: trajetória, patrimônio declarado à Justiça Eleitoral e processos judiciais",
+          "Infográficos com séries oficiais separadas por governo",
+          "Documentos, Método e Glossário",
+          "Versão em inglês, com endereço próprio"
+        ],
+        "en": [
+          "First publication",
+          "Eight manifestos, with the quoted passage, its page and a script check against the PDF",
+          "Twenty macro-topics, a custom index and side-by-side comparison",
+          "Background: career, assets declared to the electoral authorities and judicial proceedings",
+          "Infographics with official series split by government",
+          "Documents, Method and Glossary",
+          "English version, with its own address"
+        ]
+      }
+    }
+  ]
+}

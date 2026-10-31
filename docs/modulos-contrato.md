@@ -47,6 +47,7 @@ do `ARQUITETURA.md`.
 
 | # | Bloco de hoje (`index.html` 2.5.4) | Linhas | Vira | Expõe em `window` | Usa de outros (só por `window`) |
 |---|---|---|---|---|---|
+| 7d | Usar sem internet (F1-PR8): `sw.js`, selo, seção das Configurações, atalho, Samsung | — | `modulos/offline.js` | `Offline` | `caches`, `navigator.serviceWorker` |
 | 1 | Calendário eleitoral (v2.5.0; F1-PR7: `modo()`, fases `pre-campanha`/`acompanhamento`, `data-fase` no `<html>`), no `<head>` | 8–160 (153) | `modulos/calendario.js` | `Calendario` | `SolverRecursos` (mestre) |
 | 2 | Colinha fora do ar (`colinhaOff`) | 161–163 (3) | fim de `modulos/calendario.js` (mesma razão de ser) | `colinhaOff` | `SolverRecursos`, `Calendario` |
 | 3 | Janelas do site sobre a janela comum | 164–235 (72) | `modulos/janelas.js` | `EJ` | `SolverJanela` (mestre `janela.js`) |
