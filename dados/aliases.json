@@ -1,0 +1,469 @@
+{
+ "formato": 1,
+ "gerado_em": "2026-10-31",
+ "fonte": "docs/legacy_catalog.json + robos/gera-aliases.py",
+ "nota": {
+  "pt": "Âncora antiga → rota nova (e âncora dentro da tela, quando há). O roteador (modulos/rotas.js) troca por replaceState e abre o bloco certo. Rotas com partes (#macrotemas/<tema>, #congresso/ficha/<UF>/<id>) mantêm o resto do caminho.",
+  "en": "Old anchor → new route (and in-screen anchor, when any). The router (modulos/rotas.js) swaps it with replaceState and opens the right block. Routes with parts (#macrotemas/<theme>, #congresso/ficha/<UF>/<id>) keep the rest of the path."
+ },
+ "aliases": {
+  "g-crescimento-do-pib-brasil-e-mundo": {
+   "rota": "g-crescimento-do-pib-brasil-e-mundo"
+  },
+  "g-inflacao-e-taxa-de-juros": {
+   "rota": "g-inflacao-e-taxa-de-juros"
+  },
+  "g-inflacao-sentida-por-quem-ganha-menos": {
+   "rota": "g-inflacao-sentida-por-quem-ganha-menos"
+  },
+  "g-cambio-real-por-dolar": {
+   "rota": "g-cambio-real-por-dolar"
+  },
+  "g-divida-publica-tres-reguas-nenhuma-emendada": {
+   "rota": "g-divida-publica-tres-reguas-nenhuma-emendada"
+  },
+  "g-carga-tributaria-bruta": {
+   "rota": "g-carga-tributaria-bruta"
+  },
+  "g-desemprego-duas-pesquisas-duas-reguas": {
+   "rota": "g-desemprego-duas-pesquisas-duas-reguas"
+  },
+  "g-desocupacao-subutilizacao-e-desalento": {
+   "rota": "g-desocupacao-subutilizacao-e-desalento"
+  },
+  "g-desemprego-por-estado": {
+   "rota": "g-desemprego-por-estado"
+  },
+  "g-desemprego-e-transferencia-de-renda-lado-a-l": {
+   "rota": "g-desemprego-e-transferencia-de-renda-lado-a-l"
+  },
+  "g-transferencia-de-renda-familias-atendidas-e-": {
+   "rota": "g-transferencia-de-renda-familias-atendidas-e-"
+  },
+  "g-beneficio-de-prestacao-continuada-beneficiar": {
+   "rota": "g-beneficio-de-prestacao-continuada-beneficiar"
+  },
+  "g-salario-minimo-valor-desde-o-real": {
+   "rota": "g-salario-minimo-valor-desde-o-real"
+  },
+  "g-reajuste-do-salario-minimo-e-inflacao": {
+   "rota": "g-reajuste-do-salario-minimo-e-inflacao"
+  },
+  "g-fila-do-inss-requerimentos-aguardando-analis": {
+   "rota": "g-fila-do-inss-requerimentos-aguardando-analis"
+  },
+  "g-populacao-por-faixa-etaria": {
+   "rota": "g-populacao-por-faixa-etaria"
+  },
+  "g-ideb-rede-publica": {
+   "rota": "g-ideb-rede-publica"
+  },
+  "g-analfabetismo-15-anos-ou-mais": {
+   "rota": "g-analfabetismo-15-anos-ou-mais"
+  },
+  "g-escolaridade-de-quem-tem-25-anos-ou-mais": {
+   "rota": "g-escolaridade-de-quem-tem-25-anos-ou-mais"
+  },
+  "g-obitos-registrados-na-terra-indigena-yanomam": {
+   "rota": "g-obitos-registrados-na-terra-indigena-yanomam"
+  },
+  "g-homicidios-por-100-mil-habitantes": {
+   "rota": "g-homicidios-por-100-mil-habitantes"
+  },
+  "g-homicidios-por-estado": {
+   "rota": "g-homicidios-por-estado"
+  },
+  "g-desmatamento-por-bioma": {
+   "rota": "g-desmatamento-por-bioma"
+  },
+  "g-terras-indigenas-homologadas": {
+   "rota": "g-terras-indigenas-homologadas"
+  },
+  "g-reforma-agraria-assentar-e-titular": {
+   "rota": "g-reforma-agraria-assentar-e-titular"
+  },
+  "g-stf-e-poder-executivo-federal": {
+   "rota": "g-stf-e-poder-executivo-federal"
+  },
+  "g-servicos-publicos-desburocratizacao-e-digita": {
+   "rota": "g-servicos-publicos-desburocratizacao-e-digita"
+  },
+  "g-pesos-das-dimensoes": {
+   "rota": "g-pesos-das-dimensoes"
+  },
+  "g-alcance-dos-marcos-dimensao-por-dimensao": {
+   "rota": "g-alcance-dos-marcos-dimensao-por-dimensao"
+  },
+  "g-marcos-legais-e-regulatorios": {
+   "rota": "g-marcos-legais-e-regulatorios"
+  },
+  "g-estatais-federais-duas-medidas-que-nao-se-so": {
+   "rota": "g-estatais-federais-duas-medidas-que-nao-se-so"
+  },
+  "g-resultado-por-empresa-estatal": {
+   "rota": "g-resultado-por-empresa-estatal"
+  },
+  "g-descontos-associativos-em-beneficios-do-inss": {
+   "rota": "g-descontos-associativos-em-beneficios-do-inss"
+  },
+  "g-devolucao-aos-beneficiarios-valor-acumulado": {
+   "rota": "g-devolucao-aos-beneficiarios-valor-acumulado"
+  },
+  "g-teto-do-salario-de-contribuicao": {
+   "rota": "g-teto-do-salario-de-contribuicao"
+  },
+  "g-ibovespa-o-que-a-bolsa-fez-em-cada-ano": {
+   "rota": "g-ibovespa-o-que-a-bolsa-fez-em-cada-ano"
+  },
+  "g-quantos-ministerios-cada-governo-teve": {
+   "rota": "g-quantos-ministerios-cada-governo-teve"
+  },
+  "g-arrecadacao-federal-quanto-o-governo-federal": {
+   "rota": "g-arrecadacao-federal-quanto-o-governo-federal"
+  },
+  "g-impostos-federais-o-que-cada-governo-mexeu": {
+   "rota": "g-impostos-federais-o-que-cada-governo-mexeu"
+  },
+  "g-mortes-no-brasil-o-total-e-os-grandes-grupos": {
+   "rota": "g-mortes-no-brasil-o-total-e-os-grandes-grupos"
+  },
+  "g-as-doencas-que-mais-matam": {
+   "rota": "g-as-doencas-que-mais-matam"
+  },
+  "g-estatais-federais-quantas-sairam-e-quantas-e": {
+   "rota": "g-estatais-federais-quantas-sairam-e-quantas-e"
+  },
+  "g-quantas-empresas-estatais-existem": {
+   "rota": "g-quantas-empresas-estatais-existem"
+  },
+  "g-gdp-growth-brazil-and-the-world": {
+   "rota": "g-gdp-growth-brazil-and-the-world",
+   "idioma": "en"
+  },
+  "g-inflation-and-interest-rates": {
+   "rota": "g-inflation-and-interest-rates",
+   "idioma": "en"
+  },
+  "g-inflation-as-felt-by-those-who-earn-least": {
+   "rota": "g-inflation-as-felt-by-those-who-earn-least",
+   "idioma": "en"
+  },
+  "g-exchange-rate-reais-per-dollar": {
+   "rota": "g-exchange-rate-reais-per-dollar",
+   "idioma": "en"
+  },
+  "g-public-debt-three-yardsticks-none-spliced-to": {
+   "rota": "g-public-debt-three-yardsticks-none-spliced-to",
+   "idioma": "en"
+  },
+  "g-gross-tax-burden": {
+   "rota": "g-gross-tax-burden",
+   "idioma": "en"
+  },
+  "g-unemployment-two-surveys-two-yardsticks": {
+   "rota": "g-unemployment-two-surveys-two-yardsticks",
+   "idioma": "en"
+  },
+  "g-unemployment-labor-underutilisation-and-disc": {
+   "rota": "g-unemployment-labor-underutilisation-and-disc",
+   "idioma": "en"
+  },
+  "g-unemployment-by-state": {
+   "rota": "g-unemployment-by-state",
+   "idioma": "en"
+  },
+  "g-unemployment-and-cash-transfers-side-by-side": {
+   "rota": "g-unemployment-and-cash-transfers-side-by-side",
+   "idioma": "en"
+  },
+  "g-cash-transfers-families-served-and-average-v": {
+   "rota": "g-cash-transfers-families-served-and-average-v",
+   "idioma": "en"
+  },
+  "g-minimum-wage-value-since-the-real": {
+   "rota": "g-minimum-wage-value-since-the-real",
+   "idioma": "en"
+  },
+  "g-minimum-wage-increase-and-inflation": {
+   "rota": "g-minimum-wage-increase-and-inflation",
+   "idioma": "en"
+  },
+  "g-inss-backlog-claims-awaiting-review": {
+   "rota": "g-inss-backlog-claims-awaiting-review",
+   "idioma": "en"
+  },
+  "g-population-by-age-group": {
+   "rota": "g-population-by-age-group",
+   "idioma": "en"
+  },
+  "g-ideb-public-schools": {
+   "rota": "g-ideb-public-schools",
+   "idioma": "en"
+  },
+  "g-illiteracy-aged-15-or-over": {
+   "rota": "g-illiteracy-aged-15-or-over",
+   "idioma": "en"
+  },
+  "g-schooling-of-people-aged-25-or-over": {
+   "rota": "g-schooling-of-people-aged-25-or-over",
+   "idioma": "en"
+  },
+  "g-deaths-recorded-in-the-terra-indigena-yanoma": {
+   "rota": "g-deaths-recorded-in-the-terra-indigena-yanoma",
+   "idioma": "en"
+  },
+  "g-homicides-per-100-000-inhabitants": {
+   "rota": "g-homicides-per-100-000-inhabitants",
+   "idioma": "en"
+  },
+  "g-homicides-by-state": {
+   "rota": "g-homicides-by-state",
+   "idioma": "en"
+  },
+  "g-deforestation-by-biome": {
+   "rota": "g-deforestation-by-biome",
+   "idioma": "en"
+  },
+  "g-indigenous-lands-ratified": {
+   "rota": "g-indigenous-lands-ratified",
+   "idioma": "en"
+  },
+  "g-land-reform-settling-and-titling": {
+   "rota": "g-land-reform-settling-and-titling",
+   "idioma": "en"
+  },
+  "g-stf-and-the-federal-executive-branch": {
+   "rota": "g-stf-and-the-federal-executive-branch",
+   "idioma": "en"
+  },
+  "g-public-services-red-tape-reduction-and-digit": {
+   "rota": "g-public-services-red-tape-reduction-and-digit",
+   "idioma": "en"
+  },
+  "g-weights-of-the-dimensions": {
+   "rota": "g-weights-of-the-dimensions",
+   "idioma": "en"
+  },
+  "g-the-reach-of-each-milestone-dimension-by-dim": {
+   "rota": "g-the-reach-of-each-milestone-dimension-by-dim",
+   "idioma": "en"
+  },
+  "g-legal-and-regulatory-milestones": {
+   "rota": "g-legal-and-regulatory-milestones",
+   "idioma": "en"
+  },
+  "g-federal-state-owned-companies-two-measures-t": {
+   "rota": "g-federal-state-owned-companies-two-measures-t",
+   "idioma": "en"
+  },
+  "g-net-result-by-state-owned-company": {
+   "rota": "g-net-result-by-state-owned-company",
+   "idioma": "en"
+  },
+  "g-association-deductions-from-inss-benefits": {
+   "rota": "g-association-deductions-from-inss-benefits",
+   "idioma": "en"
+  },
+  "g-refunds-to-beneficiaries-cumulative-amount": {
+   "rota": "g-refunds-to-beneficiaries-cumulative-amount",
+   "idioma": "en"
+  },
+  "g-contribution-salary-ceiling": {
+   "rota": "g-contribution-salary-ceiling",
+   "idioma": "en"
+  },
+  "g-ibovespa-what-the-stock-market-did-each-year": {
+   "rota": "g-ibovespa-what-the-stock-market-did-each-year",
+   "idioma": "en"
+  },
+  "g-how-many-ministries-each-government-had": {
+   "rota": "g-how-many-ministries-each-government-had",
+   "idioma": "en"
+  },
+  "g-federal-revenue-how-much-the-federal-governm": {
+   "rota": "g-federal-revenue-how-much-the-federal-governm",
+   "idioma": "en"
+  },
+  "g-federal-taxes-what-each-administration-chang": {
+   "rota": "g-federal-taxes-what-each-administration-chang",
+   "idioma": "en"
+  },
+  "g-deaths-in-brazil-the-total-and-the-broad-cau": {
+   "rota": "g-deaths-in-brazil-the-total-and-the-broad-cau",
+   "idioma": "en"
+  },
+  "g-the-diseases-that-kill-the-most": {
+   "rota": "g-the-diseases-that-kill-the-most",
+   "idioma": "en"
+  },
+  "g-federal-state-companies-how-many-left-and-ho": {
+   "rota": "g-federal-state-companies-how-many-left-and-ho",
+   "idioma": "en"
+  },
+  "g-how-many-state-companies-exist": {
+   "rota": "g-how-many-state-companies-exist",
+   "idioma": "en"
+  },
+  "g-sobrepor": {
+   "rota": "g-sobrepor"
+  },
+  "g-marcos-comp": {
+   "rota": "g-marcos-comp"
+  },
+  "ig-indice": {
+   "rota": "infograficos",
+   "ancora": "ig-indice"
+  },
+  "ig-sumario": {
+   "rota": "infograficos",
+   "ancora": "ig-sumario"
+  },
+  "ig-comp": {
+   "rota": "infograficos",
+   "ancora": "ig-comp"
+  },
+  "inicio": {
+   "rota": "inicio"
+  },
+  "historico": {
+   "rota": "historico"
+  },
+  "infograficos": {
+   "rota": "infograficos"
+  },
+  "macrotemas": {
+   "rota": "macrotemas"
+  },
+  "score": {
+   "rota": "score"
+  },
+  "mandato": {
+   "rota": "mandato"
+  },
+  "documentos": {
+   "rota": "documentos"
+  },
+  "metodo": {
+   "rota": "metodo"
+  },
+  "glossario": {
+   "rota": "glossario"
+  },
+  "hub": {
+   "rota": "hub"
+  },
+  "colinha": {
+   "rota": "colinha"
+  },
+  "congresso": {
+   "rota": "congresso"
+  },
+  "resultado": {
+   "rota": "resultado"
+  },
+  "gl-A": {
+   "rota": "glossario",
+   "ancora": "gl-A"
+  },
+  "gl-B": {
+   "rota": "glossario",
+   "ancora": "gl-B"
+  },
+  "gl-C": {
+   "rota": "glossario",
+   "ancora": "gl-C"
+  },
+  "gl-D": {
+   "rota": "glossario",
+   "ancora": "gl-D"
+  },
+  "gl-E": {
+   "rota": "glossario",
+   "ancora": "gl-E"
+  },
+  "gl-F": {
+   "rota": "glossario",
+   "ancora": "gl-F"
+  },
+  "gl-G": {
+   "rota": "glossario",
+   "ancora": "gl-G"
+  },
+  "gl-H": {
+   "rota": "glossario",
+   "ancora": "gl-H"
+  },
+  "gl-I": {
+   "rota": "glossario",
+   "ancora": "gl-I"
+  },
+  "gl-J": {
+   "rota": "glossario",
+   "ancora": "gl-J"
+  },
+  "gl-K": {
+   "rota": "glossario",
+   "ancora": "gl-K"
+  },
+  "gl-L": {
+   "rota": "glossario",
+   "ancora": "gl-L"
+  },
+  "gl-M": {
+   "rota": "glossario",
+   "ancora": "gl-M"
+  },
+  "gl-N": {
+   "rota": "glossario",
+   "ancora": "gl-N"
+  },
+  "gl-O": {
+   "rota": "glossario",
+   "ancora": "gl-O"
+  },
+  "gl-P": {
+   "rota": "glossario",
+   "ancora": "gl-P"
+  },
+  "gl-Q": {
+   "rota": "glossario",
+   "ancora": "gl-Q"
+  },
+  "gl-R": {
+   "rota": "glossario",
+   "ancora": "gl-R"
+  },
+  "gl-S": {
+   "rota": "glossario",
+   "ancora": "gl-S"
+  },
+  "gl-T": {
+   "rota": "glossario",
+   "ancora": "gl-T"
+  },
+  "gl-U": {
+   "rota": "glossario",
+   "ancora": "gl-U"
+  },
+  "gl-V": {
+   "rota": "glossario",
+   "ancora": "gl-V"
+  },
+  "gl-W": {
+   "rota": "glossario",
+   "ancora": "gl-W"
+  },
+  "gl-X": {
+   "rota": "glossario",
+   "ancora": "gl-X"
+  },
+  "gl-Y": {
+   "rota": "glossario",
+   "ancora": "gl-Y"
+  },
+  "gl-Z": {
+   "rota": "glossario",
+   "ancora": "gl-Z"
+  }
+ }
+}

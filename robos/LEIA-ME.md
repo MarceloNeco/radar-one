@@ -19,3 +19,4 @@ cada robô é idempotente (rodar duas vezes dá o mesmo resultado).
 - `gera-versoes.py` — refaz `versoes.json` a partir de `dados/dados.json` e `dados/en/dados.json` (data e hora do commit da versão).
 
 Rodar os dois da raiz a cada versão nova, depois de mudar o número em `dados/*.json` e o `VERSAO` do `sw.js`.
+- `gera-aliases.py` — refaz `dados/aliases.json` a partir de `docs/legacy_catalog.json` (F1-PR10).

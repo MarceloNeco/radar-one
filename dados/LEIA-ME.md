@@ -24,3 +24,5 @@ guarda uma cópia no Cache Storage do aparelho (`dgo-radar-one-dados-v1`) e, se 
 cópia, usa a cópia. Sem cópia e sem rede, a página avisa em PT ou EN e para. Os textos entram no DOM como
 `<script id="…" type="application/json">`, do mesmo jeito que estavam no HTML, e o código antigo não muda.
 Teste: `node teste/dados-offline.js`.
+
+`aliases.json` (F1-PR10, ADR 0009): a tabela âncora antiga → rota nova, lida pelo `modulos/rotas.js`; gerada por `robos/gera-aliases.py`, não editar à mão. Igual nos dois idiomas (não há cópia em `en/`).

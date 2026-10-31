@@ -47,6 +47,7 @@ do `ARQUITETURA.md`.
 
 | # | Bloco de hoje (`index.html` 2.5.4) | Linhas | Vira | Expõe em `window` | Usa de outros (só por `window`) |
 |---|---|---|---|---|---|
+| 2b' | Aliases das âncoras antigas (F1-PR10, ADR 0009): `Rotas.carregaAliases()` antes do `principal.js`, `Rotas.aplicaAlias()` a cada hashchange | — | `modulos/rotas.js` | `Rotas` | `dados/aliases.json`, `ancoraEm` |
 | 2c | Migração dos dados locais (F1-PR9, ADR 0008) | — | `modulos/migracao.js` | `Migracao` | `localStorage`, `EJ` (confirmação) |
 | 7d | Usar sem internet (F1-PR8): `sw.js`, selo, seção das Configurações, atalho, Samsung | — | `modulos/offline.js` | `Offline` | `caches`, `navigator.serviceWorker` |
 | 1 | Calendário eleitoral (v2.5.0; F1-PR7: `modo()`, fases `pre-campanha`/`acompanhamento`, `data-fase` no `<html>`), no `<head>` | 8–160 (153) | `modulos/calendario.js` | `Calendario` | `SolverRecursos` (mestre) |
