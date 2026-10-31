@@ -2571,6 +2571,8 @@ body{padding-bottom:calc(var(--nav-h) + 24px + env(safe-area-inset-bottom,0px))}
 }
 /* nas três vistas novas a fileira de abas das Eleições (#menu) não aparece; nas telas da eleição ela continua */
 html[data-destino="hoje"] #menu,html[data-destino="explorar"] #menu,html[data-destino="salvos"] #menu{display:none}
+/* o seletor de modo das Eleições (Início · Presidência · Congresso, no cabeçalho) também só aparece nas telas da eleição */
+html[data-destino="hoje"] .modo,html[data-destino="explorar"] .modo,html[data-destino="salvos"] .modo,html[data-destino="hoje"] #modo-seg,html[data-destino="explorar"] #modo-seg,html[data-destino="salvos"] #modo-seg,html[data-destino="hoje"] #cg-menu,html[data-destino="explorar"] #cg-menu,html[data-destino="salvos"] #cg-menu{display:none}
 @media (min-width:1024px){
   body{padding-bottom:24px}
   .barra{top:var(--navh);bottom:auto;right:auto;width:200px;height:auto;min-height:calc(100vh - var(--navh));flex-direction:column;align-items:stretch;padding:12px 8px;border-top:0;border-right:1px solid rgba(255,255,255,.1)}

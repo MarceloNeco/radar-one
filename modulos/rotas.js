@@ -45,9 +45,11 @@ function aviso(txt){
 }
 document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest(".barra a[data-dest]"):null;if(!a)return;e.preventDefault();vai(a.getAttribute("data-dest"));});
 addEventListener("hashchange",pinta);
+window.Rotas={cuida:cuida,destino:destino,vai:vai};   /* antes de qualquer hashchange: o principal.js pergunta cuida() */
 /* entrada: sem # abre em Hoje; a primeira entrada do histórico fica marcada para o aviso do Voltar */
 if(!location.hash){try{history.replaceState({inicio:1},"","#hoje");}catch(e){location.hash="#hoje";}dispara();}
 else if(base()==="hoje"){try{history.replaceState(Object.assign({},history.state||{},{inicio:1}),"",location.href);}catch(e){}}
+else if(cuida(base()))dispara();   /* link direto para #explorar ou #salvos: o principal.js já rodou antes deste módulo e deixou a capa ligada; roda de novo */
 /* a guarda: o Chrome ignora pushState sem toque da pessoa, por isso ela nasce no primeiro toque (e volta depois do aviso) */
 var guarda=false;
 addEventListener("pointerdown",function(){if(guarda)return;guarda=true;if(base()==="hoje"){try{history.pushState({guarda:1},"",location.href);}catch(e){}}},{capture:true});
@@ -59,5 +61,4 @@ addEventListener("popstate",function(){
   }
 });
 pinta();
-window.Rotas={cuida:cuida,destino:destino,vai:vai};
 })();

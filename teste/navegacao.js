@@ -27,6 +27,8 @@ const DEST = ['hoje', 'explorar', 'infograficos', 'salvos'];
     let p = await ctx.newPage(); p.on('pageerror', e => erros.push(arq + ': ' + e.message));
     await p.goto(url('')); await p.waitForSelector('#v-hoje.on', { state: 'attached', timeout: 15000 }).catch(() => {}); await p.waitForTimeout(600);
     conferir(await p.evaluate(() => location.hash) === '#hoje' && await on(p, 'v-hoje'), L + 'sem # no endereço abre em Hoje (#hoje)');
+    const ligadas = await p.evaluate(() => [...document.querySelectorAll('.view.on')].map(e => e.id));
+    conferir(ligadas.length === 1 && ligadas[0] === 'v-hoje', L + 'em Hoje só a vista de Hoje fica ligada (' + ligadas.join(', ') + ')');
     const barra = await p.evaluate(() => [...document.querySelectorAll('.barra a[data-dest]')].map(a => { const r = a.getBoundingClientRect(); return { d: a.getAttribute('data-dest'), h: r.height, w: r.width, txt: a.textContent.trim() }; }));
     conferir(barra.length === 4 && barra.every(b => b.h >= 44 && b.w >= 44), L + 'a barra tem 4 destinos com alvo ≥ 44 px (' + barra.map(b => b.txt + ' ' + Math.round(b.h) + 'px').join(', ') + ')');
     conferir(await atual(p) === 'hoje', L + 'Hoje marcado com aria-current="page"');
@@ -43,6 +45,8 @@ const DEST = ['hoje', 'explorar', 'infograficos', 'salvos'];
     conferir(g.hash === '#hoje' && g.on && (en ? /Back again/.test(g.aviso) : /Voltar de novo/.test(g.aviso)), L + 'na tela inicial o Voltar avisa "' + g.aviso.slice(0, 32) + '…" e não sai do app');
     const p2 = await ctx.newPage(); await p2.goto(url('#explorar')); await p2.waitForSelector('#v-explorar.on', { state: 'attached', timeout: 15000 }).catch(() => {}); await p2.waitForTimeout(400);
     conferir(await p2.evaluate(() => getComputedStyle(document.getElementById('menu')).display === 'none' && document.documentElement.getAttribute('data-destino') === 'explorar'), L + 'em #explorar a fileira de abas das Eleições fica escondida');
+    const lig2 = await p2.evaluate(() => [...document.querySelectorAll('.view.on')].map(e => e.id));
+    conferir(lig2.length === 1 && lig2[0] === 'v-explorar', L + 'link direto para #explorar liga só a vista de Explorar (' + lig2.join(', ') + ')');
     const p3 = await ctx.newPage(); await p3.goto(url('#inicio')); await p3.waitForSelector('#menu button', { state: 'attached' }); await p3.waitForTimeout(400);
     conferir(await p3.evaluate(() => document.documentElement.getAttribute('data-destino') === 'eleicoes'), L + 'em #inicio o shell sabe que está nas Eleições (data-destino=eleicoes); no celular as abas já ficavam no ☰');
     /* teclado: o foco na barra é visível */
