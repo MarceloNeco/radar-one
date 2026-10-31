@@ -9,8 +9,16 @@ const EN = (window.IDIOMA || 'pt') === 'en';
 function T(p, e) { return EN ? e : p; }
 const ANTIGO = 'planos2026:', NOVO = 'radar-one:', ESQ = 'radar-one:esquema', VERSAO = 1;
 const CHAVES = ['prefs', 'voz', 'congresso', 'colinha', 'tse', 'modo', 'novidade-colinha', 'resultado', 'offline', 'samsung-ciente', 'instalado'];
-/* cada versão de esquema diz como a chave antiga vira a nova; na 1 a forma é a mesma (só o prefixo muda) */
-const migracoes = { 1: function (chave, valor) { return valor; } };
+/* cada versão de esquema diz como a chave antiga vira a nova; na 1 a forma é a mesma (só o prefixo muda), MENOS segredos:
+   chave de API, token ou senha nunca passa para a cópia nova (o cofre é o único lugar deles; o voz.js tira da chave antiga ao abrir,
+   e a cópia poderia ser feita antes disso) */
+const SEGREDO = /(key|token|senha|secret|chave)$/i;
+function semSegredos(valor) {
+  try { const o = JSON.parse(valor); if (!o || typeof o !== 'object' || Array.isArray(o)) return valor;
+    let mudou = false; Object.keys(o).forEach(function (k) { if (SEGREDO.test(k)) { delete o[k]; mudou = true; } });
+    return mudou ? JSON.stringify(o) : valor; } catch (e) { return valor; }
+}
+const migracoes = { 1: function (chave, valor) { return semSegredos(valor); } };
 function le(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 function grava(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
 function esquema() { try { const e = JSON.parse(le(ESQ) || 'null'); return e && typeof e === 'object' ? e : null; } catch (e) { return null; } }
