@@ -1,3 +1,8 @@
 # capturas do harness de paridade: só os resumos e as comparações ficam no repositório
 teste/paridade/*/*.csv
 teste/paridade/*/*.txt
+
+# dependência de teste instalada localmente (o CI instala o Playwright global)
+node_modules/
+package.json
+package-lock.json
