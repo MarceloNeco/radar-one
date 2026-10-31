@@ -1,6 +1,6 @@
 # Arquitetura — RadarONE (plataforma política permanente da SolverONE)
 
-> Rascunho da F0 (22/10/2026). O nome entra quando o dono escolher. Este arquivo substitui o `ARQUITETURA.md` do Eleições 2026 no
+> F0 mesclada em 31/10/2026 (PR #20); F1 em andamento (`docs/plano-F1.md`). Este arquivo substitui o `ARQUITETURA.md` do Eleições 2026 no
 > repositório novo; o texto antigo fica intacto em `docs/ARQUITETURA-eleicoes-2.5.3.md`, porque o módulo Eleições é o mesmo código.
 
 ## O que é
@@ -24,18 +24,22 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 
 | Caminho | O que é | Mexer? |
 |---|---|---|
-| `index.html`, `index-en.html`, `sincroniza-en.py`, `*.pdf`, `banner.jpg`, `trilha.mp3`, `congresso/`, `cola/`, `presidencia/`, `congresso-sync.py`, `congresso-pautas.json`, `presidencia-compromissos.json`, `.github/workflows/congresso-sync.yml`, `teste/*.js` (exceto `paridade.js`) | **o app atual** (este repositório é renomeado de `planos-candidatos-2026` para `radar-one` em 26/10/2026, depois do 2º turno; ADR 0009, emenda); regras no `docs/ARQUITETURA-eleicoes-2.5.3.md` | só pelos PRs da F1 |
+| `index.html`, `index-en.html`, `sincroniza-en.py`, `*.pdf`, `banner.jpg`, `trilha.mp3`, `congresso/`, `cola/`, `presidencia/`, `congresso-sync.py`, `congresso-pautas.json`, `presidencia-compromissos.json`, `.github/workflows/congresso-sync.yml`, `teste/*.js` (exceto `paridade.js`) | **o app atual** (repositório renomeado de `planos-candidatos-2026` para `radar-one` em 31/10/2026; ADR 0009, emenda); regras no `docs/ARQUITETURA-eleicoes-2.5.3.md` | só pelos PRs da F1 |
 | `janela.js`, `cofre.js`, `recursos.js` | mestres da SolverONE (cópias exatas do `rootify-one`) | **nunca à mão** |
 | `recursos-do-app.json` | o que o produto novo obedece do RootifyONE (ADR 0005 e 0010) | sim, ao ligar interruptor novo no código |
 | `docs/adr/` | decisões de arquitetura, uma por arquivo (índice em `0000-indice.md`) | sim, por ADR novo ou "superado por" |
 | `docs/legacy_catalog.json` e `.md` | manifesto das 43 entradas de infográficos (T01/T25), gerado por `robos/gera-legacy-catalog.py` | regenerar, não editar à mão |
 | `docs/fontes/registro-de-fontes.json` e `.md` | registro de fontes (T23), gerado por `robos/gera-registro-fontes.py` | editar o script e regenerar |
-| `docs/redirecionamento/` | as duas páginas (PT e EN) do repositório-placa que ficará com o nome antigo | copiar para lá em 26/10 |
+| `docs/redirecionamento/` | as duas páginas (PT e EN) do repositório-placa que ficará com o nome antigo | já copiadas para a placa em 31/10/2026 |
 | `docs/referencias-de-produto.md` | os sites de referência do dono (Ranking dos Políticos, Em quem votar, Global Election Simulator): o que são e o que entra como ideia | sim, a cada referência nova |
 | `docs/limites-planos-gratuitos.md`, `docs/medicao-conectores.md` | limites lidos nas páginas oficiais e medição das APIs (datas e links) | reconferir a cada fase |
 | `docs/plano-F1.md` | os 10 PRs da F1, com prova e modelo | sim |
 | `docs/ARQUITETURA-eleicoes-2.5.3.md`, `docs/PENDENCIAS-eleicoes-2.5.3.md` | os dois arquivos do app atual, intactos | só pelos PRs da F1 |
 | `teste/paridade.js`, `teste/paridade/` | harness de paridade (captura o CSV de cada um dos 43 blocos e compara duas capturas) e os resumos do autoteste de 22/10/2026 | sim |
+| `.github/workflows/teste.yml` | CI: as 913 verificações e o autoteste de paridade rodam sozinhos em todo PR (F1-PR1) | sim, só pelos PRs da F1 |
+| `.editorconfig` | padrão de edição (UTF-8, LF, 2 espaços; Python com 4) | raramente |
+| `modulos/`, `dados/`, `i18n/` | as pastas da estrutura nova (ADR 0001), vazias até os PRs 3, 2 e 4; cada uma tem um `LEIA-ME.md` dizendo o que vai nela | só pelos PRs da F1 |
+| `docs/modulos-contrato.md` | contrato do PR3: um módulo por bloco de hoje, a lista do que cruza por `window`, a ordem e o que os testes usam | sim, pelo Fable |
 | `robos/prototipo-ibge-bcb.py` | protótipo da onda 1 (IBGE e BCB), conferido contra o acervo | vira `robos/indicadores.py` na F2 |
 | `robos/gera-*.py` | geradores dos manifestos | sim |
 | `docs/recursos-do-app.json` | o `recursos-do-app.json` do produto novo (entrega 6); o da raiz continua o do app atual até o F1-PR7 | sim |
@@ -56,8 +60,11 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 
 ```
 cd <repositório>
-npm install -D playwright          # uma vez (o Chromium do container de teste já serve)
+npm install -D playwright          # uma vez (ou NODE_PATH apontando para um Playwright global)
 node teste/rodar.js                # as 913 verificações do app atual
 node teste/paridade.js autoteste   # o harness: atual × atual = 0; selic alterada = acusa 2 blocos
 python3 -I robos/prototipo-ibge-bcb.py --index index.html --saida robos/saida
 ```
+
+No GitHub os dois primeiros rodam sozinhos em todo PR (`.github/workflows/teste.yml`, dois jobs em paralelo); a aba **Checks** do PR
+mostra o resultado, e os resumos da paridade ficam como artefato por 14 dias.

@@ -24,7 +24,7 @@ teste de aceite escrito antes). A coluna "Modelo" diz quem faz o PR; a revisão 
 
 ## Ordem e dependências
 
-PR1 → PR2 → PR3 → PR4 → PR5 → PR6 → PR7 → PR8 → PR9 → PR10. PR2 e PR3 podem ser trocados de ordem; PR8 e PR9 podem andar em
+PR1 → **PR3 → PR2** → PR4 → PR5 → PR6 → PR6b → PR7 → PR8 → PR9 → PR10 (ordem de PR2 e PR3 trocada em 31/10/2026: os dados são lidos de forma síncrona antes do código principal, e só com o código em módulos o `app.js` consegue esperar um `fetch`; ver `docs/modulos-contrato.md`, regra 7); PR8 e PR9 podem andar em
 paralelo depois do PR7. Cada PR fecha num dia de Sonnet (2 a 4 horas de sessão) ou numa sessão de Fable; a F1 inteira são 10 PRs,
 dos quais 4 em Fable (1, 5, 7, 10) e 6 em Sonnet (2, 3, 4, 6, 8, 9).
 
