@@ -6,3 +6,8 @@ teste/paridade/*/*.txt
 node_modules/
 package.json
 package-lock.json
+
+# capturas locais da paridade antes × depois (ficam só na máquina; as do autoteste de 22/10 continuam no repositório)
+teste/paridade/antes*/
+teste/paridade/depois*/
+teste/paridade/comparacao-antes*
