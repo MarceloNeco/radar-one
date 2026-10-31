@@ -4,7 +4,7 @@
 
 Os dois arquivos têm o MESMO código (HTML, CSS, JS e o dicionário `traden`);
 o que muda é só o conteúdo dos blocos de dados (<script id="dados">, "ig",
-"bio", "glos", "patr", "dlinks", "proc"), a variável IDIOMA, o atributo lang
+"bio", "glos", "patr", "dlinks", "proc"), a linha window.IDIOMA, o atributo lang
 e os links hreflang. Então: edite sempre o index.html e rode
 
     python3 sincroniza-en.py
@@ -38,7 +38,7 @@ def main():
         ('<html lang="pt-BR">', '<html lang="en-US">'),
         ('<link rel="alternate" hreflang="pt-BR" href="index.html">', '<link rel="alternate" hreflang="en-US" href="index.html">'),
         ('<a class="brand" href="./"', '<a class="brand" href="./index-en.html"'),
-        ('var IDIOMA="pt";', 'var IDIOMA="en";'),
+        ('<script>window.IDIOMA="pt";</script>', '<script>window.IDIOMA="en";</script>'),
     ]
     for de, para in trocas:
         if novo.count(de) != 1:

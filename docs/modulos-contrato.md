@@ -1,6 +1,6 @@
 # Contrato dos módulos (escrito no F1-PR1 para o F1-PR3)
 
-Escrito em 31/10/2026, pelo Fable, a partir do `index.html` 2.5.4 (47.578 linhas). Quem faz o PR3 segue isto à risca; dúvida
+Escrito em 31/10/2026, pelo Fable, a partir do `index.html` 2.5.4 (47.578 linhas). **Estado: implementado no F1-PR3 (31/10/2026)**; o `index.html` ficou com 36.856 linhas (os blocos JSON saem no PR2). Quem faz o PR3 segue isto à risca; dúvida
 vira pergunta no PR, nunca decisão silenciosa. Depois do PR3 este arquivo vira a lista "o que cada módulo faz, o que não se toca"
 do `ARQUITETURA.md`.
 

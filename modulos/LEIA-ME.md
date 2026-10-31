@@ -12,4 +12,19 @@ Regras:
 - Tudo que outro módulo ou os testes usam de um módulo fica exposto em `window.X` (lista no contrato); nada mais sai do módulo.
 - Comentário explica **por quê**, em português simples. Texto para a pessoa sempre em PT e EN (`T("pt", "en")`).
 
-Até o PR3 esta pasta fica vazia (só este arquivo).
+Feito no F1-PR3 (31/10/2026). O que há aqui, na ordem em que o `app.js` carrega:
+
+| Arquivo | Era (no `index.html` 2.5.4) | Expõe em `window` |
+|---|---|---|
+| `app.js` | novo: só a ordem de carga (um `await import` por módulo) | — |
+| `calendario.js` | bloco 1 (calendário eleitoral) + bloco 2 (`colinhaOff`) | `Calendario`, `colinhaOff` |
+| `janelas.js` | bloco 3 (janelas do site sobre a janela comum) | `EJ` |
+| `dados.js` | bloco 4 (lê os blocos JSON que ainda ficam no HTML; vira `fetch` no PR2) | `__IG__`, `__BIO__`, `__GLOS__`, `__PATR__`, `__DLINKS__`, `__PROC__` |
+| `principal.js` | bloco 5 (infográficos, comparadores, índice, planos, glossário, configurações) | `PG`, `DL`, `repintaIG`, `ancoraEm`, `escreveVer`, `pesosAtuais`, `somLigado`, `somPref`, `somVolume`, `__panCols` |
+| `voz.js` | bloco 6 (leitura em voz alta, v1.7) | `VozLeitor`, `VozPainel` |
+| `apoio.js` | bloco 7 (☰, compartilhar, acessibilidade, AssistONE, v1.8) | `CfgAcess`, `CfgAssist`, `PGShare` |
+| `eleicoes/congresso.js` | bloco 8 (hub, Congresso e Presidência, v2.0) | `CongressoV2` |
+| `eleicoes/colinha.js` | bloco 9 (Colinha da eleição, v2.2) | `Colinha` |
+
+Cada página declara `window.IDIOMA` numa linha antes do `app.js` (`"pt"` no `index.html`, `"en"` no `index-en.html`, trocada
+pelo `sincroniza-en.py`); é a única mudança de código em relação aos blocos de antes.
