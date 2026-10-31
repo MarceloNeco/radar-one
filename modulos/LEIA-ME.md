@@ -23,6 +23,7 @@ Feito no F1-PR3 (31/10/2026). O que há aqui, na ordem em que o `app.js` carrega
 | `principal.js` | bloco 5 (infográficos, comparadores, índice, planos, glossário, configurações) | `PG`, `DL`, `repintaIG`, `ancoraEm`, `escreveVer`, `pesosAtuais`, `somLigado`, `somPref`, `somVolume`, `__panCols` |
 | `voz.js` | bloco 6 (leitura em voz alta, v1.7) | `VozLeitor`, `VozPainel` |
 | `apoio.js` | bloco 7 (☰, compartilhar, acessibilidade, AssistONE, v1.8) | `CfgAcess`, `CfgAssist`, `PGShare` |
+| `saiba.js` | novo no F1-PR5c: o ⓘ que abre a explicação completa pela janela comum (`EJ.pop`); "Entendi", Esc e Voltar fecham | — |
 | `rotas.js` | novo no F1-PR5: o shell com os quatro destinos (Hoje · Explorar · Indicadores · Salvos), a barra, o histórico por camada e o aviso do Voltar | `Rotas` |
 | `eleicoes/congresso.js` | bloco 8 (hub, Congresso e Presidência, v2.0) | `CongressoV2` |
 | `eleicoes/colinha.js` | bloco 9 (Colinha da eleição, v2.2) | `Colinha` |
