@@ -27,6 +27,7 @@ Feito no F1-PR3 (31/10/2026). O que há aqui, na ordem em que o `app.js` carrega
 | `rotas.js` | novo no F1-PR5: o shell com os quatro destinos (Hoje · Explorar · Indicadores · Salvos), a barra, o histórico por camada e o aviso do Voltar | `Rotas` |
 | `eleicoes/congresso.js` | bloco 8 (hub, Congresso e Presidência, v2.0) | `CongressoV2` |
 | `eleicoes/colinha.js` | bloco 9 (Colinha da eleição, v2.2) | `Colinha` |
+| `eleicoes/resultado.js` | novo no F1-PR6b: a tela Resultado e apuração (votos e % por candidatura, por cargo e lugar, dos arquivos `…-u.json` do TSE, com cópia por 1 h) | `Resultado` |
 
 Cada página declara `window.IDIOMA` numa linha antes do `app.js` (`"pt"` no `index.html`, `"en"` no `index-en.html`, trocada
 pelo `sincroniza-en.py`); é a única mudança de código em relação aos blocos de antes.

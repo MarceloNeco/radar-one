@@ -1350,7 +1350,7 @@ thead .i{vertical-align:0;margin-left:5px;width:15px;height:15px;font-size:9.5px
   <div class="wrap">
     <h1 class="dest-t">Hoje</h1>
     <p class="dest-s">O que mudou nas pessoas e nos temas que você acompanha vai aparecer aqui.</p>
-    <a class="cartao cartao-el" id="hoje-eleicao" href="#hub" data-recurso="eleicoes"><span class="ic" aria-hidden="true">🗳️</span><span><span class="eyebrow" id="hoje-el-t">Eleição 2026</span><b>Arquivo da eleição: planos, Colinha e Congresso</b></span><span class="seta" aria-hidden="true">›</span></a>
+    <a class="cartao cartao-el" id="hoje-eleicao" href="#hub" data-recurso="eleicoes"><span class="ic" aria-hidden="true">🗳️</span><span><span class="eyebrow" id="hoje-el-t">Eleição 2026</span><b>Arquivo da eleição: resultado, planos, Colinha e Congresso</b></span><span class="seta" aria-hidden="true">›</span></a>
     <h2 class="dest-h">Comece por um nome, tema ou território</h2>
     <div class="atalhos">
       <a class="atalho" href="#explorar"><span class="ic" aria-hidden="true">🔎</span><span><b>Explorar</b><small>Pessoas, mandatos e temas</small></span></a>
@@ -1364,6 +1364,7 @@ thead .i{vertical-align:0;margin-left:5px;width:15px;height:15px;font-size:9.5px
     <h1 class="dest-t">Explorar</h1>
     <p class="dest-s">Comece por um nome, tema ou território.</p>
     <div class="atalhos">
+      <a class="atalho" href="#resultado" data-recurso="eleicoes"><span class="ic" aria-hidden="true">🗳️</span><span><b>Resultado da eleição de 2026</b><small>Votos e % por candidatura, por cargo e lugar</small></span></a>
       <a class="atalho" href="#congresso/mandato" data-recurso="eleicoes"><span class="ic" aria-hidden="true">⚖️</span><span><b>Quem está no Congresso</b><small>Eleitos do seu estado, presença e votações</small></span></a>
       <a class="atalho" href="#macrotemas" data-recurso="eleicoes"><span class="ic" aria-hidden="true">📑</span><span><b>Planos por tema</b><small>O que cada candidatura prometeu, tema a tema</small></span></a>
       <a class="atalho" href="#infograficos"><span class="ic" aria-hidden="true">📈</span><span><b>Indicadores por nome</b><small>Procure uma série ou um comparador</small></span></a>
@@ -1380,6 +1381,13 @@ thead .i{vertical-align:0;margin-left:5px;width:15px;height:15px;font-size:9.5px
       <a class="atalho" href="#congresso/favoritos" data-recurso="eleicoes"><span class="ic" aria-hidden="true">⭐</span><span><b>Favoritos do Congresso</b><small>Quem você marcou com estrela</small></span></a>
     </div>
     <p class="dest-n">Favoritos e painéis ficam só neste aparelho. Você apaga quando quiser.</p>
+  </div>
+</div>
+<div class="view dest" id="v-resultado">
+  <div class="wrap">
+    <h1 class="dest-t">Resultado e apuração</h1>
+    <p class="dest-s">Votos e porcentagem de cada candidatura, por cargo e lugar, como o TSE divulgou.</p>
+    <div id="res-raiz"></div>
   </div>
 </div>
 <div class="view" id="v-inicio">
@@ -2609,6 +2617,21 @@ body{padding-bottom:calc(var(--nav-h) + 24px + env(safe-area-inset-bottom,0px))}
 .dest-n{color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:18px}
 .rotas-aviso{position:fixed;left:50%;bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,8px);z-index:70;background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100vw - 32px);box-sizing:border-box;text-align:center}
 .rotas-aviso.on{opacity:1;transform:translate(-50%,0)}
+/* ===== Resultado e apuração (F1-PR6b) ===== */
+.res-f{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 16px}
+.res-sel{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+.res-sel select{min-height:44px;font-size:16px;padding:8px 10px;border:1px solid var(--line-2);border-radius:12px;background:var(--surface);color:var(--ink)}
+.res-cab{margin:0 0 10px;line-height:1.5}
+.res-tw{overflow-x:auto}
+.res-tab{width:100%;border-collapse:collapse;font-size:14px}
+.res-tab th,.res-tab td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.res-tab th{font-family:var(--f-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.res-tab .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.res-tab td small{display:block;color:var(--muted);font-size:12px}
+.res-tab tr.eleito td{background:var(--accent-soft)}
+.res-eleito{display:inline-block;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:2px 8px;font-size:12px;font-weight:600;white-space:nowrap}
+.res-fonte,.res-aviso{color:var(--muted);font-size:13.5px;line-height:1.5}
+.res-guardado{color:var(--warn)}
 /* ===== ⓘ "saiba mais" (F1-PR5c): explicação atrás de um toque ===== */
 .ibtn-i{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;margin-left:6px;padding:0;border:1px solid var(--line-2);border-radius:50%;background:var(--surface);color:var(--accent);font:600 15px/1 var(--f-b);cursor:pointer;vertical-align:middle;flex:none}
 .ibtn-i:hover{border-color:var(--accent)}
