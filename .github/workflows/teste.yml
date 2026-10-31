@@ -18,7 +18,7 @@ permissions:
 jobs:
   verificacoes:
     name: 913 verificações
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # "ubuntu-latest" já é o 26.04, que o Playwright 1.56 não suporta (CI de 31/10/2026)
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
 
   paridade:
     name: Paridade dos infográficos (autoteste)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # "ubuntu-latest" já é o 26.04, que o Playwright 1.56 não suporta (CI de 31/10/2026)
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
