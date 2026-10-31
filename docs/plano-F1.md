@@ -1,5 +1,7 @@
 # Plano da F1 — estrutura nova, em PRs pequenos e ordenados
 
+> **Estado em 31/10/2026:** F1 concluída. Os dez passos (PR1 a PR10, mais PR5b, PR5c e PR6b) foram mesclados com CI verde; o site está na 2.6.8. O que ficou para decisão do dono está em `PENDENCIAS.md` (itens 28 e 31).
+
 Regras que valem em todos os PRs: 8 linhas simples do que muda; nenhum merge sem o "pode mesclar" do chat Arquitetura; nenhum
 segredo; mestres (`janela.js`, `cofre.js`, `recursos.js`) intocados; nenhuma mudança no app que está no ar (o endereço antigo só
 muda no PR 9); todo PR roda **as 913 verificações** (`node teste/rodar.js`) e **o harness de paridade** (`node teste/paridade.js`)
