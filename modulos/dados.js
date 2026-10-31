@@ -1,0 +1,3 @@
+/* dados.js: leitura dos blocos JSON que ainda ficam dentro do HTML (bloco 4); no F1-PR2 vira fetch
+   Movido como está do index.html 2.5.4 no F1-PR3 (31/10/2026): mesmo código, mesmos nomes; o que sai daqui para fora é só window.X (ver docs/modulos-contrato.md). */
+window.__IG__=JSON.parse(document.getElementById("ig").textContent);window.__BIO__=JSON.parse(document.getElementById("bio").textContent);window.__GLOS__=JSON.parse(document.getElementById("glos").textContent);window.__PATR__=JSON.parse(document.getElementById("patr").textContent);window.__DLINKS__=JSON.parse(document.getElementById("dlinks").textContent);window.__PROC__=JSON.parse(document.getElementById("proc").textContent);
