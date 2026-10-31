@@ -24,7 +24,7 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 
 | Caminho | O que é | Mexer? |
 |---|---|---|
-| `index.html` (HTML, CSS e os blocos JSON; o código está em `modulos/`), `index-en.html`, `sincroniza-en.py`, `*.pdf`, `banner.jpg`, `trilha.mp3`, `congresso/`, `cola/`, `presidencia/`, `congresso-sync.py`, `congresso-pautas.json`, `presidencia-compromissos.json`, `.github/workflows/congresso-sync.yml`, `teste/*.js` (exceto `paridade.js`) | **o app atual** (repositório renomeado de `planos-candidatos-2026` para `radar-one` em 31/10/2026; ADR 0009, emenda); regras no `docs/ARQUITETURA-eleicoes-2.5.3.md` | só pelos PRs da F1 |
+| `index.html` (só HTML e CSS, 2.500 linhas; o código está em `modulos/` e os dados em `dados/`), `index-en.html`, `sincroniza-en.py`, `*.pdf`, `banner.jpg`, `trilha.mp3`, `congresso/`, `cola/`, `presidencia/`, `congresso-sync.py`, `congresso-pautas.json`, `presidencia-compromissos.json`, `.github/workflows/congresso-sync.yml`, `teste/*.js` (exceto `paridade.js`) | **o app atual** (repositório renomeado de `planos-candidatos-2026` para `radar-one` em 31/10/2026; ADR 0009, emenda); regras no `docs/ARQUITETURA-eleicoes-2.5.3.md` | só pelos PRs da F1 |
 | `janela.js`, `cofre.js`, `recursos.js` | mestres da SolverONE (cópias exatas do `rootify-one`) | **nunca à mão** |
 | `recursos-do-app.json` | o que o produto novo obedece do RootifyONE (ADR 0005 e 0010) | sim, ao ligar interruptor novo no código |
 | `docs/adr/` | decisões de arquitetura, uma por arquivo (índice em `0000-indice.md`) | sim, por ADR novo ou "superado por" |
@@ -39,7 +39,8 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 | `.github/workflows/teste.yml` | CI: as 913 verificações e o autoteste de paridade rodam sozinhos em todo PR (F1-PR1) | sim, só pelos PRs da F1 |
 | `.editorconfig` | padrão de edição (UTF-8, LF, 2 espaços; Python com 4) | raramente |
 | `modulos/` | o código do site em módulos ES, um arquivo por bloco de antes (F1-PR3, 31/10/2026); o `app.js` dá a ordem; lista e o que cada um expõe em `modulos/LEIA-ME.md` e `docs/modulos-contrato.md` | só pelos PRs da F1 |
-| `dados/`, `i18n/` | as pastas da estrutura nova (ADR 0001), vazias até os PRs 2 e 4; cada uma tem um `LEIA-ME.md` dizendo o que vai nela | só pelos PRs da F1 |
+| `dados/` | os 8 blocos de dados do site em arquivos JSON (PT na raiz, EN em `dados/en/`), lidos por `modulos/dados.js` com cópia no Cache Storage (F1-PR2, 31/10/2026); `dados/ig.json` é o snapshot que o harness de paridade confere | o acervo manual, sim; o que vier de robô, nunca à mão |
+| `i18n/` | o dicionário PT → EN a partir do PR4; vazia até lá, com `LEIA-ME.md` | só pelos PRs da F1 |
 | `docs/modulos-contrato.md` | contrato do PR3: um módulo por bloco de hoje, a lista do que cruza por `window`, a ordem e o que os testes usam | sim, pelo Fable |
 | `robos/prototipo-ibge-bcb.py` | protótipo da onda 1 (IBGE e BCB), conferido contra o acervo | vira `robos/indicadores.py` na F2 |
 | `robos/gera-*.py` | geradores dos manifestos | sim |

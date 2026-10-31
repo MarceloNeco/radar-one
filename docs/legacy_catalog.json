@@ -1,7 +1,7 @@
 {
  "formato": 1,
- "gerado_em": "2026-10-22",
- "fonte": "index.html 2.5.3",
+ "gerado_em": "2026-10-31",
+ "fonte": "index.html 2.5.4",
  "snapshot_ig_sha256": "6cc98b6890ae0986b7323b3b8295db15a28bc6e613809614eb926da07822ce84",
  "total_entradas": 43,
  "fora_das_43": [
@@ -73,7 +73,7 @@
    "calculo": "barras = 1ª série; linha = 2ª série; mesmo eixo",
    "fonte": "Banco Mundial; IBGE - Contas Nacionais Trimestrais",
    "unidade": "variação real anual, %",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -118,7 +118,7 @@
    "calculo": "duas séries no mesmo eixo, sem emenda entre elas",
    "fonte": "Banco Central do Brasil / Copom; IBGE",
    "unidade": "% ao ano; variação acumulada no ano, %",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -176,7 +176,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "IBGE",
    "unidade": "variação acumulada no ano, %",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -208,7 +208,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação",
    "fonte": "Banco Central do Brasil",
    "unidade": "R$ por US$ 1,00",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -266,7 +266,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "Banco Central do Brasil",
    "unidade": "% do PIB",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -298,7 +298,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação · inclui marcos: tributarios",
    "fonte": "Receita Federal do Brasil (RFB) - Centro de Estudos Tributários e Aduaneiros",
    "unidade": "% do PIB",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -343,7 +343,7 @@
    "calculo": "duas séries no mesmo eixo, sem emenda entre elas",
    "fonte": "IBGE",
    "unidade": "% da força de trabalho",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -401,7 +401,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "IBGE",
    "unidade": "% (população na força de trabalho + pessoas desalentadas); % da força de trabalho; % da força de trabalho ampliada",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -461,7 +461,7 @@
    "calculo": "barras por UF no ano escolhido (padrão: último ano) + partido do governador na data (ig.governadores)",
    "fonte": "IBGE",
    "unidade": "% da força de trabalho",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -509,7 +509,7 @@
    "calculo": "um painel por série, um sob o outro, mesma linha do tempo (unidades diferentes)",
    "fonte": "IBGE; Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome (MDS) — Secretaria Nacional de Renda e Cidadania (Senarc)",
    "unidade": "% da força de trabalho; unidade mista: milhões de famílias / reais correntes",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -544,7 +544,7 @@
    "calculo": "um painel por série, um sob o outro, mesma linha do tempo (unidades diferentes)",
    "fonte": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome (MDS) — Secretaria Nacional de Renda e Cidadania (Senarc)",
    "unidade": "unidade mista: milhões de famílias / reais correntes",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -576,7 +576,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação",
    "fonte": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome (MDS) — Secretaria Nacional de Assistência Social (SNAS), Departamento de Benefícios Assistenciais (DBA)",
    "unidade": "número de pessoas beneficiárias",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -608,7 +608,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação",
    "fonte": "Presidência da República — leis, medidas provisórias e decretos de reajuste",
    "unidade": "R$ (valores correntes de cada ano)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -653,7 +653,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação",
    "fonte": "IBGE; Presidência da República — leis, medidas provisórias e decretos de reajuste",
    "unidade": "variação acumulada no ano, %; variação no ano, %",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -685,7 +685,7 @@
    "calculo": "pontos em datas esparsas (sem linha entre eles), valor na data",
    "fonte": "INSS / Ministério da Previdência Social",
    "unidade": "número de requerimentos",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -722,7 +722,7 @@
    "calculo": "áreas empilhadas por categoria; a altura total é a soma",
    "fonte": "IBGE",
    "unidade": "número de pessoas",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -758,7 +758,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "INEP — Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira",
    "unidade": "índice de 0 a 10",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -795,7 +795,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo · categorias: Taxa de analfabetismo, 15 anos ou mais — PNAD (%), Taxa de analfabetismo, 15 anos ou mais — PNAD Contínua (%)",
    "fonte": "IBGE — Instituto Brasileiro de Geografia e Estatística",
    "unidade": "% (analfabetismo e percentual com 12+ anos de estudo) ou anos (média de anos de estudo) — ver definição de cada categoria em \"criterio\"",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -832,7 +832,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo · categorias: Média de anos de estudo, 25 anos ou mais — PNAD (anos), Pessoas de 25 anos ou mais com 12 anos ou mais de estudo — PNAD Contínua (%)",
    "fonte": "IBGE — Instituto Brasileiro de Geografia e Estatística",
    "unidade": "% (analfabetismo e percentual com 12+ anos de estudo) ou anos (média de anos de estudo) — ver definição de cada categoria em \"criterio\"",
-   "estado_migracao": "legado-embutido · robô possível (fonte com API)",
+   "estado_migracao": "dados-em-arquivo · robô possível (fonte com API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -864,7 +864,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação",
    "fonte": "Ministério da Saúde / SESAI — DSEI Yanomami",
    "unidade": "número de óbitos por ano",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -896,7 +896,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação",
    "fonte": "Ipea / Fórum Brasileiro de Segurança Pública (FBSP)",
    "unidade": "óbitos por 100 mil habitantes",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -956,7 +956,7 @@
    "calculo": "barras por UF no ano escolhido (padrão: último ano) + partido do governador na data (ig.governadores)",
    "fonte": "Ipea / Fórum Brasileiro de Segurança Pública (FBSP)",
    "unidade": "óbitos por 100 mil habitantes",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -993,7 +993,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "INPE — Instituto Nacional de Pesquisas Espaciais",
    "unidade": "km² por ano (ano-safra PRODES, agosto a julho)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1025,7 +1025,7 @@
    "calculo": "barras: valor da série por ano, sem transformação",
    "fonte": "FUNAI / Ministério dos Povos Indígenas — com comparação de contagens do ISA (Instituto Socioambiental) e do Cimi (Conselho Indigenista Missionário)",
    "unidade": "número de terras indígenas homologadas",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1060,7 +1060,7 @@
    "calculo": "barras empilhadas por governo (assentadas × títulos), visão por governo ou por ano (ig.titulacao) · categorias: Famílias assentadas",
    "fonte": "INCRA — Instituto Nacional de Colonização e Reforma Agrária",
    "unidade": "número de famílias / número de títulos, por ano",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1083,7 +1083,7 @@
    "calculo": "dossiê textual de decisões do STF (ig.stf), por governo, sem nota",
    "fonte": "conteúdo editorial do próprio site (bloco ig)",
    "unidade": "decisões de grande alcance, 1998-2026",
-   "estado_migracao": "legado-embutido · conteúdo editorial (vai para o RootifyONE)",
+   "estado_migracao": "dados-em-arquivo · conteúdo editorial (vai para o RootifyONE)",
    "teste_equivalencia": "teste/paridade.js (texto do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1145,7 +1145,7 @@
    "calculo": "lista datada por governo, sem gráfico de série; contagens por mandato quando há anexo",
    "fonte": "Banco Central do Brasil; Banco Mundial — Doing Business; Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte (ex-MDIC) — Mapa de Empresas",
    "unidade": "bilhões de transações por ano; dias corridos; horas (valor do último quadrimestre publicado em cada ano)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1168,7 +1168,7 @@
    "calculo": "pesos do leitor por dimensão (soma 100%), guardados no aparelho; valem para todos os marcos",
    "fonte": "conteúdo editorial do próprio site (bloco ig)",
    "unidade": "perfil de prioridades do leitor — vale igual para todos os marcos",
-   "estado_migracao": "legado-embutido · conteúdo editorial (vai para o RootifyONE)",
+   "estado_migracao": "dados-em-arquivo · conteúdo editorial (vai para o RootifyONE)",
    "teste_equivalencia": "teste/paridade.js (texto do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1191,7 +1191,7 @@
    "calculo": "radar 0–3 por dimensão de cada marco (ig.marcos_legais.classificados) × pesos do leitor; comparação de até 2 marcos",
    "fonte": "conteúdo editorial do próprio site (bloco ig)",
    "unidade": "quanto o texto de cada ato mexe em cada dimensão — e em que sentido",
-   "estado_migracao": "legado-embutido · conteúdo editorial (vai para o RootifyONE)",
+   "estado_migracao": "dados-em-arquivo · conteúdo editorial (vai para o RootifyONE)",
    "teste_equivalencia": "teste/paridade.js (texto do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1214,7 +1214,7 @@
    "calculo": "lista datada por governo, sem gráfico de série; contagens por mandato quando há anexo",
    "fonte": "conteúdo editorial do próprio site (bloco ig)",
    "unidade": "37 leis, emendas, medidas provisórias e decretos entre 1998 e 2026",
-   "estado_migracao": "legado-embutido · conteúdo editorial (vai para o RootifyONE)",
+   "estado_migracao": "dados-em-arquivo · conteúdo editorial (vai para o RootifyONE)",
    "teste_equivalencia": "teste/paridade.js (texto do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1259,7 +1259,7 @@
    "calculo": "um painel por série, um sob o outro, mesma linha do tempo (unidades diferentes)",
    "fonte": "Banco Central do Brasil — Necessidades de Financiamento do Setor Público (NFSP); Ministério da Gestão e da Inovação em Serviços Públicos (MGI) — e, até 2019, Ministério do Planejamento/Ministério da Economia",
    "unidade": "% do PIB (fluxo acumulado em 12 meses, posição de dezembro de cada ano); R$ bilhões (valores correntes)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1301,7 +1301,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "Diversas — ver fonte por ponto (empresas, MGI/Boletim das Estatais, imprensa especializada)",
    "unidade": "R$ milhões (valores correntes)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1333,7 +1333,7 @@
    "calculo": "barras: valor da série por ano, sem transformação",
    "fonte": "Controladoria-Geral da União (CGU)",
    "unidade": "R$ milhões (valores correntes)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1365,7 +1365,7 @@
    "calculo": "pontos em datas esparsas (sem linha entre eles), valor na data",
    "fonte": "INSS / Ministério da Previdência Social",
    "unidade": "R$ milhões (valores correntes)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1397,7 +1397,7 @@
    "calculo": "uma linha: valor da série por ano, sem transformação",
    "fonte": "Ministério da Previdência Social / Ministério da Fazenda — portarias interministeriais de reajuste",
    "unidade": "R$ (valores correntes de cada ano)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1429,7 +1429,7 @@
    "calculo": "barras: valor da série por ano, sem transformação",
    "fonte": "B3 (Brasil, Bolsa, Balcão) — e, para os anos recentes, imprensa financeira com atribuição à B3",
    "unidade": "% no ano (valores nominais)",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1465,7 +1465,7 @@
    "calculo": "barras: valor da série por ano, sem transformação",
    "fonte": "Presidência da República — leis orgânicas da Esplanada dos Ministérios",
    "unidade": "número de cargos",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1510,7 +1510,7 @@
    "calculo": "barras = 1ª série; linha = 2ª série; mesmo eixo",
    "fonte": "Receita Federal do Brasil (RFB); Receita Federal do Brasil (RFB); IBGE (IPCA)",
    "unidade": "R$ bilhões correntes; R$ bilhões de dezembro de 2025",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1537,7 +1537,7 @@
    "calculo": "lista datada por governo, sem gráfico de série; contagens por mandato quando há anexo",
    "fonte": "conteúdo editorial do próprio site (bloco ig)",
    "unidade": "33 leis, medidas provisórias e decretos que criaram, elevaram, reduziram ou extinguiram tributos, 1996-2026",
-   "estado_migracao": "legado-embutido · conteúdo editorial (vai para o RootifyONE)",
+   "estado_migracao": "dados-em-arquivo · conteúdo editorial (vai para o RootifyONE)",
    "teste_equivalencia": "teste/paridade.js (texto do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1583,7 +1583,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "Ministério da Saúde/SVSA/CGIAE — Sistema de Informações sobre Mortalidade (SIM), via TabNet/DATASUS",
    "unidade": "óbitos no ano",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1631,7 +1631,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "Ministério da Saúde/SVSA/CGIAE — Sistema de Informações sobre Mortalidade (SIM), via TabNet/DATASUS",
    "unidade": "óbitos no ano",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1670,7 +1670,7 @@
    "calculo": "contagem de empresas que entraram e saíram por mandato (ig.estatais_lista); barras por mandato",
    "fonte": "MGI/SEST — cadastro de empresas estatais federais",
    "unidade": "número de empresas no ano",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   },
@@ -1710,7 +1710,7 @@
    "calculo": "uma linha por categoria da série (seleção inicial = sel_inicial), mesmo eixo",
    "fonte": "MGI/SEST (federais); Secretaria do Tesouro Nacional (estaduais)",
    "unidade": "número de empresas",
-   "estado_migracao": "legado-embutido · acervo mantido à mão (fonte sem API)",
+   "estado_migracao": "dados-em-arquivo · acervo mantido à mão (fonte sem API)",
    "teste_equivalencia": "teste/paridade.js (CSV do bloco)",
    "responsavel": "F1 (PR \"dados fora do HTML\"): mover; F2: contrato canônico quando houver robô"
   }

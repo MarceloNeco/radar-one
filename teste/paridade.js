@@ -51,6 +51,14 @@ function blocoJSON(html, id) {
   const b = html.indexOf('</script>', a + ini.length);
   return html.slice(a + ini.length, b);
 }
+/* F1-PR2: os blocos saíram do HTML para dados/<id>.json (e dados/en/ para a página em inglês); o app antigo ainda os tem
+   dentro do HTML. Esta função serve os dois casos, aplicando a mesma transformação que o servidor aplica ao arquivo. */
+function arquivoDados(id) { return path.join(RAIZ, (/en\.html$/.test(PAGINA) && id !== 'traden') ? 'dados/en' : 'dados', id + '.json'); }
+function textoDados(id, html, transforma) {
+  if (html.indexOf('<script id="' + id + '" type="application/json">') > -1) return blocoJSON(html, id);
+  const arq = arquivoDados(id), t = fs.readFileSync(arq, 'utf8');
+  return transforma ? transforma(t, arq) : t;
+}
 
 function servir(raiz, porta, transforma) {
   const s = http.createServer((req, res) => {
@@ -59,7 +67,7 @@ function servir(raiz, porta, transforma) {
     if (!alvo.startsWith(raiz)) { res.writeHead(403); return res.end(); }
     fs.readFile(alvo, (e, d) => {
       if (e) { res.writeHead(404); return res.end('nao'); }
-      if (transforma && /\.html$/.test(alvo)) d = Buffer.from(transforma(d.toString('utf8')), 'utf8');
+      if (transforma && /\.(html|json)$/.test(alvo)) d = Buffer.from(transforma(d.toString('utf8'), alvo), 'utf8');
       res.writeHead(200, { 'Content-Type': TIPOS[path.extname(alvo)] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
       res.end(d);
     });
@@ -72,10 +80,11 @@ function servir(raiz, porta, transforma) {
    -------------------------------------------------------------------------- */
 async function capturar(nome, transforma) {
   const html = fs.readFileSync(path.join(RAIZ, PAGINA), 'utf8');
-  const htmlServido = transforma ? transforma(html) : html;
-  const ig = JSON.parse(blocoJSON(htmlServido, 'ig'));
-  const dados = JSON.parse(blocoJSON(htmlServido, 'dados'));
-  const snapshot = { ig_sha256: sha(blocoJSON(htmlServido, 'ig')), versao_app: dados.versao || '', pagina: PAGINA };
+  const htmlServido = transforma ? transforma(html, path.join(RAIZ, PAGINA)) : html;
+  const igTxt = textoDados('ig', htmlServido, transforma);
+  const ig = JSON.parse(igTxt);
+  const dados = JSON.parse(textoDados('dados', htmlServido, transforma));
+  const snapshot = { ig_sha256: sha(igTxt), versao_app: dados.versao || '', pagina: PAGINA };
   const titulos = ig.graficos.map(g => g.titulo);
   const esperados = titulos.map(slugG);
 
@@ -221,15 +230,18 @@ async function autoteste() {
   const d1 = comparar('atual-A', 'atual-B');
   if (d1.length) { falhou = true; console.log('  ✗ atual × atual devia dar 0 diferenças'); } else console.log('  ✓ atual × atual: 0 diferenças');
   /* um valor de mentira: o primeiro ponto da série "selic" ganha +1; só os blocos que usam a selic podem mudar */
-  const forca = html => {
-    const ini = '<script id="ig" type="application/json">', a = html.indexOf(ini) + ini.length, b = html.indexOf('</script>', a);
-    const ig = JSON.parse(html.slice(a, b));
-    ig.series.selic.pontos[0].valor = +ig.series.selic.pontos[0].valor + 1;
-    return html.slice(0, a) + JSON.stringify(ig) + html.slice(b);
+  const mais1 = txt => { const ig = JSON.parse(txt); ig.series.selic.pontos[0].valor = +ig.series.selic.pontos[0].valor + 1; return JSON.stringify(ig); };
+  const forca = (texto, caminho) => {
+    if (/dados([\\/]en)?[\\/]ig\.json$/.test(caminho)) return mais1(texto);          /* F1-PR2: o ig mora em dados/ig.json */
+    if (!/\.html$/.test(caminho)) return texto;
+    const ini = '<script id="ig" type="application/json">', a = texto.indexOf(ini);
+    if (a < 0) return texto;                                                           /* HTML sem o bloco: nada a mudar aqui */
+    const b = texto.indexOf('</script>', a + ini.length);
+    return texto.slice(0, a + ini.length) + mais1(texto.slice(a + ini.length, b)) + texto.slice(b);
   };
   await capturar('forcado-selic', forca);
   const d2 = comparar('atual-A', 'forcado-selic');
-  const ig = JSON.parse(blocoJSON(fs.readFileSync(path.join(RAIZ, PAGINA), 'utf8'), 'ig'));
+  const ig = JSON.parse(textoDados('ig', fs.readFileSync(path.join(RAIZ, PAGINA), 'utf8')));
   const esperado = new Set(ig.graficos.filter(g => (g.ids || []).indexOf('selic') > -1).map(g => slugG(g.titulo)).concat(['snapshot']));
   const achado = new Set(d2.map(d => d.onde));
   const ok = [...esperado].every(s => achado.has(s)) && [...achado].every(s => esperado.has(s));
