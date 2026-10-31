@@ -11,8 +11,7 @@ do `ARQUITETURA.md`.
 2. **Nada cruza entre blocos a não ser `window.X`.** Todos os blocos já são IIFE (`(function(){ "use strict"; … })();`) ou
    `window.X = (function(){ … })()`. Virar módulo ES não muda o escopo de nada: a lista da seção 3 é o contrato inteiro.
    Cada `window.X =` continua exatamente como está; nenhum `export`/`import` entre os módulos (só o `app.js` importa, para dar a ordem).
-3. **Ordem de execução preservada.** `modulos/app.js` importa os módulos na ordem da tabela; `import` estático executa na ordem
-   escrita. Os mestres (`janela.js`, `cofre.js`, `recursos.js`) continuam `<script>` clássicos no `<head>`, antes de tudo.
+3. **Ordem de execução preservada.** `modulos/app.js` importa os módulos na ordem da tabela, um de cada vez (regra 7). Os mestres (`janela.js`, `cofre.js`, `recursos.js`) continuam `<script>` clássicos no `<head>`, antes de tudo.
 4. **Módulo roda depois do HTML inteiro ser lido** (como um script no fim do `<body>`). Hoje os blocos 1 a 3 rodam no `<head>`,
    mas nada no HTML usa `Calendario`, `EJ` ou `colinhaOff` durante a leitura da página: conferido em 31/10 (0 atributos `on…=`
    chamando esses globais; o único `<script>` do `<body>` fora dos blocos é o dos dados). Conferir de novo no PR3 com
@@ -23,7 +22,22 @@ do `ARQUITETURA.md`.
    principal passa a ter `var IDIOMA=window.IDIOMA||"pt";`. O `sincroniza-en.py` troca essa linha em vez da antiga. O PR4 elimina tudo isso.
 6. **`"use strict"` já vale** em módulos; o bloco principal já é estrito. Procurar `this` solto e `arguments.callee` nos outros
    blocos antes de mover (não há, mas conferir).
-7. **O PR3 assume o PR2 feito**: o bloco 4 (dados) já virou `modulos/dados.js`, e os blocos JSON já não estão no HTML.
+7. **O PR3 vem ANTES do PR2** (ordem trocada em 31/10/2026; o plano permite). Motivo: hoje os dados são lidos de forma síncrona
+   (linha 36310) antes do bloco principal rodar; um `fetch` é assíncrono, e `<script>` clássico não sabe esperar. Com tudo em
+   módulos, o `app.js` consegue esperar. Então: no PR3, `modulos/dados.js` é a linha 36310 como está (lê os blocos JSON que ainda
+   ficam dentro do HTML); no PR2 ela vira `fetch` com `await` no topo do módulo, e nada mais muda.
+   Formato do `app.js` já pensado para isso (importes dinâmicos em sequência, cada um esperando o anterior):
+
+   ```js
+   await import('./calendario.js');   // 1 e 2
+   await import('./janelas.js');      // 3
+   await import('./dados.js');        // 4 (no PR2 passa a esperar o fetch)
+   await import('./principal.js');    // 5
+   await import('./voz.js');          // 6
+   await import('./apoio.js');        // 7
+   await import('./eleicoes/congresso.js'); // 8
+   await import('./eleicoes/colinha.js');   // 9
+   ```
 8. **Meta de tamanho**: `index.html` com menos de 2.000 linhas. Se não couber (o CSS tem 2.041 linhas em 6 `<style>`), os seis
    `<style>` viram `estilo.css` na raiz, na mesma ordem, sem mudar uma regra; isso conta como parte do PR3.
 9. **Lint sem build**: `for f in modulos/*.js modulos/eleicoes/*.js; do node --check "$f"; done` (Node 22 reconhece módulo ES pela
@@ -43,7 +57,7 @@ do `ARQUITETURA.md`.
 | 8 | Hub + Congresso + Presidência (v2.0) | 46165–47170 (1.006) | `modulos/eleicoes/congresso.js` (a Presidência, `PM`, fica dentro; separar é tarefa de depois) | `CongressoV2` | `EJ`, `Calendario`, `Colinha` |
 | 9 | Colinha da eleição (v2.2) | 47286–47576 (291) | `modulos/eleicoes/colinha.js` | `Colinha` | `EJ`, `Calendario`, `colinhaOff` |
 
-`modulos/app.js` (novo, ~12 linhas): só os `import` na ordem 1 → 9 e nada mais. O `index.html` troca os nove `<script>` por
+`modulos/app.js` (novo, ~12 linhas): só os `await import(...)` na ordem 1 → 9 (regra 7) e nada mais. O `index.html` troca os nove `<script>` por
 `<script type="module" src="modulos/app.js"></script>` no mesmo lugar do último bloco de hoje.
 
 Quem usa quem foi levantado por busca de nome (31/10/2026); os blocos 5 a 9 referenciam globais de blocos posteriores só dentro de
