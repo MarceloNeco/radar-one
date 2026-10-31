@@ -92,12 +92,14 @@ function pinta(out,x,cargo,lugar){
   out.appendChild(cab);
   if(!cands.length){out.appendChild(mk("p","res-aviso",T("Esta fonte não informa o dado neste recorte.","This source does not report data for this selection.")));return;}
   var tw=mk("div","tw res-tw"),tb=mk("table","res-tab"),th=mk("thead"),tr=mk("tr");
-  [T("Nº","No."),T("Candidatura","Candidate"),T("Partido","Party"),T("Votos","Votes"),"%",T("Situação","Status")].forEach(function(h,i){var c=mk("th",null,h);if(i===3||i===4)c.className="num";tr.appendChild(c);});
+  /* a situação fica embaixo do nome, não numa coluna: no celular a sexta coluna sairia da tela e "Eleito(a)" sumiria */
+  [T("Nº","No."),T("Candidatura","Candidate"),T("Partido","Party"),T("Votos","Votes"),"%"].forEach(function(h,i){var c=mk("th",null,h);if(i===3||i===4)c.className="num";tr.appendChild(c);});
   th.appendChild(tr);tb.appendChild(th);var tbody=mk("tbody");
   cands.forEach(function(c){var r=mk("tr");if(c.eleito)r.className="eleito";
-    r.appendChild(mk("td","num",c.n||""));var td=mk("td");td.appendChild(mk("b",null,c.nome));if(c.completo&&c.completo!==c.nome)td.appendChild(mk("small",null,c.completo));r.appendChild(td);
-    r.appendChild(mk("td",null,c.partido||""));r.appendChild(mk("td","num",num(c.votos)));r.appendChild(mk("td","num",c.pct?c.pct+"%":""));
-    var st=mk("td");if(c.eleito)st.appendChild(mk("span","res-eleito",T("Eleito(a)","Elected")));else st.textContent=c.st||"";r.appendChild(st);tbody.appendChild(r);});
+    r.appendChild(mk("td","num",c.n||""));var td=mk("td");td.appendChild(mk("b",null,c.nome));if(c.completo&&c.completo!==c.nome)td.appendChild(mk("small",null,c.completo));
+    if(c.eleito){var st=mk("small");st.appendChild(mk("span","res-eleito",T("Eleito(a)","Elected")));td.appendChild(st);}else if(c.st)td.appendChild(mk("small",null,c.st));
+    r.appendChild(td);
+    r.appendChild(mk("td",null,c.partido||""));r.appendChild(mk("td","num",num(c.votos)));r.appendChild(mk("td","num",c.pct?c.pct+"%":""));tbody.appendChild(r);});
   tb.appendChild(tbody);tw.appendChild(tb);out.appendChild(tw);
   var fonte=mk("p","res-fonte");fonte.appendChild(document.createTextNode(T("Fonte: ","Source: ")));
   var a=mk("a",null,"Tribunal Superior Eleitoral · resultados.tse.jus.br");a.href="https://resultados.tse.jus.br/";a.target="_blank";a.rel="noopener";fonte.appendChild(a);

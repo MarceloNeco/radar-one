@@ -38,7 +38,7 @@ const ARQ = { 'comum/config/ele-c.json': ELE_C, 'ele2026/6258/dados/br/br-c0001-
       fonte: (document.querySelector('.res-fonte a') || {}).href || '', selects: document.querySelectorAll('.res-sel select').length }));
     conferir(t.on.length === 1 && t.on[0] === 'v-resultado' && t.linhas.length === 2, L + '#resultado abre a tela com a tabela do 2º turno, Presidente, Brasil (' + t.linhas.length + ' candidaturas)');
     conferir(t.linhas[0] && /LULA/.test(t.linhas[0][1]) && t.linhas[0][3] === (en ? '64,266,532' : '64.266.532') && t.linhas[0][4] === '51,79%', L + 'ordem por votos, número formatado e %: ' + (t.linhas[0] || []).slice(1, 5).join(' | '));
-    conferir(t.eleito && /Eleito|Elected/.test(t.linhas[0][5]), L + 'a candidatura eleita vem marcada "' + (t.linhas[0] || [])[5] + '"');
+    conferir(t.eleito && /Eleito\(a\)|Elected/.test(t.linhas[0][1]) && t.linhas[0].length === 5, L + 'a candidatura eleita vem marcada embaixo do nome (5 colunas, nada sai da tela do celular)');
     conferir(/25\/10\/2026 23:27:02/.test(t.cab) && /100,00%/.test(t.cab), L + 'cabeçalho com data e hora da apuração e % das seções: "' + t.cab.slice(0, 70) + '…"');
     conferir(/resultados\.tse\.jus\.br/.test(t.fonte) && t.selects === 2, L + 'link da fonte (TSE) e dois seletores (turno e cargo) para presidente');
     /* cargo = governador: aparece o estado; pede o arquivo da UF; endereço com o recorte */
