@@ -20,6 +20,10 @@ const espera = async (p, n, ms) => { try { await p.waitForFunction(n => SolverJa
 const folga = (p) => p.waitForTimeout(250);
 /* termina a conversa com o histórico (o Voltar é assíncrono) */
 const quieto = (p) => p.evaluate(() => new Promise(ok => SolverJanela.quandoQuieto(() => setTimeout(ok, 30)))).catch(() => {});
+/* recarrega a página sem levar junto o estado de uma janela já fechada: num runner lento, o reload pode cair na entrada do histórico
+   ainda marcada com sjNivel (o Voltar da janela anterior em curso) e, aí, o próximo Voltar cai nessa entrada em vez de fechar a janela
+   nova (era a falha intermitente "aviso NOVIDADE: fecha pelo Voltar do celular"). Quem usa de verdade não recarrega no meio do fechar. */
+const recarrega = async (p) => { await Promise.race([quieto(p), p.waitForTimeout(1500)]); await p.evaluate(() => { try { if (history.state && history.state.sjNivel) history.replaceState(null, ''); } catch (e) {} }); await p.reload(); };
 
 async function pagina(browser, arq, w, hash, sem, itens) {
   const erros = [];
@@ -45,7 +49,7 @@ const J = [
   { n: 'Colinha: escolher candidato', hash: '#colinha', abrir: p => p.locator('.ck-slot').last().click(), x: p => p.click('#ck-dlg .x'),
     texto: async p => { await p.locator('#ck-dlg input[type=search]').fill('ab'); }, semPergunta: true, fora: [4, 4] },
   { n: 'Colinha: imprimir', hash: '#colinha', abrir: p => p.locator('.ck-bar button').nth(2).click(), x: p => p.locator('.ck-nov .bt button.cancela').click() },
-  { n: 'aviso NOVIDADE', hash: '#inicio', abrir: async p => { await quieto(p); await p.waitForTimeout(300); await p.evaluate(() => { localStorage.removeItem('planos2026:novidade-colinha'); }); await p.reload(); await p.locator('.ck-nov').waitFor({ state: 'visible', timeout: 9000 }); },
+  { n: 'aviso NOVIDADE', hash: '#inicio', abrir: async p => { await quieto(p); await p.waitForTimeout(300); await p.evaluate(() => { localStorage.removeItem('planos2026:novidade-colinha'); }); await recarrega(p); await p.locator('.ck-nov').waitFor({ state: 'visible', timeout: 9000 }); },
     x: p => p.locator('.ck-nov .bt button:not(.pri)').click(), recarrega: true },
   { n: 'gaveta ☰', so: 'mobile', abrir: p => p.click('#nav-h'), x: p => p.click('.gav-x'), fora: [378, 400] },
   { n: 'AssistONE (caixa com busca)', abrir: p => p.click('#ao-btn'), x: p => p.click('#ao-box .ao-h button'),
@@ -60,7 +64,7 @@ const J = [
 async function preparar(p, j) {
   if (j.hash) { await p.evaluate(h => { location.hash = h; }, j.hash); await p.waitForTimeout(900); }
   if (j.voz) await p.evaluate(v => { localStorage.setItem('planos2026:voz', JSON.stringify(v)); }, j.voz);
-  if (j.voz) { await p.reload(); await p.waitForTimeout(700); }
+  if (j.voz) { await recarrega(p); await p.waitForTimeout(700); }
   await p.evaluate(() => scrollTo(0, 300));
   return p.evaluate(() => scrollY);
 }
@@ -169,11 +173,11 @@ async function ciclo(p, j, arq, w) {
           await p.keyboard.press('Escape'); conferir(await espera(p, 0), L + 'fecha pelo Esc (e não conta como ciente)');
           conferir(await p.evaluate(() => !JSON.parse(localStorage.getItem('planos2026:prefs') || '{}').telaCiente), L + 'Esc não grava "ciente"');
           await quieto(p);
-          await p.reload(); await p.waitForSelector('#tela-dlg', { state: 'visible', timeout: 6000 }).catch(() => {});
+          await recarrega(p); await p.waitForSelector('#tela-dlg', { state: 'visible', timeout: 6000 }).catch(() => {});
           await p.evaluate(() => history.back()); conferir(await espera(p, 0), L + 'fecha pelo Voltar do celular');
-          await quieto(p); await p.reload(); await p.waitForSelector('#tela-dlg', { state: 'visible', timeout: 6000 }).catch(() => {});
+          await quieto(p); await recarrega(p); await p.waitForSelector('#tela-dlg', { state: 'visible', timeout: 6000 }).catch(() => {});
           await p.mouse.click(4, 4); conferir(await espera(p, 0), L + 'fecha tocando na parte escura');
-          await quieto(p); await p.reload(); await p.waitForSelector('#tela-dlg', { state: 'visible', timeout: 6000 }).catch(() => {});
+          await quieto(p); await recarrega(p); await p.waitForSelector('#tela-dlg', { state: 'visible', timeout: 6000 }).catch(() => {});
           await p.locator('#tela-dlg .tela-ok').click(); conferir(await espera(p, 0), L + 'fecha pelo botão "Estou ciente"');
           conferir(await p.evaluate(() => !!JSON.parse(localStorage.getItem('planos2026:prefs') || '{}').telaCiente), L + '"Estou ciente" grava e não volta');
           erros.push(...e.map(m => arq + ': ' + m)); await ctx.close();
