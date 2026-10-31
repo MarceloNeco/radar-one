@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Gera o manifesto legacy_catalog (T01/T25) a partir do bloco <script id="ig"> do index.html atual.
+"""Gera o manifesto legacy_catalog (T01/T25) a partir dos dados do site: dados/ig.json e dados/dados.json ao lado do
+index.html (F1-PR2) ou, no app antigo, dos blocos <script id="ig"> e "dados" dentro do index.html.
 
     python3 robos/gera-legacy-catalog.py --index ../planos-candidatos-2026/index.html --saida docs
 
@@ -17,8 +18,13 @@ def slug_g(t):
     s = re.sub(r'[^a-z0-9]+', '-', s).strip('-')
     return 'g-' + s[:44]
 
-def bloco_txt(html, ident):
+EM_ARQUIVO = {'valor': False}   # de onde os dados vieram (define o estado_migracao)
+
+def bloco_txt(html, ident, pasta='.'):
     ini = '<script id="%s" type="application/json">' % ident
+    if ini not in html:                       # F1-PR2: os blocos moram em dados/<id>.json
+        EM_ARQUIVO['valor'] = True
+        return open(os.path.join(pasta, 'dados', ident + '.json'), encoding='utf-8').read()
     a = html.index(ini) + len(ini); b = html.index('</script>', a)
     return html[a:b]
 
@@ -58,7 +64,8 @@ def tipo_fonte(orgao, codigo):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--index', required=True); ap.add_argument('--saida', default='docs'); a = ap.parse_args()
     html = open(a.index, encoding='utf-8').read()
-    ig_txt = bloco_txt(html, 'ig'); ig = json.loads(ig_txt); dados = json.loads(bloco_txt(html, 'dados'))
+    pasta = os.path.dirname(os.path.abspath(a.index))
+    ig_txt = bloco_txt(html, 'ig', pasta); ig = json.loads(ig_txt); dados = json.loads(bloco_txt(html, 'dados', pasta))
     S = ig['series']; G = ig['graficos']
     itens = []
     for i, g in enumerate(G, 1):
@@ -79,7 +86,7 @@ def main():
         unid = sorted(set(d['unidade'] for d in ds if d.get('unidade')))
         orgs = sorted(set(d['orgao'] for d in ds if d.get('orgao')))
         acesso = sorted(set(d['acesso_fonte'] for d in ds if d.get('acesso_fonte')))
-        estado = 'legado-embutido'                      # hoje: dado dentro do index.html, servido pelo adaptador legado
+        estado = 'dados-em-arquivo' if EM_ARQUIVO['valor'] else 'legado-embutido'   # F1-PR2: dados/*.json; antes, dentro do index.html
         if n_series and all(x == 'api' for x in acesso): estado += ' · robô possível (fonte com API)'
         elif n_series: estado += ' · acervo mantido à mão (fonte sem API)'
         else: estado += ' · conteúdo editorial (vai para o RootifyONE)'
