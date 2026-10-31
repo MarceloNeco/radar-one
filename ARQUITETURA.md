@@ -31,6 +31,7 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 | `docs/legacy_catalog.json` e `.md` | manifesto das 43 entradas de infográficos (T01/T25), gerado por `robos/gera-legacy-catalog.py` | regenerar, não editar à mão |
 | `docs/fontes/registro-de-fontes.json` e `.md` | registro de fontes (T23), gerado por `robos/gera-registro-fontes.py` | editar o script e regenerar |
 | `docs/redirecionamento/` | as duas páginas (PT e EN) do repositório-placa que ficará com o nome antigo | copiar para lá em 26/10 |
+| `docs/referencias-de-produto.md` | os sites de referência do dono (Ranking dos Políticos, Em quem votar, Global Election Simulator): o que são e o que entra como ideia | sim, a cada referência nova |
 | `docs/limites-planos-gratuitos.md`, `docs/medicao-conectores.md` | limites lidos nas páginas oficiais e medição das APIs (datas e links) | reconferir a cada fase |
 | `docs/plano-F1.md` | os 10 PRs da F1, com prova e modelo | sim |
 | `docs/ARQUITETURA-eleicoes-2.5.3.md`, `docs/PENDENCIAS-eleicoes-2.5.3.md` | os dois arquivos do app atual, intactos | só pelos PRs da F1 |
