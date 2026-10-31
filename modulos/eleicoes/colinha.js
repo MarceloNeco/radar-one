@@ -29,7 +29,7 @@ var UFN={AC:"Acre",AL:"Alagoas",AM:"Amazonas",AP:"Amapá",BA:"Bahia",CE:"Ceará"
 /* as vagas da cola, na ordem da urna, vêm do calendário do turno de agora. No 2º turno (e nos seguintes), cada vaga diz:
    semTurno (não há esse turno ali para o cargo), fin (os ids do TSE de quem está nele) ou incerto (o TSE não respondeu e
    não há lista manual nem cópia guardada: a vaga aparece com todos os candidatos e um aviso) */
-function vagas(uf){var f=Calendario.fase();if(f==="pos")return [];
+function vagas(uf){var f=Calendario.fase();if(typeof f!=="number")return [];
   return Calendario.vagas(f,uf).map(function(vg){
     if(f<2)return vg;
     var lugar=vg.lugar==="br"?"BR":uf;if(!lugar)return vg;   /* ainda sem estado: a vaga aparece e pede o estado */

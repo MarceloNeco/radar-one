@@ -47,7 +47,7 @@ do `ARQUITETURA.md`.
 
 | # | Bloco de hoje (`index.html` 2.5.4) | Linhas | Vira | Expõe em `window` | Usa de outros (só por `window`) |
 |---|---|---|---|---|---|
-| 1 | Calendário eleitoral (v2.5.0), no `<head>` | 8–160 (153) | `modulos/calendario.js` | `Calendario` | `SolverRecursos` (mestre) |
+| 1 | Calendário eleitoral (v2.5.0; F1-PR7: `modo()`, fases `pre-campanha`/`acompanhamento`, `data-fase` no `<html>`), no `<head>` | 8–160 (153) | `modulos/calendario.js` | `Calendario` | `SolverRecursos` (mestre) |
 | 2 | Colinha fora do ar (`colinhaOff`) | 161–163 (3) | fim de `modulos/calendario.js` (mesma razão de ser) | `colinhaOff` | `SolverRecursos`, `Calendario` |
 | 3 | Janelas do site sobre a janela comum | 164–235 (72) | `modulos/janelas.js` | `EJ` | `SolverJanela` (mestre `janela.js`) |
 | 4 | Leitura dos blocos JSON | 36310 (1) | `modulos/dados.js` (feito no PR2) | `__IG__`, `__BIO__`, `__GLOS__`, `__PATR__`, `__DLINKS__`, `__PROC__` | — |

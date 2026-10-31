@@ -15,7 +15,7 @@ var PROPRIAS=["hoje","explorar","salvos","resultado"];   /* resultado: tela da e
    carrega quando o interruptor "eleicoes" está ligado ou quando um link direto pede; desligado, o cartão de Hoje, os atalhos e o
    grupo do ☰ somem pelo data-recurso="eleicoes" (recursos.js), mas os links antigos continuam abrindo (ADR 0009) */
 var ELEICAO=["hub","colinha","congresso","mandato","resultado","inicio","historico","macrotemas","score","documentos","metodo","glossario"];
-function eleicoesLigado(){return !window.SolverRecursos||SolverRecursos.ligado("eleicoes",true);}
+function eleicoesLigado(){return (!window.SolverRecursos||SolverRecursos.ligado("eleicoes",true))&&!(window.Calendario&&Calendario.fase()==="acompanhamento");}   /* F1-PR7: no acompanhamento a eleição some da navegação sem desligar o recurso */
 function rotaEleitoral(b){b=b||base();return ELEICAO.indexOf(b)>-1||/^gl-/.test(b);}
 var carregando=null;
 function eleicoes(){
@@ -59,6 +59,7 @@ function aviso(txt){
 }
 document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest(".barra a[data-dest]"):null;if(!a)return;e.preventDefault();vai(a.getAttribute("data-dest"));});
 addEventListener("hashchange",pinta);
+if(window.Calendario&&Calendario.aoMudar)Calendario.aoMudar(function(){if(base()==="hoje")cartaoEleicao();});   /* a fase mudou (pela data ou pelo RootifyONE): o cartão de Hoje acompanha */
 window.Rotas={cuida:cuida,destino:destino,vai:vai,eleicoesLigado:eleicoesLigado,rotaEleitoral:rotaEleitoral,eleicoes:eleicoes};   /* antes de qualquer hashchange: o principal.js pergunta cuida() */
 /* entrada: sem # abre em Hoje; a primeira entrada do histórico fica marcada para o aviso do Voltar */
 if(!location.hash){try{history.replaceState({inicio:1},"","#hoje");}catch(e){location.hash="#hoje";}dispara();}

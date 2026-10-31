@@ -17,7 +17,7 @@ Feito no F1-PR3 (31/10/2026). O que há aqui, na ordem em que o `app.js` carrega
 | Arquivo | Era (no `index.html` 2.5.4) | Expõe em `window` |
 |---|---|---|
 | `app.js` | novo: só a ordem de carga (um `await import` por módulo); desde o F1-PR6 o `rotas.js` entra logo depois do `calendario.js` (a capa não pisca antes de Hoje) e o módulo Eleições (8 e 9) só entra quando o interruptor `eleicoes` está ligado ou um link direto pede (`Rotas.eleicoes()`) | — |
-| `calendario.js` | bloco 1 (calendário eleitoral) + bloco 2 (`colinhaOff`) | `Calendario`, `colinhaOff` |
+| `calendario.js` | bloco 1 (calendário eleitoral) + bloco 2 (`colinhaOff`); desde o F1-PR7 lê `eleicao.modo` e `eleicao.fase` (ADR 0010), devolve também as fases `pre-campanha` e `acompanhamento`, marca `data-fase`/`data-ciclo` no `<html>` e aceita cargos municipais (`lugar: "municipio"`) | `Calendario`, `colinhaOff` |
 | `janelas.js` | bloco 3 (janelas do site sobre a janela comum) | `EJ` |
 | `dados.js` | bloco 4 (lê os blocos JSON que ainda ficam no HTML; vira `fetch` no PR2) | `__IG__`, `__BIO__`, `__GLOS__`, `__PATR__`, `__DLINKS__`, `__PROC__` |
 | `principal.js` | bloco 5 (infográficos, comparadores, índice, planos, glossário, configurações) | `PG`, `DL`, `repintaIG`, `ancoraEm`, `escreveVer`, `pesosAtuais`, `somLigado`, `somPref`, `somVolume`, `__panCols` |

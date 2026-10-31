@@ -218,7 +218,7 @@ var Gav={el:null,btn:null,aberta:false,
     var at=telaAtual(), cg=/^congresso/.test(at), ACOMP=["hoje","explorar","infograficos","salvos"];
     var item=function(k){
       var v=TELAS[k], b=mk("button","gav-it");b.type="button";
-      var rec=[];if(k==="colinha")rec.push("colinha");if(ACOMP.indexOf(k)<0)rec.push("eleicoes");if(rec.length)b.setAttribute("data-recurso",rec.join(" "));   /* F1-PR6: o que é da eleição obedece ao interruptor "eleicoes" */
+      var rec=[];if(k==="colinha")rec.push("colinha");if(k==="infograficos")rec.push("indicadores");if(ACOMP.indexOf(k)<0)rec.push("eleicoes");if(rec.length)b.setAttribute("data-recurso",rec.join(" "));   /* F1-PR6: o que é da eleição obedece ao interruptor "eleicoes" */
       if(k===at)b.setAttribute("aria-current","page");
       b.appendChild(mk("span","gav-ic",v.ic));
       var d=mk("div");d.appendChild(document.createTextNode(v.t));d.appendChild(mk("small",null,v.d));b.appendChild(d);
@@ -289,6 +289,17 @@ var SVG_AO='<svg viewBox="0 0 100 100" aria-hidden="true">'+
  '<path d="M41 44c3 2 6 2 9 0" fill="none" stroke="#5A3B05" stroke-width="1.6" stroke-linecap="round"/>'+
  '</svg>';
 /* interruptores do RootifyONE (recursos.js): a administração pode desligar o AssistONE e as dicas por tela */
+/* F1-PR7 (ADR 0010): a cadência de atualização por família de dados, definida no RootifyONE (atualizacao.cadencia), aparece no
+   ⓘ "Sobre este relatório"; quem a executa são os robôs do repositório de dados. Quando houver a tela "Cobertura e fontes", vai para lá */
+var CADENCIA={noticias:"manual",indicadores:"diaria",congresso:"diaria",esferas:"diaria","judiciario-eleitoral":"diaria"};
+function cadencia(){
+  var e=document.getElementById("cadencia");if(!e)return;
+  var v=window.SolverRecursos?SolverRecursos.valor("atualizacao.cadencia",null):null;v=Object.assign({},CADENCIA,v&&typeof v==="object"?v:{});
+  var F={noticias:T("notícias","news"),indicadores:T("indicadores","indicators"),congresso:T("Congresso","Congress"),esferas:T("esferas","spheres"),"judiciario-eleitoral":T("Judiciário e eleitoral","courts and electoral")};
+  var V={diaria:T("diária","daily"),semanal:T("semanal","weekly"),mensal:T("mensal","monthly"),"horaria-em-sessao":T("de hora em hora em sessão","hourly in session"),"1-6h-na-janela":T("a cada 1 a 6 h na janela eleitoral","every 1 to 6 h in the election window"),manual:T("manual (desligada)","manual (off)")};
+  e.textContent=T("Os robôs do repositório de dados atualizam cada família na cadência definida no RootifyONE: ","The data-repository robots refresh each family at the pace set in RootifyONE: ")
+    +Object.keys(v).map(function(k){return (F[k]||k)+" "+(V[v[k]]||v[k]);}).join(" · ")+".";
+}
 function admAO(){return !!(window.SolverRecursos&&!SolverRecursos.ligado("assistone",true));}
 var AO={
   btn:null, box:null, dica:null, ligado:true, modo:"inicio", tourI:0, tourFoco:null, ctl:null,
@@ -676,10 +687,11 @@ function inicia(){
   Gav.monta();
   AO.monta();
   AO.agendaDica();
+  cadencia();
   setTimeout(function(){AO.primeira();},1500);
   if(window.SolverRecursos)SolverRecursos.aoMudar(function(){try{
     if(admAO()&&AO.box&&!AO.box.hidden)AO.fecha();
-    AO.monta();AO.agendaDica();
+    AO.monta();AO.agendaDica();cadencia();
     var dg=document.getElementById("cfg");if(dg&&dg.__ej&&PG.repintaConfig)PG.repintaConfig();
   }catch(e){}});
 }
