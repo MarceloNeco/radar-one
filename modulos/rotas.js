@@ -10,7 +10,25 @@
 (function(){
 "use strict";
 var DEST={hoje:"hoje",explorar:"explorar",indicadores:"infograficos",salvos:"salvos"};
-var PROPRIAS=["hoje","explorar","salvos","resultado"];   /* resultado: tela da eleição desenhada por eleicoes/resultado.js (F1-PR6b) */
+var PROPRIAS=["hoje","explorar","salvos","resultado"];
+/* F1-PR10 (ADR 0009): a tabela de aliases (dados/aliases.json): âncora antiga → rota nova (+ âncora dentro da tela). Chega antes do
+   principal.js (app.js espera carregaAliases) para o # antigo já estar trocado quando a primeira tela abre; nas trocas seguintes,
+   o hashchange cuida. Sem a tabela (sem rede na 1ª visita), o alias é identidade e nada muda. */
+var BASE_URL=new URL("../",import.meta.url),ALIASES={};
+function carregaAliases(){
+  return fetch(new URL("dados/aliases.json",BASE_URL).href,{cache:"no-cache"}).then(function(r){return r.ok?r.json():null;})
+    .then(function(j){ALIASES=(j&&j.aliases)||{};aplicaAlias();}).catch(function(){});
+}
+function rolaAte(id,n){var e=document.getElementById(id);n=n||0;
+  if(e&&e.getClientRects().length){if(window.ancoraEm)ancoraEm(e);else e.scrollIntoView();return;}
+  if(n<40)setTimeout(function(){rolaAte(id,n+1);},60);}
+function aplicaAlias(){
+  var b=base(),a=ALIASES[b];if(!a)return false;
+  if(a.rota&&a.rota!==b){var resto=(location.hash||"").slice(1).split("/").slice(1);
+    try{history.replaceState(history.state,"","#"+[a.rota].concat(resto).join("/"));}catch(e){}dispara();}
+  if(a.ancora)rolaAte(a.ancora);
+  return true;
+}   /* resultado: tela da eleição desenhada por eleicoes/resultado.js (F1-PR6b) */
 /* F1-PR6: as telas da eleição (hub, Colinha, Congresso, Presidência e as páginas de 2026) ficam no módulo eleicoes/, que só
    carrega quando o interruptor "eleicoes" está ligado ou quando um link direto pede; desligado, o cartão de Hoje, os atalhos e o
    grupo do ☰ somem pelo data-recurso="eleicoes" (recursos.js), mas os links antigos continuam abrindo (ADR 0009) */
@@ -64,8 +82,9 @@ function aviso(txt){
 }
 document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest(".barra a[data-dest]"):null;if(!a)return;e.preventDefault();vai(a.getAttribute("data-dest"));});
 addEventListener("hashchange",pinta);
+addEventListener("hashchange",aplicaAlias);
 if(window.Calendario&&Calendario.aoMudar)Calendario.aoMudar(function(){if(base()==="hoje")cartaoEleicao();});   /* a fase mudou (pela data ou pelo RootifyONE): o cartão de Hoje acompanha */
-window.Rotas={cuida:cuida,destino:destino,vai:vai,eleicoesLigado:eleicoesLigado,rotaEleitoral:rotaEleitoral,eleicoes:eleicoes};   /* antes de qualquer hashchange: o principal.js pergunta cuida() */
+window.Rotas={cuida:cuida,destino:destino,vai:vai,eleicoesLigado:eleicoesLigado,rotaEleitoral:rotaEleitoral,eleicoes:eleicoes,carregaAliases:carregaAliases,aplicaAlias:aplicaAlias};   /* antes de qualquer hashchange: o principal.js pergunta cuida() */
 /* entrada: sem # abre em Hoje; a primeira entrada do histórico fica marcada para o aviso do Voltar */
 if(!location.hash){try{history.replaceState({inicio:1},"","#hoje");}catch(e){location.hash="#hoje";}dispara();}
 else if(base()==="hoje"){try{history.replaceState(Object.assign({},history.state||{},{inicio:1}),"",location.href);}catch(e){}}

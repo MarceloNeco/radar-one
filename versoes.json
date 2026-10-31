@@ -2,6 +2,19 @@
   "app": "radar-one",
   "versoes": [
     {
+      "versao": "2.6.8",
+      "data": "31/Out/2026",
+      "hora": "12:40:42",
+      "itens": {
+        "pt": [
+          "Links antigos continuam valendo: toda âncora do app de 2026 (gráficos, telas, letras do glossário, índice dos infográficos) abre o bloco certo no RadarONE, pela tabela dados/aliases.json; o endereço antigo já leva para cá com o mesmo #"
+        ],
+        "en": [
+          "Old links keep working: every anchor of the 2026 app (charts, screens, glossary letters, infographics index) opens the right block in RadarONE, through the dados/aliases.json table; the old address already leads here with the same #"
+        ]
+      }
+    },
+    {
       "versao": "2.6.7",
       "data": "31/Out/2026",
       "hora": "12:36:56",

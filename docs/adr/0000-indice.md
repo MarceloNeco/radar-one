@@ -14,7 +14,7 @@ não se discutem de novo: aqui eles viram regra de código.
 | 0006 | Supabase só com login (editorial e papéis); leitura pública nunca bate no banco | proposta |
 | 0007 | Rótulos públicos e política de checagens (decisão 5 e mitigação) | decidida pelo dono; aqui a mitigação |
 | 0008 | Migração versionada e reversível dos dados locais da pessoa (T06) | aceita; no site desde a F1-PR9 (31/10/2026) |
-| 0009 | Redirecionamento do endereço antigo e aliases de todas as âncoras (T08) | proposta; emenda de 23/10: renomear o repositório em 26/10 |
+| 0009 | Redirecionamento do endereço antigo e aliases de todas as âncoras (T08) | aceita; redirecionamento no ar desde 26/10/2026 e aliases desde a F1-PR10 (31/10/2026) |
 | 0010 | Ciclo eleitoral: manual ou automático, controlado pelo RootifyONE; preparado para 2028 | aceita; no site desde a F1-PR7 (31/10/2026); o lado dos robôs fica no repositório de dados |
 
 Formato de cada ADR: Contexto · Decisão · Alternativas (A, B, …) com prós e contras · Consequências · Condição de mudar · Como se prova.

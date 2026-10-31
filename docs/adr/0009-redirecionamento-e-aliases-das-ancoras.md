@@ -1,6 +1,6 @@
 # ADR 0009 — Redirecionamento do endereço antigo e aliases de todas as âncoras (T08)
 
-**Estado:** proposta (F0, 22/10/2026), **emendada em 23/10/2026** · **Vale a partir da:** 26/10/2026 (renomeação) e F1 (aliases)
+**Estado:** aceita; redirecionamento no ar desde a renomeação (26/10/2026) e aliases no site desde a F1-PR10 (31/10/2026); antes, proposta (F0, 22/10/2026), **emendada em 23/10/2026** · **Vale a partir da:** 26/10/2026 (renomeação) e F1 (aliases)
 
 ## Emenda de 23/10/2026 (decisão do dono)
 
