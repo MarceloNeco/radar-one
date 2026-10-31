@@ -10,16 +10,16 @@
 (function(){
 "use strict";
 var DEST={hoje:"hoje",explorar:"explorar",indicadores:"infograficos",salvos:"salvos"};
-var PROPRIAS=["hoje","explorar","salvos"];
+var PROPRIAS=["hoje","explorar","salvos","resultado"];   /* resultado: tela da eleição desenhada por eleicoes/resultado.js (F1-PR6b) */
 /* F1-PR6: as telas da eleição (hub, Colinha, Congresso, Presidência e as páginas de 2026) ficam no módulo eleicoes/, que só
    carrega quando o interruptor "eleicoes" está ligado ou quando um link direto pede; desligado, o cartão de Hoje, os atalhos e o
    grupo do ☰ somem pelo data-recurso="eleicoes" (recursos.js), mas os links antigos continuam abrindo (ADR 0009) */
-var ELEICAO=["hub","colinha","congresso","mandato","inicio","historico","macrotemas","score","documentos","metodo","glossario"];
+var ELEICAO=["hub","colinha","congresso","mandato","resultado","inicio","historico","macrotemas","score","documentos","metodo","glossario"];
 function eleicoesLigado(){return !window.SolverRecursos||SolverRecursos.ligado("eleicoes",true);}
 function rotaEleitoral(b){b=b||base();return ELEICAO.indexOf(b)>-1||/^gl-/.test(b);}
 var carregando=null;
 function eleicoes(){
-  if(!carregando)carregando=import("./eleicoes/congresso.js").then(function(){return import("./eleicoes/colinha.js");})
+  if(!carregando)carregando=import("./eleicoes/congresso.js").then(function(){return import("./eleicoes/colinha.js");}).then(function(){return import("./eleicoes/resultado.js");})
     .then(function(){document.documentElement.setAttribute("data-eleicoes","carregado");});
   return carregando;
 }

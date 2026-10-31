@@ -14,7 +14,7 @@ const slugG = t => 'g-' + t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '
 const ROTAS = lg => { const ig = igDe(lg), g1 = slugG(ig.graficos[0].titulo), gN = slugG(ig.graficos[ig.graficos.length - 1].titulo); return [
   ['#inicio', 'v-inicio'], ['#historico', 'v-historico'], ['#infograficos', 'v-infograficos'], ['#macrotemas', 'v-macrotemas'],
   ['#score', 'v-score'], ['#mandato', 'v-mandato'], ['#documentos', 'v-documentos'], ['#metodo', 'v-metodo'], ['#glossario', 'v-glossario'],
-  ['#hub', 'v-hub'], ['#colinha', 'v-hub|v-colinha'], ['#congresso', 'v-congresso'], ['#congresso/afinidade', 'v-congresso'],
+  ['#hub', 'v-hub'], ['#resultado', 'v-resultado'], ['#colinha', 'v-hub|v-colinha'], ['#congresso', 'v-congresso'], ['#congresso/afinidade', 'v-congresso'],
   ['#congresso/favoritos', 'v-congresso'], ['#congresso/comparar', 'v-congresso'], ['#congresso/metodo', 'v-congresso'], ['#congresso/mandato', 'v-congresso'],
   ['#' + g1, 'v-infograficos', g1], ['#' + gN, 'v-infograficos', gN], ['#g-sobrepor', 'v-infograficos', 'g-sobrepor'], ['#g-marcos-comp', 'v-infograficos', 'g-marcos-comp']
 ]; };

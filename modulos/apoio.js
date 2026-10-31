@@ -45,6 +45,8 @@ var TELAS={
   "congresso/mandato":{ic:"🔔",t:T("Congresso · mandato","Congress · in office"),d:T("Eleitos do seu estado, novidades das votações dos favoritos, presença, fidelidade e antes × depois.",
     "Elected in your state, news on your favourites' votes, attendance, loyalty and before × after."),
     sin:"mandato acompanhar eleitos presenca faltas partido governo novidades avisos coerencia"},
+  resultado:{ic:"🗳️",t:T("Resultado e apuração","Results and count"),d:T("Votos e % de cada candidatura, por cargo e lugar, como o TSE divulgou.","Votes and % per candidate, by office and place, as published by the electoral court."),
+    sin:"resultado apuracao votos eleito urna tse porcentagem turno governador presidente"},
   mandato:{ic:"📋",t:T("Mandato: promessas × entregas","Term: promises × delivery"),d:T("Os compromissos específicos do plano do presidente eleito e o que o governo fez depois da posse.",
     "The president-elect's specific plan commitments and what the government did after taking office."),
     sin:"mandato promessas entregas compromissos cumpridas presidente eleito governo atos"},
