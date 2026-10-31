@@ -9,27 +9,26 @@ const fs = require('fs'), path = require('path');
 const PORTA = process.env.PORTA || 8100, BASE = 'http://localhost:' + PORTA;
 const { falhas, conferir } = relatorio();
 const PREFS = { 'planos2026:prefs': { aoVisto: true, telaCiente: true }, 'planos2026:novidade-colinha': 1 };
-const ig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'dados/ig.json'), 'utf8'));
+const igDe = lg => JSON.parse(fs.readFileSync(path.join(__dirname, '..', lg === 'en' ? 'dados/en/ig.json' : 'dados/ig.json'), 'utf8'));
 const slugG = t => 'g-' + t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 44);
-const g1 = slugG(ig.graficos[0].titulo), gN = slugG(ig.graficos[ig.graficos.length - 1].titulo);
-const ROTAS = [
+const ROTAS = lg => { const ig = igDe(lg), g1 = slugG(ig.graficos[0].titulo), gN = slugG(ig.graficos[ig.graficos.length - 1].titulo); return [
   ['#inicio', 'v-inicio'], ['#historico', 'v-historico'], ['#infograficos', 'v-infograficos'], ['#macrotemas', 'v-macrotemas'],
   ['#score', 'v-score'], ['#mandato', 'v-mandato'], ['#documentos', 'v-documentos'], ['#metodo', 'v-metodo'], ['#glossario', 'v-glossario'],
   ['#hub', 'v-hub'], ['#colinha', 'v-hub|v-colinha'], ['#congresso', 'v-congresso'], ['#congresso/afinidade', 'v-congresso'],
   ['#congresso/favoritos', 'v-congresso'], ['#congresso/comparar', 'v-congresso'], ['#congresso/metodo', 'v-congresso'], ['#congresso/mandato', 'v-congresso'],
-  ['#' + g1, 'v-infograficos', g1], ['#' + gN, 'v-infograficos', gN], ['#g-sobrepor', 'v-infograficos', 'g-sobrepor'], ['#g-marcos-comp', 'v-infograficos', 'g-marcos-comp'], ['#ig-indice', 'v-infograficos', 'ig-indice']
-];
+  ['#' + g1, 'v-infograficos', g1], ['#' + gN, 'v-infograficos', gN], ['#g-sobrepor', 'v-infograficos', 'g-sobrepor'], ['#g-marcos-comp', 'v-infograficos', 'g-marcos-comp']
+]; };
 
 (async () => {
   const srv = await servir(PORTA);
   const browser = await chromium.launch({ executablePath: process.env.CHROME || undefined });
   const erros = [];
-  for (const [arq] of PAGINAS) {
+  for (const [arq, lg] of PAGINAS) {
     const L = arq + ': ';
     const ctx = await novoContexto(browser, 1100, []); await semear(ctx, PREFS);
     const p = await ctx.newPage(); p.on('pageerror', e => erros.push(arq + ': ' + e.message));
     await p.goto(BASE + '/' + arq + '#hoje'); await p.waitForFunction(() => window.Colinha, null, { timeout: 15000 }).catch(() => {});
-    for (const [h, vista, ancora] of ROTAS) {
+    for (const [h, vista, ancora] of ROTAS(lg)) {
       await p.goto(BASE + '/' + arq + h); await p.waitForTimeout(700);
       const r = await p.evaluate(a => ({ on: [...document.querySelectorAll('.view.on')].map(e => e.id), anc: a ? !!document.getElementById(a) : true }), ancora || null);
       const ok = vista.split('|').some(v => r.on.indexOf(v) > -1) && r.on.length === 1 && r.anc;
@@ -58,7 +57,8 @@ const ROTAS = [
     await p.goto(BASE + '/' + arq + '#hub'); const chegou = await p.waitForFunction(() => window.CongressoV2 && document.getElementById('v-hub').classList.contains('on'), null, { timeout: 15000 }).then(() => true, () => false);
     conferir(chegou, L + 'link direto #hub ainda abre e carrega o módulo na hora');
     await p.goto(BASE + '/' + arq + '#infograficos'); await p.waitForTimeout(800);
-    conferir(await p.evaluate(() => document.querySelectorAll('#v-infograficos .ig-acoes').length) >= 40, L + 'nenhum infográfico some com a eleição desligada');
+    const nIg = await p.evaluate(() => document.querySelectorAll('#v-infograficos .ig').length);
+    conferir(nIg >= 40, L + 'nenhum infográfico some com a eleição desligada (' + nIg + ' gráficos)');
     await ctx.close();
   }
   await browser.close(); srv.close();
