@@ -44,7 +44,7 @@ conferir(semTraducao.length === 0, 'i18n/en.json cobre os ' + textos.length + ' 
   /* 2. ?lang=en abre em inglês */
   let ctx = await novoContexto(browser, 1100, []); await semear(ctx, prefs);
   let p = await abrir(ctx, 'index.html?lang=en#hub'); let e = await estado(p);
-  conferir(e.idioma === 'en' && e.lang === 'en-US' && /Elections/.test(e.titulo), 'index.html?lang=en abre em inglês (lang ' + e.lang + ', título "' + e.titulo.slice(0, 30) + '")');
+  conferir(e.idioma === 'en' && e.lang === 'en-US' && /RadarONE — politicians/.test(e.titulo), 'index.html?lang=en abre em inglês (lang ' + e.lang + ', título "' + e.titulo.slice(0, 30) + '")');
   conferir(e.pref === null, '?lang=en no endereço não mexe na preferência comum (só o seletor grava)');
   /* 3. o endereço antigo redireciona mantendo o # */
   p = await abrir(ctx, 'index-en.html#congresso'); e = await estado(p);   /* #colinha some depois da eleição; #congresso fica */

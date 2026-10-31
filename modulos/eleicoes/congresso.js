@@ -60,12 +60,14 @@ var ABAS=[["",T("Início","Home")],["afinidade",T("Afinidade","Affinity")],["fav
           ["comparar",T("Comparar","Compare")],["mandato",T("Mandato","In office")],["metodo",T("Método","Method")]];
 var Seletor={b:null,pop:null,menu:null,
   monta:function(){
-    var brand=document.querySelector(".nav-in .brand");if(!brand||$("modo-b"))return;
-    var w=mk("div","modo");var b=mk("button","modo-b");b.id="modo-b";b.type="button";
-    b.setAttribute("aria-haspopup","menu");b.setAttribute("aria-expanded","false");b.setAttribute("aria-controls","modo-pop");
+    var brand=document.querySelector(".nav-in .brand");if(!brand||this.b)return;
+    /* F1-PR5: o index.html já traz o botão e a fileira vazios, reservando o lugar desde a primeira pintura (o cabeçalho não pula
+       quando este módulo chega); aqui só se preenche o que existe, e cria-se se não existir */
+    var b=$("modo-b"),p=$("modo-pop");
+    if(!b){var w=mk("div","modo");b=mk("button","modo-b");b.id="modo-b";b.type="button";p=mk("div","modo-pop");p.id="modo-pop";w.appendChild(b);w.appendChild(p);brand.parentNode.insertBefore(w,brand.nextSibling);}
+    b.setAttribute("aria-haspopup","menu");b.setAttribute("aria-expanded","false");b.setAttribute("aria-controls","modo-pop");b.removeAttribute("aria-label");
     b.title=T("Trocar entre Presidência e Congresso","Switch between Presidency and Congress");
-    var p=mk("div","modo-pop");p.id="modo-pop";p.setAttribute("role","menu");p.hidden=true;
-    w.appendChild(b);w.appendChild(p);brand.parentNode.insertBefore(w,brand.nextSibling);
+    p.setAttribute("role","menu");p.hidden=true;
     this.b=b;this.pop=p;
     b.addEventListener("click",function(){Seletor.abre();});
     var orig=$("menu");
@@ -73,12 +75,13 @@ var Seletor={b:null,pop:null,menu:null,
       ABAS.forEach(function(a){var x=mk("button",null,a[1]);x.type="button";x.dataset.s=a[0];
         x.addEventListener("click",function(){vai("#congresso"+(a[0]?"/"+a[0]:""));});m.appendChild(x);});
       orig.parentNode.insertBefore(m,orig.nextSibling);this.menu=m;}
-    var nav=document.querySelector("nav.nav");
-    if(nav&&!$("modo-seg")){var sg=mk("div","modo-seg");sg.id="modo-seg";sg.setAttribute("role","navigation");sg.setAttribute("aria-label",T("Partes do site","Site sections"));
+    var nav=document.querySelector("nav.nav"),sg=$("modo-seg");
+    if(nav&&(!sg||!sg.children.length)){if(!sg){sg=mk("div","modo-seg");sg.id="modo-seg";nav.appendChild(sg);}
+      sg.setAttribute("role","navigation");sg.setAttribute("aria-label",T("Partes do site","Site sections"));
       ["hub","colinha","presidencia","congresso"].forEach(function(k){var m=MODOS[k],x=mk("button",k==="colinha"?"ck":null);x.type="button";x.dataset.m=k;if(k==="colinha")x.setAttribute("data-recurso","colinha");
         x.appendChild(mk("span",null,m.ic));x.appendChild(document.createTextNode(m.t));
         x.addEventListener("click",function(){vaiModo(k);});sg.appendChild(x);});
-      nav.appendChild(sg);this.seg=sg;}
+      this.seg=sg;}
     this.pinta();
   },
   pinta:function(){if(!this.b)return;var m=MODOS[modoAtual()];

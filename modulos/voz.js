@@ -362,6 +362,7 @@ function pedacos(segs,nativo){
 /* ---------------- onde ficam os botões ---------------- */
 /* [seletor do título, como achar a seção que ele abre, onde pôr o botão] */
 var ALVOS=[
+  [".view.dest h1.dest-t", function(h){return h.closest(".wrap");}, "dentro"],   /* F1-PR5: as telas do shell (Hoje, Explorar, Salvos) também se leem em voz alta */
   [".view > header h1.h-lead", function(h){return h.closest("header");}, "dentro"],
   [".sec-h > h2", function(h){return h.closest("section")||h.parentNode.parentNode;}, "dentro"],
   [".card h3, .card h4, .note h3", function(h){return h.closest(".card")||h.parentNode;}, "dentro"],

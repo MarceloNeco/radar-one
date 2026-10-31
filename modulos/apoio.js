@@ -21,6 +21,10 @@ var TOQUE=function(){try{return matchMedia("(pointer: coarse)").matches;}catch(e
 
 /* ---------------- o que é cada tela (mapa usado pelo ☰, pela busca e pelo assistente) ---------------- */
 var TELAS={
+  /* F1-PR5: os destinos do shell (Indicadores é a tela "infograficos" de sempre) */
+  hoje:{ic:"🏠",t:T("Hoje","Today"),d:T("O que mudou e por onde começar.","What changed and where to start."),sin:"hoje inicio comeco home today"},
+  explorar:{ic:"🔎",t:T("Explorar","Explore"),d:T("Pessoas, mandatos e temas.","People, terms and topics."),sin:"explorar procurar pessoas temas explore"},
+  salvos:{ic:"⭐",t:T("Salvos","Saved"),d:T("Seus favoritos e painéis, só neste aparelho.","Your favourites and panels, on this device only."),sin:"salvos favoritos paineis saved"},
   /* os cargos vêm do turno de agora no calendário (window.Calendario) */
   colinha:{ic:"🗳️",t:T("Colinha da eleição","Election cheat sheet"),d:T("Monte a lista dos números que você vai digitar na urna ("+Calendario.nomes()+"), com foto, e mande no WhatsApp.",
     "Build the list of numbers you will type at the ballot box ("+Calendario.nomes()+"), with photos, and send it on WhatsApp."),
@@ -196,7 +200,7 @@ var Gav={el:null,btn:null,aberta:false,
     var g=this.el;g.textContent="";
     var h=mk("div","gav-h");
     var ic=document.querySelector(".brand-ic");if(ic){var i2=ic.cloneNode(true);i2.style.width="22px";i2.style.height="22px";h.appendChild(i2);}
-    h.appendChild(mk("b",null,"Eleições 2026"));
+    h.appendChild(mk("b",null,"RadarONE"));
     var x=mk("button","gav-x","×");x.type="button";x.setAttribute("aria-label",T("Fechar o menu","Close the menu"));x.addEventListener("click",function(){Gav.fecha();});
     h.appendChild(x);g.appendChild(h);
     var c=mk("div","gav-c");g.appendChild(c);
@@ -208,17 +212,23 @@ var Gav={el:null,btn:null,aberta:false,
      ["⚙️",T("Ajustes","Settings"),function(){Gav.fecha();depois(function(){PG.abreConfig();});}]].forEach(function(o){
       var b=mk("button");b.type="button";if(o[3])b.setAttribute("data-recurso",o[3]);b.appendChild(mk("span",null,o[0]));b.appendChild(mk("span",null,o[1]));b.addEventListener("click",o[2]);r.appendChild(b);});
     c.appendChild(r);
-    c.appendChild(mk("div","gav-g",T("Páginas","Pages")));
-    var at=telaAtual(), cg=/^congresso/.test(at);
-    Object.keys(TELAS).forEach(function(k){
-      if(at!=="hub"&&k!=="hub"&&/^congresso/.test(k)!==cg)return;
+    /* F1-PR5: o menu em grupos com título (diretriz): o que se acompanha o ano inteiro e o arquivo da eleição */
+    var at=telaAtual(), cg=/^congresso/.test(at), ACOMP=["hoje","explorar","infograficos","salvos"];
+    var item=function(k){
       var v=TELAS[k], b=mk("button","gav-it");b.type="button";
       if(k==="colinha")b.setAttribute("data-recurso","colinha");
       if(k===at)b.setAttribute("aria-current","page");
       b.appendChild(mk("span","gav-ic",v.ic));
       var d=mk("div");d.appendChild(document.createTextNode(v.t));d.appendChild(mk("small",null,v.d));b.appendChild(d);
       b.addEventListener("click",function(){Gav.fecha();depois(function(){vai(k);},200);});
-      c.appendChild(b);});
+      c.appendChild(b);};
+    c.appendChild(mk("div","gav-g",T("Acompanhar","Follow")));
+    ACOMP.forEach(item);
+    c.appendChild(mk("div","gav-g",T("Eleições 2026","Elections 2026")));
+    Object.keys(TELAS).forEach(function(k){
+      if(ACOMP.indexOf(k)>-1)return;
+      if(at!=="hub"&&k!=="hub"&&/^congresso/.test(k)!==cg)return;
+      item(k);});
     c.appendChild(mk("div","gav-g",T("Tema","Theme")));
     var tm=mk("div","gav-lg");
     [["sistema",T("Do sistema","System")],["claro",T("Claro","Light")],["escuro",T("Escuro","Dark")]].forEach(function(o){var b=mk("button",null,o[1]);b.type="button";
