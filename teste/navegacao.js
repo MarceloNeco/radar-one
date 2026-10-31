@@ -55,6 +55,13 @@ const DEST = ['hoje', 'explorar', 'infograficos', 'salvos'];
     for (let i = 0; i < 60 && !achou; i++) { await p3.keyboard.press('Tab'); const r = await p3.evaluate(() => { const e = document.activeElement; if (!e || !e.matches('.barra a')) return null; const s = getComputedStyle(e); return { st: s.outlineStyle, w: parseFloat(s.outlineWidth) }; }); if (r) { achou = true; estilo = r; } }
     conferir(achou && estilo.st !== 'none' && estilo.w > 0, L + 'foco pelo teclado chega à barra e fica visível (outline ' + (estilo ? estilo.st + ' ' + estilo.w + 'px' : 'não achou') + ')');
     await ctx.close();
+    /* o cabeçalho não pula quando o módulo Eleições chega: o lugar do seletor de modo já está reservado no HTML */
+    const c4 = await novoContexto(browser, 390, []); await semear(c4, PREFS);
+    await c4.addInitScript(() => { const h = [], d = []; const tick = () => { const n = document.querySelector('.nav'), s = document.getElementById('modo-seg'), i = document.querySelector('.nav-in'); if (n) { h.push(Math.round(n.getBoundingClientRect().height)); d.push([Math.round(n.getBoundingClientRect().height), i ? Math.round(i.getBoundingClientRect().height) : '-', s ? getComputedStyle(s).display + Math.round(s.getBoundingClientRect().height) : '-', document.documentElement.getAttribute('data-destino') || '-'].join('|')); } if (h.length < 90) requestAnimationFrame(tick); }; /* começa quando o HTML (e os <style> do body) já foram lidos e antes dos módulos rodarem: readyState "interactive" */ const comeca = () => requestAnimationFrame(tick); if (document.readyState !== 'loading') comeca(); else document.addEventListener('readystatechange', () => { if (document.readyState === 'interactive') comeca(); }); window.__navAlturas = h; window.__navDiag = d; });
+    const p4 = await c4.newPage(); await p4.goto(url('#inicio')); await p4.waitForFunction(() => window.CongressoV2 && window.__navAlturas && window.__navAlturas.length >= 30, null, { timeout: 15000 }).catch(() => {});
+    const alt = await p4.evaluate(() => ({ alturas: [...new Set(window.__navAlturas)], diag: [...new Set(window.__navDiag)], seg: document.querySelectorAll('#modo-seg button').length }));
+    conferir(alt.alturas.length === 1 && alt.seg === 4, L + 'o cabeçalho não muda de altura enquanto o módulo Eleições chega (' + alt.alturas.join('/') + ' px; seletor com ' + alt.seg + ' partes' + (alt.alturas.length > 1 ? '; quadros nav|linha|fileira|destino: ' + alt.diag.join(' › ') : '') + ')');
+    await c4.close();
     /* 320 px: sem rolagem lateral em nenhum destino */
     ctx = await novoContexto(browser, 320, []); await semear(ctx, PREFS);
     p = await ctx.newPage(); const larg = [];
