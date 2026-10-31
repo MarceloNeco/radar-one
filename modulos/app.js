@@ -2,12 +2,16 @@
    na mesma ordem dos <script> de hoje; no F1-PR2 o dados.js passa a esperar um fetch e nada aqui muda.
    Nenhum módulo exporta nada: o que cruza entre eles é só window.X (docs/modulos-contrato.md). */
 await import('./calendario.js');          // 1 calendário eleitoral + 2 colinhaOff
+await import('./rotas.js');               // 2b shell: quatro destinos e histórico por camada (F1-PR5); antes do principal.js para a capa não piscar antes de Hoje (F1-PR6)
 await import('./janelas.js');             // 3 EJ
 await import('./dados.js');               // 4 blocos JSON
 await import('./principal.js');           // 5 PG e os infográficos
 await import('./voz.js');                 // 6 VozLeitor, VozPainel
 await import('./apoio.js');               // 7 CfgAcess, CfgAssist, PGShare
-await import('./rotas.js');               // 7b shell: quatro destinos e histórico por camada (F1-PR5)
 await import('./saiba.js');               // 7c o ⓘ que abre a explicação (F1-PR5c)
-await import('./eleicoes/congresso.js');  // 8 CongressoV2
-await import('./eleicoes/colinha.js');    // 9 Colinha
+/* F1-PR6: o módulo Eleições (8 CongressoV2 e 9 Colinha) só carrega quando o interruptor "eleicoes" do RootifyONE está
+   ligado (padrão) ou quando um link direto pede uma tela da eleição; Rotas.eleicoes() carrega uma vez só, sob demanda.
+   Os ouvintes ficam aqui, depois da base, porque o módulo depende de PG e EJ */
+addEventListener('hashchange', () => { if (Rotas.rotaEleitoral()) Rotas.eleicoes(); });
+if (window.SolverRecursos) SolverRecursos.aoMudar(() => { if (Rotas.eleicoesLigado() && Rotas.rotaEleitoral()) Rotas.eleicoes(); });
+if (Rotas.eleicoesLigado() || Rotas.rotaEleitoral()) await Rotas.eleicoes();

@@ -13,12 +13,13 @@
     10. dados-offline.js (F1-PR2: os dados vêm de dados/*.json; 2ª visita sem rede abre pela cópia guardada; sem cópia e sem rede avisa) nas duas páginas
     11. navegacao.js (F1-PR5: shell com os quatro destinos, barra de 44 px, Voltar por camada, 320 px sem rolagem lateral, barra lateral no computador) nas duas páginas
     12. saiba.js (F1-PR5c: o ⓘ abre a explicação pela janela comum; Entendi, Esc e Voltar fecham; créditos e ressalvas continuam lá; em inglês também)
+    13. links-antigos.js (F1-PR6: cada # do app de 2026 abre a vista certa; com o interruptor "eleicoes" desligado, Hoje, Explorar e o ☰ ficam sem a eleição e o módulo não carrega; um link direto ainda abre)
    Uso: node teste/rodar.js   (precisa do Playwright: npm install -D playwright) */
 const { spawnSync } = require('child_process');
 const path = require('path');
 let falhou = false;
 
-for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js']) {
+for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js', 'links-antigos.js']) {
   console.log('\n▶ ' + t);
   if (spawnSync(process.execPath, [path.join(__dirname, t)], { stdio: 'inherit' }).status !== 0) falhou = true;
 }

@@ -216,7 +216,7 @@ var Gav={el:null,btn:null,aberta:false,
     var at=telaAtual(), cg=/^congresso/.test(at), ACOMP=["hoje","explorar","infograficos","salvos"];
     var item=function(k){
       var v=TELAS[k], b=mk("button","gav-it");b.type="button";
-      if(k==="colinha")b.setAttribute("data-recurso","colinha");
+      var rec=[];if(k==="colinha")rec.push("colinha");if(ACOMP.indexOf(k)<0)rec.push("eleicoes");if(rec.length)b.setAttribute("data-recurso",rec.join(" "));   /* F1-PR6: o que é da eleição obedece ao interruptor "eleicoes" */
       if(k===at)b.setAttribute("aria-current","page");
       b.appendChild(mk("span","gav-ic",v.ic));
       var d=mk("div");d.appendChild(document.createTextNode(v.t));d.appendChild(mk("small",null,v.d));b.appendChild(d);
@@ -224,7 +224,7 @@ var Gav={el:null,btn:null,aberta:false,
       c.appendChild(b);};
     c.appendChild(mk("div","gav-g",T("Acompanhar","Follow")));
     ACOMP.forEach(item);
-    c.appendChild(mk("div","gav-g",T("Eleições 2026","Elections 2026")));
+    var ge=mk("div","gav-g",T("Eleições 2026","Elections 2026"));ge.setAttribute("data-recurso","eleicoes");c.appendChild(ge);
     Object.keys(TELAS).forEach(function(k){
       if(ACOMP.indexOf(k)>-1)return;
       if(at!=="hub"&&k!=="hub"&&/^congresso/.test(k)!==cg)return;

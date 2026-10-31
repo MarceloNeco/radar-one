@@ -1,6 +1,6 @@
 # ADR 0001 — Estrutura em módulos ES e dados fora do HTML
 
-**Estado:** em implementação na F1 — §2 (módulos) feito no F1-PR3 e §1 (dados fora do HTML) no F1-PR2, ambos em 31/10/2026; §3 (um HTML, dois idiomas) feito no F1-PR4 (31/10/2026); §4 (módulo Eleições no shell) é o PR6 · **Vale a partir da:** F1
+**Estado:** em implementação na F1 — §2 (módulos) feito no F1-PR3 e §1 (dados fora do HTML) no F1-PR2, ambos em 31/10/2026; §3 (um HTML, dois idiomas) feito no F1-PR4 e §4 (módulo Eleições no shell, sob demanda) no F1-PR6, ambos em 31/10/2026 · **Vale a partir da:** F1
 
 ## Contexto
 
