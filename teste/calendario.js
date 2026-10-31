@@ -35,6 +35,9 @@ const ELE_C = { dg: '15/10/2026', hg: '09:35:49', f: 'o', pl: [
   /* outro ano, com governador em MG no 2º turno: não pode contar */
   { cd: '453', c: 'ele2022', dt: '30/10/2022', e: [{ cd: '545', t: '2', tp: '1', nm: 'Eleição Ordinária Estadual - 2022 2º Turno', abr: [{ cd: 'mg', cp: [{ cd: '3' }] }] }] }] };
 const unificado = ids => ({ ele: '0', t: '2', carg: [{ cd: '3', agr: [{ par: [{ cand: ids.map((x, i) => ({ n: String(10 + i), sqcand: x, nmu: 'X' })) }] }] }] });
+/* presidência antes do resultado: a aba Mandato não pode depender do arquivo real do robô
+   (depois do 2º turno ele passa a trazer o eleito e o texto da aba muda) */
+const MANDATO_SEM_ELEITO = { posse: '2027-01-05', eleito: null, resultado: { bol: '2º TURNO', rui: 'NÃO ELEITO', mar: 'NÃO ELEITO', cur: 'NÃO ELEITO', zem: 'NÃO ELEITO', lul: '2º TURNO', cai: 'NÃO ELEITO', ren: 'NÃO ELEITO' }, segundo_turno: ['bol', 'lul'], atos: [] };
 const ARQ_TSE = {
   'comum/config/ele-c.json': ELE_C,
   'ele2026/6260/dados/rn/rn-c0003-e006260-u.json': unificado(FIN_RN),
@@ -66,6 +69,7 @@ async function preparar(ctx, arq, o, erros) {
     if (est.cal !== null) j.comportamentos['eleicao.calendario'] = est.cal;
     return r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(j) });
   });
+  await ctx.route(BASE + '/presidencia/mandato.json', r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(MANDATO_SEM_ELEITO) }));
   await ctx.route(/^https:\/\/resultados\.tse\.jus\.br\//, async r => {
     const rel = r.request().url().replace('https://resultados.tse.jus.br/oficial/', '');
     est.pedidos.push(rel);
