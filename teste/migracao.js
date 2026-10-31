@@ -7,7 +7,8 @@
 const { chromium, servir, novoContexto, semear, PAGINAS, relatorio } = require('./comum');
 const PORTA = process.env.PORTA || 8106, BASE = 'http://localhost:' + PORTA;
 const { falhas, conferir } = relatorio();
-const ANTIGAS = { 'planos2026:prefs': { aoVisto: true, telaCiente: true, tema: 'claro', x: 1 }, 'planos2026:voz': { motor: 'gemini', geminiVoz: 'Kore', vel: 1.2 }, 'planos2026:congresso': { fav: ['a1', 'b2'], eixos: { e1: 2 } }, 'planos2026:colinha': { uf: 'RN', por: {} }, 'planos2026:modo': 'congresso', 'planos2026:novidade-colinha': 1 };
+const CHAVE_FALSA = 'AIza-chave-de-mentira-0000';
+const ANTIGAS = { 'planos2026:prefs': { aoVisto: true, telaCiente: true, tema: 'claro', x: 1 }, 'planos2026:voz': { motor: 'gemini', geminiVoz: 'Kore', vel: 1.2, geminiKey: CHAVE_FALSA }, 'planos2026:congresso': { fav: ['a1', 'b2'], eixos: { e1: 2 } }, 'planos2026:colinha': { uf: 'RN', por: {} }, 'planos2026:modo': 'congresso', 'planos2026:novidade-colinha': 1 };
 const todas = p => p.evaluate(() => { const o = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); o[k] = localStorage.getItem(k); } return o; });
 
 (async () => {
@@ -21,7 +22,10 @@ const todas = p => p.evaluate(() => { const o = {}; for (let i = 0; i < localSto
     await p.goto(BASE + '/' + arq + '#hoje'); await p.waitForFunction(() => window.PG && window.Migracao, null, { timeout: 15000 }).catch(() => {}); await p.waitForTimeout(500);
     let t = await todas(p);
     /* o app pode regravar planos2026:prefs logo ao abrir (campos a mais); a nova vale a cópia da abertura ou a semeada */
-    const iguais = Object.keys(ANTIGAS).every(k => { const n = t[k.replace('planos2026:', 'radar-one:')]; return n != null && (n === t[k] || n === JSON.stringify(ANTIGAS[k])); });
+    const semVoz = k => k !== 'planos2026:voz';   /* a voz é conferida à parte: a cópia nova nunca leva a chave */
+    const iguais = Object.keys(ANTIGAS).filter(semVoz).every(k => { const n = t[k.replace('planos2026:', 'radar-one:')]; return n != null && (n === t[k] || n === JSON.stringify(ANTIGAS[k])); });
+    const vozNova = JSON.parse(t['radar-one:voz'] || '{}'), aberto = Object.keys(t).filter(k => (t[k] || '').indexOf(CHAVE_FALSA) > -1 && /^radar-one:/.test(k));
+    conferir(vozNova.motor === 'gemini' && vozNova.geminiVoz === 'Kore' && !('geminiKey' in vozNova) && aberto.length === 0, L + 'a cópia nova da voz guarda motor e voz, mas nunca a chave de API (segredo fica só no cofre)' + (aberto.length ? ' — vazou em ' + aberto.join(', ') : ''));
     let esq = JSON.parse(t['radar-one:esquema'] || 'null');
     conferir(iguais && esq && esq.versao === 1 && esq.migradoDe === 'planos2026' && /^\d{4}-\d\d-\d\dT/.test(esq.em || ''), L + 'primeira abertura: as ' + Object.keys(ANTIGAS).length + ' chaves antigas viraram radar-one:* iguais, com radar-one:esquema {versao 1, migradoDe planos2026}');
     /* duplo gravar: a antiga muda (como o módulo Eleições faz) e a nova acompanha ao trocar de tela */
