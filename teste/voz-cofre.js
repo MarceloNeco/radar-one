@@ -8,7 +8,7 @@
      - nenhuma chave de mentira sobra em texto aberto no navegador
      - 320 px sem rolagem lateral (com a janela do PIN e com as Configurações)
    Uso: node teste/voz-cofre.js */
-const { chromium, servir, novoContexto, semear, passaPin, comProtecao, PAGINAS, relatorio } = require('./comum');
+const { chromium, servir, novoContexto, semear, passaPin, comProtecao, PAGINAS, relatorio, shellPronto } = require('./comum');
 const PORTA = process.env.PORTA || 8096, BASE = 'http://localhost:' + PORTA, PIN = 'pin-de-teste-9';
 const { falhas, conferir } = relatorio();
 const G = 'AIza-FALSA-gemini-1', O = 'sk-FALSA-openai-1', E = 'sk_FALSA_eleven_1', NOVA = 'AIza-FALSA-NOVA-2', ANT = 'sk-ant-FALSA-1';
@@ -16,7 +16,7 @@ const VOZ = () => ({ motor: 'gemini', geminiVoz: 'Kore', vel: 1.2, geminiKey: G,
 const CONTADOR = () => ({ titulo: 'meu config', anthropicKey: ANT, geminiKey: G, openaiKey: O, elevenKey: E });
 
 const ler = (p, k) => p.evaluate(k => JSON.parse(localStorage.getItem(k) || 'null'), k);
-const tocar = async (p, n) => { await p.waitForSelector('.tts-ctl button', { state: 'attached', timeout: 20000 }); await p.locator('.tts-ctl button:visible').nth(n || 0).click(); };
+const tocar = async (p, n) => { await shellPronto(p); await p.waitForSelector('.tts-ctl button', { state: 'attached', timeout: 20000 }); await p.locator('.tts-ctl button:visible').nth(n || 0).click(); };
 const tudoEmAberto = (p) => p.evaluate(() => { let t = ''; for (let i = 0; i < localStorage.length; i++) t += localStorage.key(i) + '=' + localStorage.getItem(localStorage.key(i)) + '\n'; return t; });
 
 (async () => {

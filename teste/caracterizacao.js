@@ -7,12 +7,13 @@
      - o resto das preferências de voz (motor, voz, modelo) continua em planos2026:voz
      - 320 px sem rolagem lateral
    Só valores de mentira. Uso: node teste/caracterizacao.js */
-const { chromium, servir, novoContexto, semear, passaPin, PAGINAS, relatorio } = require('./comum');
+const { chromium, servir, novoContexto, semear, passaPin, PAGINAS, relatorio, shellPronto } = require('./comum');
 const PORTA = process.env.PORTA || 8097, BASE = 'http://localhost:' + PORTA, PIN = 'pin-de-teste-9';
 const { falhas, conferir } = relatorio();
 const CHAVES = { gemini: 'AIza-FALSA-gemini-1', openai: 'sk-FALSA-openai-1', elevenlabs: 'sk_FALSA_eleven_1' };
 
 async function tocar(page) {
+  await shellPronto(page);
   await page.waitForSelector('.tts-ctl button', { state: 'attached', timeout: 20000 });
   await page.locator('.tts-ctl button:visible').first().click();
 }
