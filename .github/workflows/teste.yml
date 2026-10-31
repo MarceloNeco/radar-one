@@ -25,9 +25,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"   # o rodar.js confere o index-en.html gerado pelo sincroniza-en.py
       - name: Instalar o Playwright (mesma versão do container de teste)
         run: |
           npm install -g playwright@1.56.1

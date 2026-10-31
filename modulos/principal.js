@@ -124,7 +124,7 @@ var TRILHA_ARQ="trilha.mp3";
    documentos, marcos, processos e verbetes — permanece em português, porque cada
    citação foi conferida caractere a caractere contra o PDF registrado: traduzida,
    deixaria de ser a citação e o site perderia aquilo que ele promete. */
-var IDIOMA=window.IDIOMA||"pt";  /* cada página declara window.IDIOMA antes do app.js (index-en.html: "en") */
+var IDIOMA=window.IDIOMA||"pt";  /* decidido no index.html antes do app.js: ?lang= no endereço, senão a preferência comum dgo:global:idioma (F1-PR4) */
 /* separador decimal e abreviações de escala seguem o idioma do arquivo:
    pt-BR usa vírgula e "mil/mi"; en-US usa ponto e "k/M". */
 var ENUS=(IDIOMA==="en");
@@ -394,14 +394,15 @@ function aplicaIdioma(){
     var k=n.getAttribute("data-i18n-ph"), e=STR[k];
     if(e)n.setAttribute("placeholder",(IDIOMA==="en"&&e.en)?e.en:e.pt);});
 }
-/* Trocar de idioma é navegar: cada idioma é um arquivo com endereço próprio, o que
-   mantém o link compartilhável e indexável. Por isso o idioma não fica gravado no
-   navegador como as outras preferências — ele viaja no endereço. */
+/* Trocar de idioma é navegar: o idioma viaja no endereço (?lang=en), o que mantém o link
+   compartilhável, e fica gravado na preferência comum da SolverONE (dgo:global:idioma), que
+   vale para todos os apps da mesma origem (F1-PR4: um HTML só para os dois idiomas). */
 function vaiParaIdioma(lg){
   if(IDIOMA===lg)return;
-  var base=location.pathname.replace(/index-en\.html$|index\.html$|\/$/,"");
-  if(base&&base.slice(-1)!=="/")base+="/";
-  location.href=base+(lg==="en"?"index-en.html":"index.html")+location.hash;
+  try{localStorage.setItem("dgo:global:idioma",JSON.stringify(lg));}catch(e){}
+  var base=location.pathname.replace(/index-en\.html$|index\.html$/,"");   /* a pasta do site, terminando em "/" */
+  if(!base)base="./";   /* sem pasta, "#…" sozinho só trocaria o # e não recarregaria */
+  location.href=base+(lg==="en"?"?lang=en":"")+location.hash;
 }
 function montaIdioma(){
   var host=document.getElementById("idi"); if(!host)return;

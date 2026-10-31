@@ -1,4 +1,4 @@
-/* Testes de CARACTERIZAÇÃO da leitura em voz alta, nas DUAS páginas (index.html e index-en.html).
+/* Testes de CARACTERIZAÇÃO da leitura em voz alta, nas DUAS páginas (index.html e index.html?lang=en).
    Descrevem o que o app faz hoje e que NÃO pode mudar com a troca das chaves para o cofre:
      - a página abre sem erro e mostra os botões ▶
      - voz do aparelho: ▶ fala sem pedir nada e sem chamar internet

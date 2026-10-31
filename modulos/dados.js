@@ -2,12 +2,15 @@
    Rede primeiro; se já houver cópia guardada neste aparelho (Cache Storage) e a rede demorar mais de 4 s ou falhar, usa a
    cópia; sem cópia, espera a rede. Depois injeta os <script id="…" type="application/json"> que o código já lê
    (principal.js e eleicoes/congresso.js) e expõe window.__IG__ etc., exatamente como a linha única do index.html 2.5.4
-   fazia. O inglês lê dados/en/ (o dicionário traden é um só). Nada sai daqui a não ser esses globais. */
+   fazia. O inglês lê dados/en/; o dicionário PT → EN vem de i18n/en.json. Nada sai daqui a não ser esses globais. */
 const IDS = ['traden', 'dados', 'ig', 'bio', 'glos', 'patr', 'dlinks', 'proc'];
 const EN = (window.IDIOMA || 'pt') === 'en';
 const CACHE = 'dgo-radar-one-dados-v1';            /* nome com o app: o sw.js de outro app da mesma origem não apaga */
 const BASE = new URL('../', import.meta.url);      /* a pasta do site, venha de onde vier o endereço */
-function endereco(id) { return new URL((EN && id !== 'traden' ? 'dados/en/' : 'dados/') + id + '.json', BASE).href; }
+function endereco(id) {
+  if (id === 'traden') return new URL('i18n/en.json', BASE).href;          /* o dicionário PT → EN (F1-PR4) */
+  return new URL((EN ? 'dados/en/' : 'dados/') + id + '.json', BASE).href;
+}
 let cache = null;
 try { cache = await caches.open(CACHE); } catch (e) { cache = null; }   /* sem Cache Storage (contexto inseguro): só rede */
 async function daRede(u, prazo) {

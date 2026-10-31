@@ -43,7 +43,7 @@ function cabeca(){var a=Calendario.ano(),c=Calendario.curto(Calendario.fase());r
 /* foto oficial do TSE copiada para cola/fotos pelo congresso-sync.py (o site do TSE não deixa usá-la na imagem); c.uf = BR para presidente */
 function foto(c){return "cola/fotos/"+c.uf+"/"+c[4]+".jpg";}
 function fotoTSE(c){return "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/"+c[4]+"/"+c.uf;}
-var SITE="https://solverone.com.br/radar-one/"+(/index-en/.test(location.pathname)?"index-en.html":"");
+var SITE="https://solverone.com.br/radar-one/"+(window.IDIOMA==="en"?"?lang=en":"");
 
 var CK={st:null,dados:{},pts:null,
   /* uma cola por turno: por[ano-turno][vaga] = [uf, id do TSE] (null = tirada de propósito). Até a 2.4.0 havia uma só (esc),

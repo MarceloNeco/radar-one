@@ -81,7 +81,7 @@ async function comProtecao(ctx, base) {
   await ctx.addInitScript(a => { try { localStorage.setItem('dgo:eleicoes-2026:central:recursos/eleicoes-2026.json', JSON.stringify(a)); } catch (e) {} }, arq);
 }
 
-const PAGINAS = [['index.html', 'pt'], ['index-en.html', 'en']];
+const PAGINAS = [['index.html', 'pt'], ['index.html?lang=en', 'en']];   /* F1-PR4: um HTML só; o idioma vai no endereço */
 
 function relatorio() {
   const falhas = [];

@@ -19,7 +19,7 @@ do `ARQUITETURA.md`.
 5. **`IDIOMA` vem da página, não do arquivo.** Hoje `var IDIOMA="pt";` fica dentro do bloco principal (linha 36436) e o
    `sincroniza-en.py` troca para `"en"` ao gerar o `index-en.html`. Com o código num arquivo só para as duas páginas, cada HTML
    declara **uma linha** antes do `app.js`: `<script>window.IDIOMA="pt";</script>` (`"en"` no `index-en.html`), e o módulo
-   principal passa a ter `var IDIOMA=window.IDIOMA||"pt";`. O `sincroniza-en.py` troca essa linha em vez da antiga. O PR4 elimina tudo isso.
+   principal passa a ter `var IDIOMA=window.IDIOMA||"pt";`. O `sincroniza-en.py` troca essa linha em vez da antiga. (Feito; o PR4 eliminou o script: o `index.html` decide `window.IDIOMA` por `?lang=` ou pela preferência comum.)
 6. **`"use strict"` já vale** em módulos; o bloco principal já é estrito. Procurar `this` solto e `arguments.callee` nos outros
    blocos antes de mover (não há, mas conferir).
 7. **O PR3 vem ANTES do PR2** (ordem trocada em 31/10/2026; o plano permite). Motivo: hoje os dados são lidos de forma síncrona
