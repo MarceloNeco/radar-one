@@ -30,9 +30,13 @@ window.IDIOMA=(function(){try{var q=new URLSearchParams(location.search).get("la
 <body>
 <title>RadarONE — políticos, mandatos e indicadores</title>
 <meta name="color-scheme" content="light dark">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Nunito (SIL OFL 1.1, fontes/OFL-Nunito.txt), hospedada aqui: nenhuma ida a servidor de terceiros para carregar letra (F1-PR5b) */
+@font-face{font-family:"Nunito";font-style:italic;font-weight:200 1000;font-display:swap;src:url(fontes/nunito-latin-ext-italic.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Nunito";font-style:italic;font-weight:200 1000;font-display:swap;src:url(fontes/nunito-latin-italic.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Nunito";font-style:normal;font-weight:200 1000;font-display:swap;src:url(fontes/nunito-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Nunito";font-style:normal;font-weight:200 1000;font-display:swap;src:url(fontes/nunito-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
 :root{
   --bg:#F3F6F5; --surface:#FFFFFF; --surface-2:#E9EFEE; --bar:#0C2320;
@@ -47,9 +51,9 @@ window.IDIOMA=(function(){try{var q=new URLSearchParams(location.search).get("la
   --aus:#4A4A4A;  --aus-bg:#EAEAEA;
   --warn:#7A4A12; --warn-bg:#FAEFE0;
   --neg:#95271B; --neg-bg:#F7E3E0;
-  --f-d:"Newsreader",Georgia,"Times New Roman",serif;
-  --f-b:"Public Sans","Helvetica Neue",Arial,sans-serif;
-  --f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-d:"Nunito",ui-rounded,"Segoe UI",Roboto,sans-serif;
+  --f-b:"Nunito",ui-rounded,"Segoe UI",Roboto,sans-serif;
+  --f-m:"Nunito",ui-rounded,"Segoe UI",Roboto,sans-serif;   /* números alinhados pelo tabular-nums no body */
   --maxw:1220px;
   /* sem esta declaração o Android aplica escurecimento automático por cima da
      página e o iOS renderiza controles nativos com o tema errado */
@@ -86,7 +90,7 @@ window.IDIOMA=(function(){try{var q=new URLSearchParams(location.search).get("la
   --neg:#E79C8E; --neg-bg:#331714;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:20px}
 h1,h2,h3{font-family:var(--f-d);font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.012em}
 a{color:var(--accent)}
