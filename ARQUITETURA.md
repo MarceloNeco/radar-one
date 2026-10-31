@@ -26,7 +26,7 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 |---|---|---|
 | `index.html` (só HTML e CSS, um só para os dois idiomas: o shell com os quatro destinos, as vistas das Eleições e as três vistas novas; o código está em `modulos/` e os dados em `dados/`), `index-en.html` (só redireciona para `./?lang=en`), `*.pdf`, `banner.jpg`, `trilha.mp3`, `congresso/`, `cola/`, `presidencia/`, `congresso-sync.py`, `congresso-pautas.json`, `presidencia-compromissos.json`, `.github/workflows/congresso-sync.yml`, `teste/*.js` (exceto `paridade.js`) | **o app atual** (repositório renomeado de `planos-candidatos-2026` para `radar-one` em 31/10/2026; ADR 0009, emenda); regras no `docs/ARQUITETURA-eleicoes-2.5.3.md` | só pelos PRs da F1 |
 | `janela.js`, `cofre.js`, `recursos.js` | mestres da SolverONE (cópias exatas do `rootify-one`) | **nunca à mão** |
-| `recursos-do-app.json` | o que o produto obedece do RootifyONE (ADR 0005 e 0010): `assistone`, `colinha` e, desde o F1-PR6, `eleicoes`; o PR7 traz o resto da lista da F0 | sim, ao ligar interruptor novo no código |
+| `recursos-do-app.json` | o que o produto obedece do RootifyONE (ADR 0005 e 0010): recursos `assistone`, `eleicoes`, `colinha`, `indicadores`; comportamentos `assistone.dicas`, `cofre.proteger`, `eleicao.modo`, `eleicao.fase`, `eleicao.calendario`, `atualizacao.cadencia` (F1-PR7). O resto da lista da F0 (`docs/recursos-do-app.json`) entra com a tela que o usa | sim, ao ligar interruptor novo no código |
 | `docs/adr/` | decisões de arquitetura, uma por arquivo (índice em `0000-indice.md`) | sim, por ADR novo ou "superado por" |
 | `docs/legacy_catalog.json` e `.md` | manifesto das 43 entradas de infográficos (T01/T25), gerado por `robos/gera-legacy-catalog.py` | regenerar, não editar à mão |
 | `docs/fontes/registro-de-fontes.json` e `.md` | registro de fontes (T23), gerado por `robos/gera-registro-fontes.py` | editar o script e regenerar |
@@ -45,7 +45,7 @@ teste), que continua inteiro dentro dele como módulo. As duas especificações 
 | `docs/modulos-contrato.md` | contrato do PR3: um módulo por bloco de hoje, a lista do que cruza por `window`, a ordem e o que os testes usam | sim, pelo Fable |
 | `robos/prototipo-ibge-bcb.py` | protótipo da onda 1 (IBGE e BCB), conferido contra o acervo | vira `robos/indicadores.py` na F2 |
 | `robos/gera-*.py` | geradores dos manifestos | sim |
-| `docs/recursos-do-app.json` | o `recursos-do-app.json` do produto novo (entrega 6); o da raiz continua o do app atual até o F1-PR7 | sim |
+| `docs/recursos-do-app.json` | a lista completa da F0 (entrega 6), fonte das entradas que a raiz vai recebendo tela a tela | sim |
 | `PENDENCIAS.md` | lista viva, numerada | a cada entrega |
 
 ## Regras que não se quebram (herdadas e novas)

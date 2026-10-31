@@ -1,6 +1,6 @@
 # ADR 0010 — Ciclo eleitoral: manual ou automático, controlado pelo RootifyONE; preparado para o ciclo municipal de 2028
 
-**Estado:** proposta (F0, 22/10/2026) · **Origem:** requisitos 1 e 2 do dono (19/10/2026) · **Vale a partir da:** F1 (PR "interruptores")
+**Estado:** aceita e implementada no site na F1-PR7 (31/10/2026; decisões 1, 2, 4 e 5; a 3, o lado dos robôs, é do repositório de dados) · **Origem:** requisitos 1 e 2 do dono (19/10/2026) · **Vale a partir da:** F1 (PR "interruptores")
 
 ## Contexto
 

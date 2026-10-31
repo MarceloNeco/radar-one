@@ -14,4 +14,5 @@ await import('./saiba.js');               // 7c o ⓘ que abre a explicação (F
    Os ouvintes ficam aqui, depois da base, porque o módulo depende de PG e EJ */
 addEventListener('hashchange', () => { if (Rotas.rotaEleitoral()) Rotas.eleicoes(); });
 if (window.SolverRecursos) SolverRecursos.aoMudar(() => { if (Rotas.eleicoesLigado() && Rotas.rotaEleitoral()) Rotas.eleicoes(); });
+if (window.Calendario) Calendario.aoMudar(() => { if (Rotas.eleicoesLigado() && Rotas.rotaEleitoral()) Rotas.eleicoes(); });   // F1-PR7: a fase mudou com a página aberta
 if (Rotas.eleicoesLigado() || Rotas.rotaEleitoral()) await Rotas.eleicoes();

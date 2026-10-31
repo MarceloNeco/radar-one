@@ -16,7 +16,16 @@
      posse         dia em que começa o mandato de quem foi eleito para o Executivo (a aba Mandato conta a partir dele)
      cargos        por letra: nome PT/EN, dígitos na urna, código do cargo no TSE, "lugar":"br" quando o cargo vale para o
                    país inteiro e, quando o nome muda num lugar, o nome de lá (ex.: "DF" para deputado distrital)
-   Fases: até o dia do 1º turno = 1; do dia seguinte até o dia do 2º = 2; depois do último turno = "pos" (a Colinha some). */
+   Fases: até o dia do 1º turno = 1; do dia seguinte até o dia do 2º = 2; depois do último turno = "pos" (a Colinha some);
+   da posse em diante, "acompanhamento" (a eleição some da navegação, como se o recurso "eleicoes" estivesse desligado, sem
+   desligá-lo; o link direto continua abrindo).
+   F1-PR7 (ADR 0010): o modo e a fase são comportamentos próprios do RootifyONE, fora do calendário:
+     eleicao.modo   "automatico" (padrão) = a fase vem da data de Brasília; "manual" = o administrador escolhe em eleicao.fase
+     eleicao.fase   "auto" | "pre-campanha" | "1" | "2"… | "pos" | "acompanhamento"; vale só no modo manual
+   Precedência: manual → eleicao.fase (se "auto", a "fase" de dentro do calendário, e só então a data); automático → a "fase" de
+   dentro do calendário quando explícita (compatibilidade com quem já configurou) e, se "auto", a data. "pre-campanha" = eleição
+   ligada sem Colinha. 2028 é dado: cargos "P2" (prefeito, 2 dígitos, TSE 11) e "V" (vereador, 5 dígitos, TSE 13) com
+   "lugar":"municipio" entram pelo calendário; a Colinha por município é trabalho de depois (F3). */
 window.Calendario=(function(){
   "use strict";
   var PADRAO={ano:2026,fase:"auto",tse:"ele2026",
@@ -31,7 +40,7 @@ window.Calendario=(function(){
   var MES={pt:["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"],
     en:["January","February","March","April","May","June","July","August","September","October","November","December"]};
   var MC={pt:["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],en:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]};
-  function en(){return /^en/i.test(document.documentElement.getAttribute("lang")||"");}
+  function en(){return (window.IDIOMA||"")==="en"||/^en/i.test(document.documentElement.getAttribute("lang")||"");}   /* F1-PR7: o IDIOMA vem antes dos módulos; o lang do <html> chega depois */
   function obj(x){return !!x&&typeof x==="object"&&!Array.isArray(x);}
   /* o de fábrica com o que veio do RootifyONE por cima; turnos inválidos (sem data AAAA-MM-DD) ficam com os de fábrica */
   function cfg(){
@@ -48,13 +57,16 @@ window.Calendario=(function(){
     try{var s=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Sao_Paulo",year:"numeric",month:"2-digit",day:"2-digit"}).format(d);if(/^\d{4}-\d\d-\d\d$/.test(s))return s;}catch(e){}
     return new Date(d.getTime()-3*HORA).toISOString().slice(0,10);
   }
+  function modo(){var m=window.SolverRecursos?SolverRecursos.valor("eleicao.modo","automatico"):"automatico";return m==="manual"?"manual":"automatico";}
+  var FASES=["pre-campanha","pos","acompanhamento"];
+  /* uma fase escrita pelo RootifyONE: nome conhecido ou número de um turno que existe; null = "auto" ou valor inválido */
+  function faseValida(f,c){f=String(f==null?"auto":f).toLowerCase();if(FASES.indexOf(f)>-1)return f;if(/^\d+$/.test(f)&&c.turnos[+f-1])return +f;return null;}
+  function porData(c,agora){var h=hoje(agora);for(var i=0;i<c.turnos.length;i++)if(h<=c.turnos[i].data)return i+1;return c.posse&&h>=c.posse?"acompanhamento":"pos";}
   function fase(agora){
-    var c=cfg(),f=String(c.fase==null?"auto":c.fase).toLowerCase();
-    if(f==="pos")return "pos";
-    if(/^\d+$/.test(f)&&c.turnos[+f-1])return +f;
-    var h=hoje(agora);
-    for(var i=0;i<c.turnos.length;i++)if(h<=c.turnos[i].data)return i+1;
-    return "pos";
+    var c=cfg(),f;
+    if(modo()==="manual"){f=faseValida(window.SolverRecursos?SolverRecursos.valor("eleicao.fase","auto"):"auto",c);if(f!=null)return f;}
+    f=faseValida(c.fase,c);if(f!=null)return f;   /* a "fase" de dentro do calendário continua valendo quando explícita */
+    return porData(c,agora);
   }
   function ordinal(n){var u=n%10,d=n%100;return n+(u===1&&d!==11?"st":u===2&&d!==12?"nd":u===3&&d!==13?"rd":"th");}
   /* as vagas de um turno, na ordem da urna: chave (F, E, S1, S2, G, P: as mesmas da cola guardada), cargo, nome, dígitos e lugar */
@@ -64,7 +76,7 @@ window.Calendario=(function(){
     return t.cargos.filter(function(k){return obj(c.cargos[k]);}).map(function(k){
       var d=c.cargos[k],x=uf&&obj(d[uf])?Object.assign({},d,d[uf]):d,i=vez[k]=(vez[k]||0)+1,nome=en()?x.en:x.pt;
       if(conta[k]>1)nome+=en()?" · "+ordinal(i)+" vote":" · "+i+"º voto";
-      return {k:conta[k]>1?k+i:k,cg:k,t:nome,d:x.digitos,lugar:d.lugar==="br"?"br":"uf",tse:x.tse};
+      return {k:conta[k]>1?k+i:k,cg:k,t:nome,d:x.digitos,lugar:d.lugar==="br"?"br":d.lugar==="municipio"?"municipio":"uf",tse:x.tse};
     });
   }
   function dia(n){var t=cfg().turnos[n-1],p=t?t.data.split("-"):null;return p?{d:+p[2],m:+p[1]-1}:null;}
@@ -74,9 +86,10 @@ window.Calendario=(function(){
   /* "2º turno · 25/Out" · "2nd round · Oct 25" */
   function curto(n){var p=dia(n);if(!p)return "";return en()?ordinal(n)+" round · "+MC.en[p.m]+" "+p.d:n+"º turno · "+p.d+"/"+MC.pt[p.m];}
   /* tela de Início: "Eleição 2026 · 2º turno em 25 de outubro"; depois do último turno, "Eleição 2026 · encerrada" */
-  function cabecalho(){var a=cfg().ano,f=fase();return en()?a+" election · "+(f==="pos"?"concluded":rotulo(f)):"Eleição "+a+" · "+(f==="pos"?"encerrada":rotulo(f));}
+  function cabecalho(){var a=cfg().ano,f=fase(),x=typeof f==="number"?rotulo(f):f==="pre-campanha"?(en()?"pre-campaign":"pré-campanha"):(en()?"concluded":"encerrada");
+    return en()?a+" election · "+x:"Eleição "+a+" · "+x;}
   /* os cargos de um turno (sem n: o de agora; no pós-eleição, o último), em texto: "presidente e governador(a)" */
-  function nomes(n){var c=cfg();n=n||fase();if(n==="pos")n=c.turnos.length;var t=c.turnos[n-1],L=[];if(!t)return "";
+  function nomes(n){var c=cfg();n=n||fase();if(typeof n!=="number")n=n==="pre-campanha"?1:c.turnos.length;var t=c.turnos[n-1],L=[];if(!t)return "";
     t.cargos.forEach(function(k){var d=c.cargos[k];if(!obj(d))return;var x=(en()?d.en:d.pt).toLowerCase();if(L.indexOf(x)<0)L.push(x);});
     return L.length>1?L.slice(0,-1).join(", ")+(en()?" and ":" e ")+L[L.length-1]:L.join("");}
 
@@ -121,7 +134,7 @@ window.Calendario=(function(){
   /* busca no TSE o que a tela do estado uf precisa; devolve true se algo mudou (a tela redesenha) */
   function consultar(uf){
     if(indo)return uf===indoUf?indo:indo.then(function(m){return consultar(uf).then(function(m2){return m||m2;});});
-    var c=cfg(),n=fase();if(n==="pos"||n<2||!c.tse)return Promise.resolve(false);
+    var c=cfg(),n=fase();if(typeof n!=="number"||n<2||!c.tse)return Promise.resolve(false);
     indoUf=uf;
     var chave=c.tse+"/"+n,g0=guardado(),antes=JSON.stringify([g0[chave],g0.fin]);
     var config=podeIr(g0,chave)?pede(TSE+"comum/config/ele-c.json").then(function(j){var r=lerConfig(j,c,n);
@@ -142,12 +155,15 @@ window.Calendario=(function(){
   /* pós-eleição: a Colinha some do site inteiro (tudo o que tem data-recurso="colinha", como faz o interruptor);
      quem quer saber da troca (a Colinha, o Início) ouve aoMudar: chegou arquivo do RootifyONE ou a fase mudou pela data */
   var ouvintes=[],ultima="";
-  function aplicar(){var f=fase();ultima=JSON.stringify([f,cfg()]);document.documentElement.toggleAttribute("data-colinha-pos",f==="pos");}
+  function aplicar(){var f=fase(),h=document.documentElement;ultima=JSON.stringify([f,modo(),cfg()]);
+    h.toggleAttribute("data-colinha-pos",typeof f!=="number");   /* pré-campanha, pós-eleição e acompanhamento: sem Colinha */
+    h.setAttribute("data-fase",String(f));h.setAttribute("data-ciclo",modo());   /* o CSS esconde o que é da eleição no acompanhamento; "data-modo" já é da Presidência/Congresso */
+  }
   function avisa(){aplicar();ouvintes.slice().forEach(function(fn){try{fn();}catch(e){}});}
   aplicar();
   if(window.SolverRecursos)SolverRecursos.aoMudar(avisa);
-  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"&&JSON.stringify([fase(),cfg()])!==ultima)avisa();});
-  return {padrao:function(){return JSON.parse(JSON.stringify(PADRAO));},cfg:cfg,hoje:hoje,fase:fase,vagas:vagas,
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"&&JSON.stringify([fase(),modo(),cfg()])!==ultima)avisa();});
+  return {padrao:function(){return JSON.parse(JSON.stringify(PADRAO));},cfg:cfg,hoje:hoje,fase:fase,modo:modo,vagas:vagas,
     ano:function(){return cfg().ano;},data:function(n){var t=cfg().turnos[n-1];return t?t.data:"";},
     posse:function(){return cfg().posse||PADRAO.posse;},chave:function(n){return cfg().ano+"-"+n;},
     rotulo:rotulo,curto:curto,cabecalho:cabecalho,nomes:nomes,onde:onde,finalistas:finalistas,consultar:consultar,
@@ -156,4 +172,4 @@ window.Calendario=(function(){
 
 /* Colinha fora do ar: interruptor "colinha" do RootifyONE (Controle dos apps) desligado OU pós-eleição pelo calendário.
    O interruptor vale por cima nos dois sentidos: desligado esconde em qualquer fase; religado, ela volta no 1º e no 2º turno */
-window.colinhaOff=function(){return !!((window.SolverRecursos&&!SolverRecursos.ligado("colinha",true))||(window.Calendario&&Calendario.fase()==="pos"));};
+window.colinhaOff=function(){return !!((window.SolverRecursos&&!SolverRecursos.ligado("colinha",true))||(window.Calendario&&typeof Calendario.fase()!=="number"));};

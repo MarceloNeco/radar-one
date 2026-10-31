@@ -1,47 +1,196 @@
 {
   "formato": 1,
   "app": "eleicoes-2026",
-  "versao": "2.6.3",
+  "versao": "2.6.5",
   "atualizado": "2026-10-31",
   "nota": {
-    "pt": "O que este app lê do Controle dos apps do RootifyONE (recursos/global.json e recursos/eleicoes-2026.json). Desligado o AssistONE, somem o botão, o balão, as dicas e os itens do ☰ que só abrem o assistente (Procurar, AssistONE, Tour rápido). O calendário eleitoral (eleicao.calendario) diz o ano, os turnos, as datas, os cargos de cada turno, onde há 2º turno e a fase; sem ele, vale o padrão de fábrica abaixo (eleição de 2026).",
-    "en": "What this app reads from RootifyONE's App control (recursos/global.json and recursos/eleicoes-2026.json). With AssistONE off, the button, the balloon, the tips and the ☰ items that only open the assistant (Search, AssistONE, Quick tour) disappear. The election calendar (eleicao.calendario) sets the year, rounds, dates, offices per round, where there is a second round and the phase; without it, the factory default below (2026 election) applies."
+    "pt": "O que este app lê do Controle dos apps do RootifyONE (recursos/global.json e recursos/eleicoes-2026.json). Desligado o AssistONE, somem o botão, o balão, as dicas e os itens do ☰ que só abrem o assistente (Procurar, AssistONE, Tour rápido). O calendário eleitoral (eleicao.calendario) diz o ano, os turnos, as datas, os cargos de cada turno, onde há 2º turno e a fase; sem ele, vale o padrão de fábrica abaixo (eleição de 2026). Desde a 2.6.5 (F1-PR7, ADR 0010): eleicao.modo (manual ou automático) e eleicao.fase (vale no manual) são chaves próprias e a fase de dentro do calendário fica como reserva; atualizacao.cadencia aparece no ⓘ \"Sobre este relatório\"; o recurso indicadores esconde as entradas do destino Indicadores (só em manutenção). O que ainda não existe no site (mandatos, promessas, checagens, imprensa, scores, score.preset, cobertura.minima) entra nesta lista quando a tela que o usa chegar.",
+    "en": "What this app reads from RootifyONE's App control (recursos/global.json and recursos/eleicoes-2026.json). With AssistONE off, the button, the balloon, the tips and the ☰ items that only open the assistant (Search, AssistONE, Quick tour) disappear. The election calendar (eleicao.calendario) sets the year, rounds, dates, offices per round, where there is a second round and the phase; without it, the factory default below (2026 election) applies. Since 2.6.5 (F1-PR7, ADR 0010): eleicao.modo (manual or automatic) and eleicao.fase (applies in manual) are keys of their own and the phase inside the calendar stays as a fallback; atualizacao.cadencia appears in the \"About this report\" ⓘ; the indicadores feature hides the entries of the Indicators destination (maintenance only). What does not exist on the site yet (mandatos, promessas, checagens, imprensa, scores, score.preset, cobertura.minima) joins this list when the screen that uses it arrives."
   },
   "recursos": [
     "assistone",
-    {"id": "eleicoes", "padrao": true, "nome": {"pt": "Eleições (módulo eleitoral)", "en": "Elections (electoral module)"}, "onde": {"pt": "Entrada contextual em Hoje, item do ☰, busca e AssistONE; telas Colinha, Presidência, Congresso (afinidade), planos, macrotemas, posições e prioridades. Desligado: vira arquivo histórico acessível por link direto; nenhum infográfico ou comparador é afetado.", "en": "Contextual entry on Today, ☰ item, search and AssistONE; Cheat sheet, Presidency, Congress (affinity), plans, macro-themes, positions and priorities screens. Off: becomes a historical archive reachable by direct link; no chart or comparator is affected."}},
-    { "id": "colinha", "nome": { "pt": "Colinha da eleição", "en": "Election cheat sheet" }, "onde": { "pt": "Destaque no início, botão na barra do celular, item do menu de partes, ☰, busca, AssistONE e o aviso \"Novidade!\". Desligada, #colinha volta para o início. No pós-eleição (calendário) ela some sozinha.", "en": "Highlight on the start screen, phone bar button, parts menu item, ☰, search, AssistONE and the \"New!\" notice. When off, #colinha goes back to the start screen. After the election (calendar) it hides on its own." } }
+    {
+      "id": "eleicoes",
+      "padrao": true,
+      "nome": {
+        "pt": "Eleições (módulo eleitoral)",
+        "en": "Elections (electoral module)"
+      },
+      "onde": {
+        "pt": "Entrada contextual em Hoje, item do ☰, busca e AssistONE; telas Colinha, Presidência, Congresso (afinidade), planos, macrotemas, posições e prioridades. Desligado: vira arquivo histórico acessível por link direto; nenhum infográfico ou comparador é afetado.",
+        "en": "Contextual entry on Today, ☰ item, search and AssistONE; Cheat sheet, Presidency, Congress (affinity), plans, macro-themes, positions and priorities screens. Off: becomes a historical archive reachable by direct link; no chart or comparator is affected."
+      }
+    },
+    {
+      "id": "colinha",
+      "nome": {
+        "pt": "Colinha da eleição",
+        "en": "Election cheat sheet"
+      },
+      "onde": {
+        "pt": "Destaque no início, botão na barra do celular, item do menu de partes, ☰, busca, AssistONE e o aviso \"Novidade!\". Desligada, #colinha volta para o início. No pós-eleição (calendário) ela some sozinha.",
+        "en": "Highlight on the start screen, phone bar button, parts menu item, ☰, search, AssistONE and the \"New!\" notice. When off, #colinha goes back to the start screen. After the election (calendar) it hides on its own."
+      }
+    },
+    {
+      "id": "indicadores",
+      "padrao": true,
+      "nome": {
+        "pt": "Indicadores (infográficos, comparadores e marcos)",
+        "en": "Indicators (charts, comparators and milestones)"
+      },
+      "onde": {
+        "pt": "Destino Indicadores: as 43 entradas do índice, Sobrepor indicadores (2 a 6 séries), comparador de marcos regulatórios, busca e filtros. Desligado só em manutenção: a diretriz do produto é que fora da eleição tudo isto continua ativo (T08).",
+        "en": "Indicators destination: the 43 index entries, Overlay indicators (2 to 6 series), regulatory milestones comparator, search and filters. Off only for maintenance: the product rule is that outside elections all of this stays on (T08)."
+      }
+    }
   ],
   "comportamentos": [
     "assistone.dicas",
     {
       "id": "cofre.proteger",
       "tipo": "sim-nao",
-      "nome": { "pt": "🔐 Pedir o PIN do cofre ao abrir", "en": "🔐 Ask for the vault PIN on opening" },
-      "onde": { "pt": "Ao abrir e recarregar o site, quando o cofre tem alguma chave (mesmo de outro app). Desligado (padrão): o site abre sem PIN, e o PIN só aparece ao tocar ▶ com uma voz da internet; \"Agora não\" segue com a voz do aparelho. Vale da próxima abertura do site.", "en": "When opening and reloading the site, if the vault holds any key (even another app's). Off (default): the site opens without a PIN, which only shows up when tapping ▶ with an online voice; \"Not now\" continues with the device voice. Applies from the next time the site opens." },
+      "nome": {
+        "pt": "🔐 Pedir o PIN do cofre ao abrir",
+        "en": "🔐 Ask for the vault PIN on opening"
+      },
+      "onde": {
+        "pt": "Ao abrir e recarregar o site, quando o cofre tem alguma chave (mesmo de outro app). Desligado (padrão): o site abre sem PIN, e o PIN só aparece ao tocar ▶ com uma voz da internet; \"Agora não\" segue com a voz do aparelho. Vale da próxima abertura do site.",
+        "en": "When opening and reloading the site, if the vault holds any key (even another app's). Off (default): the site opens without a PIN, which only shows up when tapping ▶ with an online voice; \"Not now\" continues with the device voice. Applies from the next time the site opens."
+      },
       "padrao": false
     },
     {
+      "id": "eleicao.modo",
+      "tipo": "lista",
+      "opcoes": [
+        "manual",
+        "automatico"
+      ],
+      "padrao": "automatico",
+      "nome": {
+        "pt": "Ciclo eleitoral: manual ou automático",
+        "en": "Election cycle: manual or automatic"
+      },
+      "onde": {
+        "pt": "MANUAL: o administrador escolhe a fase em eleicao.fase e nada muda sozinho. AUTOMÁTICO: a fase vem do calendário (eleicao.calendario) pela data de Brasília e o robô do repositório de dados atualiza TSE, notícias e APIs na cadência de atualizacao.cadencia; passada a eleição, colinha e eleições apagam e ficam só indicadores e acompanhamento. Lido pelo Calendario (fase) e pelos robôs (workflow do repositório de dados lê o recursos/<app>.json publicado).",
+        "en": "MANUAL: the administrator picks the phase in eleicao.fase and nothing changes by itself. AUTOMATIC: the phase comes from the calendar (eleicao.calendario) by Brasília date and the data-repository robot refreshes TSE, news and APIs at the atualizacao.cadencia pace; once the election is over, cheat sheet and elections switch off and only indicators and monitoring remain. Read by Calendario (phase) and by the robots (the data-repository workflow reads the published recursos/<app>.json)."
+      }
+    },
+    {
+      "id": "eleicao.fase",
+      "tipo": "lista",
+      "opcoes": [
+        "auto",
+        "pre-campanha",
+        "1",
+        "2",
+        "pos",
+        "acompanhamento"
+      ],
+      "padrao": "auto",
+      "nome": {
+        "pt": "Fase eleitoral (vale no modo manual)",
+        "en": "Election phase (applies in manual mode)"
+      },
+      "onde": {
+        "pt": "Início (linha de cima), Colinha (cargos do turno), Presidência → Mandato, destaque de Eleições em Hoje. \"auto\" = pela data; \"pre-campanha\" = eleição ligada sem Colinha; \"1\" e \"2\" = turnos; \"pos\" = eleição encerrada com Colinha escondida; \"acompanhamento\" = só indicadores e mandatos, como se o recurso eleicoes estivesse desligado, sem desligá-lo. Hoje a fase mora dentro de eleicao.calendario.fase; na F1 esta chave vence aquela, e aquela continua lida como reserva (ver ADR 0010).",
+        "en": "Start (top line), Cheat sheet (round offices), Presidency → In office, Elections highlight on Today. \"auto\" = by date; \"pre-campanha\" = election on without the cheat sheet; \"1\" and \"2\" = rounds; \"pos\" = election over with the cheat sheet hidden; \"acompanhamento\" = indicators and terms only, as if the eleicoes feature were off, without switching it off. Today the phase lives inside eleicao.calendario.fase; in F1 this key wins over that one, which stays read as a fallback (see ADR 0010)."
+      }
+    },
+    {
       "id": "eleicao.calendario",
-      "nome": { "pt": "Calendário eleitoral", "en": "Election calendar" },
-      "onde": { "pt": "Colinha (cargos de cada turno, finalistas do 2º turno), Início (data e turno) e Presidência → Mandato (posse e datas). JSON: ano, fase (\"auto\", \"1\", \"2\" ou \"pos\"), tse, turnos, segundoTurno (manual, por cargo e por lugar), posse e cargos. Cada campo enviado vence o de fábrica.", "en": "Cheat sheet (offices per round, second-round finalists), Start (date and round) and Presidency → In office (inauguration and dates). JSON: ano, fase (\"auto\", \"1\", \"2\" or \"pos\"), tse, turnos, segundoTurno (manual, per office and place), posse and cargos. Each field sent beats the factory one." },
+      "nome": {
+        "pt": "Calendário eleitoral",
+        "en": "Election calendar"
+      },
+      "onde": {
+        "pt": "Colinha (cargos de cada turno, finalistas do 2º turno), Início (data e turno), Presidência → Mandato (posse e datas) e a tela Resultado. JSON: ano, tse, turnos, segundoTurno (manual, por cargo e por lugar), posse e cargos; \"fase\" continua aceita por compatibilidade, mas desde a 2.6.5 o modo e a fase são as chaves eleicao.modo e eleicao.fase (ADR 0010). O calendário é dado, não código: 2028 entra com os cargos P2 (prefeito, TSE 11) e V (vereador, TSE 13) e \"lugar\":\"municipio\". Cada campo enviado vence o de fábrica.",
+        "en": "Cheat sheet (offices per round, second-round finalists), Start (date and round), Presidency → In office (inauguration and dates) and the Results screen. JSON: ano, tse, turnos, segundoTurno (manual, per office and place), posse and cargos; \"fase\" is still accepted for compatibility, but since 2.6.5 the mode and the phase are the keys eleicao.modo and eleicao.fase (ADR 0010). The calendar is data, not code: 2028 comes in with offices P2 (mayor, TSE 11) and V (councillor, TSE 13) and \"lugar\":\"municipio\". Each field sent wins over the factory default."
+      },
       "padrao": {
         "ano": 2026,
         "fase": "auto",
         "tse": "ele2026",
         "turnos": [
-          { "data": "2026-10-04", "cargos": ["F", "E", "S", "S", "G", "P"] },
-          { "data": "2026-10-25", "cargos": ["G", "P"] }
+          {
+            "data": "2026-10-04",
+            "cargos": [
+              "F",
+              "E",
+              "S",
+              "S",
+              "G",
+              "P"
+            ]
+          },
+          {
+            "data": "2026-10-25",
+            "cargos": [
+              "G",
+              "P"
+            ]
+          }
         ],
         "segundoTurno": {},
         "posse": "2027-01-05",
         "cargos": {
-          "P": { "pt": "Presidente", "en": "President", "digitos": 2, "tse": 1, "lugar": "br" },
-          "G": { "pt": "Governador(a)", "en": "Governor", "digitos": 2, "tse": 3 },
-          "S": { "pt": "Senador(a)", "en": "Senator", "digitos": 3, "tse": 5 },
-          "F": { "pt": "Deputado(a) federal", "en": "Federal deputy", "digitos": 4, "tse": 6 },
-          "E": { "pt": "Deputado(a) estadual", "en": "State deputy", "digitos": 5, "tse": 7, "DF": { "pt": "Deputado(a) distrital", "en": "District deputy", "tse": 8 } }
+          "P": {
+            "pt": "Presidente",
+            "en": "President",
+            "digitos": 2,
+            "tse": 1,
+            "lugar": "br"
+          },
+          "G": {
+            "pt": "Governador(a)",
+            "en": "Governor",
+            "digitos": 2,
+            "tse": 3
+          },
+          "S": {
+            "pt": "Senador(a)",
+            "en": "Senator",
+            "digitos": 3,
+            "tse": 5
+          },
+          "F": {
+            "pt": "Deputado(a) federal",
+            "en": "Federal deputy",
+            "digitos": 4,
+            "tse": 6
+          },
+          "E": {
+            "pt": "Deputado(a) estadual",
+            "en": "State deputy",
+            "digitos": 5,
+            "tse": 7,
+            "DF": {
+              "pt": "Deputado(a) distrital",
+              "en": "District deputy",
+              "tse": 8
+            }
+          }
         }
+      }
+    },
+    {
+      "id": "atualizacao.cadencia",
+      "tipo": "json",
+      "nome": {
+        "pt": "Cadência de atualização por família de dados",
+        "en": "Refresh cadence per data family"
+      },
+      "onde": {
+        "pt": "Mostrada ao público em Cobertura e fontes e no rodapé de cada cartão (\"atualizado em\"), e lida pelos robôs do repositório de dados (um job por família; o workflow lê o recursos/<app>.json publicado e pula a família cuja cadência não venceu ou está \"manual\"). Valores por chave: \"diaria\", \"semanal\", \"mensal\", \"horaria-em-sessao\" (só congresso), \"1-6h-na-janela\" (só judiciario-eleitoral), \"manual\" (desligada). O cron do Actions não garante minuto: é cadência, não SLA.",
+        "en": "Shown to the public in Coverage and sources and in each card's footer (\"updated on\"), and read by the data-repository robots (one job per family; the workflow reads the published recursos/<app>.json and skips a family whose cadence is not due or is \"manual\"). Values per key: \"diaria\", \"semanal\", \"mensal\", \"horaria-em-sessao\" (congresso only), \"1-6h-na-janela\" (judiciario-eleitoral only), \"manual\" (off). The Actions cron does not guarantee the minute: it is a cadence, not an SLA."
+      },
+      "padrao": {
+        "noticias": "manual",
+        "indicadores": "diaria",
+        "congresso": "diaria",
+        "esferas": "diaria",
+        "judiciario-eleitoral": "diaria"
       }
     }
   ]

@@ -15,12 +15,13 @@
     12. saiba.js (F1-PR5c: o ⓘ abre a explicação pela janela comum; Entendi, Esc e Voltar fecham; créditos e ressalvas continuam lá; em inglês também)
     13. links-antigos.js (F1-PR6: cada # do app de 2026 abre a vista certa; com o interruptor "eleicoes" desligado, Hoje, Explorar e o ☰ ficam sem a eleição e o módulo não carrega; um link direto ainda abre)
     14. resultado.js (F1-PR6b: tela Resultado e apuração com o TSE simulado: turno, cargo e lugar, tabela por votos, eleito(a), link da fonte, link direto, 404 e cópia guardada sem rede)
+    15. ciclo.js (F1-PR7, ADR 0010: modo manual ou automático, fases pré-campanha/pós/acompanhamento pelo relógio simulado, calendário de 2028, recurso indicadores desligado, recursos-do-app.json e cadência)
    Uso: node teste/rodar.js   (precisa do Playwright: npm install -D playwright) */
 const { spawnSync } = require('child_process');
 const path = require('path');
 let falhou = false;
 
-for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js', 'links-antigos.js', 'resultado.js']) {
+for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js', 'links-antigos.js', 'resultado.js', 'ciclo.js']) {
   console.log('\n▶ ' + t);
   if (spawnSync(process.execPath, [path.join(__dirname, t)], { stdio: 'inherit' }).status !== 0) falhou = true;
 }
