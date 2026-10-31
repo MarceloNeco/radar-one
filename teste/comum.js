@@ -87,4 +87,8 @@ function relatorio() {
   const falhas = [];
   return { falhas, conferir(ok, msg) { if (!ok) { falhas.push(msg); process.stdout.write('  ✗ ' + msg + '\n'); } else process.stdout.write('  ✓ ' + msg + '\n'); } };
 }
-module.exports = { chromium, servir, novoContexto, semear, passaPin, comProtecao, PAGINAS, relatorio };
+/* o shell (modulos/rotas.js) chega depois dos outros módulos e, quando o endereço vem sem #, troca a tela para #hoje:
+   quem vai tocar num ▶ espera essa troca, senão resolve um botão da capa que some logo em seguida (CI mais lento, PR #29) */
+async function shellPronto(p) { await p.waitForFunction(() => !!(window.Rotas && location.hash), null, { timeout: 20000 }).catch(() => {}); }
+
+module.exports = { chromium, servir, novoContexto, semear, passaPin, comProtecao, PAGINAS, relatorio, shellPronto };
