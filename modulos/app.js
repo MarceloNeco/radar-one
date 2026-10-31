@@ -9,6 +9,7 @@ await import('./principal.js');           // 5 PG e os infográficos
 await import('./voz.js');                 // 6 VozLeitor, VozPainel
 await import('./apoio.js');               // 7 CfgAcess, CfgAssist, PGShare
 await import('./saiba.js');               // 7c o ⓘ que abre a explicação (F1-PR5c)
+await import('./offline.js');             // 7d usar sem internet e atalho na tela inicial (F1-PR8): sw.js, selo, Configurações
 /* F1-PR6: o módulo Eleições (8 CongressoV2 e 9 Colinha) só carrega quando o interruptor "eleicoes" do RootifyONE está
    ligado (padrão) ou quando um link direto pede uma tela da eleição; Rotas.eleicoes() carrega uma vez só, sob demanda.
    Os ouvintes ficam aqui, depois da base, porque o módulo depende de PG e EJ */

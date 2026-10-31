@@ -12,3 +12,10 @@ F2, quando cada família de dados ganha um job próprio no repositório `radar-o
 
 Regras: rodar sempre com `python3 -I`; nenhuma chave no código (chaves de API só nos *secrets* do repositório de dados);
 cada robô é idempotente (rodar duas vezes dá o mesmo resultado).
+
+## Entrega (F1-PR8)
+
+- `gera-offline.py` — refaz `offline.json` (a lista que "Salvar no aparelho" baixa, com o tamanho de cada arquivo).
+- `gera-versoes.py` — refaz `versoes.json` a partir de `dados/dados.json` e `dados/en/dados.json` (data e hora do commit da versão).
+
+Rodar os dois da raiz a cada versão nova, depois de mudar o número em `dados/*.json` e o `VERSAO` do `sw.js`.

@@ -18,6 +18,8 @@ window.IDIOMA=(function(){try{var q=new URLSearchParams(location.search).get("la
 <link rel="modulepreload" href="modulos/eleicoes/colinha.js">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0C5E57">
 <link rel="alternate" hreflang="pt-BR" href="./">
 <link rel="alternate" hreflang="en-US" href="./?lang=en">
 <link rel="alternate" hreflang="x-default" href="./">
@@ -2493,7 +2495,14 @@ section.ck{padding-block:18px 120px;max-width:720px}
 .ck-fora{font-size:13.5px;color:var(--ink);margin:4px 0 6px}
 .ck-fora::before{content:"⚠ "}
 html[data-colinha-pos] [data-recurso~="colinha"]{display:none}
-html[data-fase="acompanhamento"] [data-recurso~="eleicoes"]{display:none}   /* F1-PR7 (ADR 0010): da posse em diante a eleição sai da navegação; o link direto continua abrindo */
+html[data-fase="acompanhamento"] [data-recurso~="eleicoes"]{display:none}
+/* ===== usar sem internet (F1-PR8): selo e aviso da Samsung ===== */
+.offline-selo{position:fixed;left:50%;bottom:calc(var(--nav-h,64px) + 10px);transform:translateX(-50%);z-index:70;max-width:calc(100vw - 32px);padding:8px 14px;border-radius:999px;background:var(--ink);color:var(--bg);font:600 13px/1.3 var(--f-b);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.offline-selo[hidden]{display:none}
+@media (min-width:1024px){.offline-selo{bottom:16px}}
+.off-aviso{margin:14px 0 18px;padding:14px 16px;border:1px solid var(--warn);border-radius:14px;background:var(--warn-bg);font-size:14.5px;line-height:1.5}
+.off-aviso p{margin:6px 0 10px}.off-aviso .sb-l{display:flex;flex-wrap:wrap;gap:8px}.off-aviso a.chip-cat{text-decoration:none}
+#off-msg ol{margin:8px 0;padding-left:20px}#off-msg a.chip-cat{display:inline-block;text-decoration:none;margin-top:6px}   /* F1-PR7 (ADR 0010): da posse em diante a eleição sai da navegação; o link direto continua abrindo */
 .ck-lista{display:grid;gap:10px;margin-top:14px}
 .ck-slot{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;min-height:84px}
 .ck-slot.vazio{border-style:dashed;cursor:pointer}
