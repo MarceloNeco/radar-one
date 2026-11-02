@@ -4,12 +4,12 @@
  "resultado": {
   "bol": "2º TURNO",
   "lul": "ELEITO",
-  "cai": "NÃO ELEITO",
+  "zem": "NÃO ELEITO",
   "mar": "NÃO ELEITO",
   "ren": "NÃO ELEITO",
   "cur": "NÃO ELEITO",
-  "rui": "NÃO ELEITO",
-  "zem": "NÃO ELEITO"
+  "cai": "NÃO ELEITO",
+  "rui": "NÃO ELEITO"
  },
  "segundo_turno": [
   "bol"
