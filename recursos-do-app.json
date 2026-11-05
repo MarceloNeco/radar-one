@@ -1,8 +1,8 @@
 {
   "formato": 1,
   "app": "eleicoes-2026",
-  "versao": "2.6.5",
-  "atualizado": "2026-10-31",
+  "versao": "2.6.9",
+  "atualizado": "2026-11-05",
   "nota": {
     "pt": "O que este app lê do Controle dos apps do RootifyONE (recursos/global.json e recursos/eleicoes-2026.json). Desligado o AssistONE, somem o botão, o balão, as dicas e os itens do ☰ que só abrem o assistente (Procurar, AssistONE, Tour rápido). O calendário eleitoral (eleicao.calendario) diz o ano, os turnos, as datas, os cargos de cada turno, onde há 2º turno e a fase; sem ele, vale o padrão de fábrica abaixo (eleição de 2026). Desde a 2.6.5 (F1-PR7, ADR 0010): eleicao.modo (manual ou automático) e eleicao.fase (vale no manual) são chaves próprias e a fase de dentro do calendário fica como reserva; atualizacao.cadencia aparece no ⓘ \"Sobre este relatório\"; o recurso indicadores esconde as entradas do destino Indicadores (só em manutenção). O que ainda não existe no site (mandatos, promessas, checagens, imprensa, scores, score.preset, cobertura.minima) entra nesta lista quando a tela que o usa chegar.",
     "en": "What this app reads from RootifyONE's App control (recursos/global.json and recursos/eleicoes-2026.json). With AssistONE off, the button, the balloon, the tips and the ☰ items that only open the assistant (Search, AssistONE, Quick tour) disappear. The election calendar (eleicao.calendario) sets the year, rounds, dates, offices per round, where there is a second round and the phase; without it, the factory default below (2026 election) applies. Since 2.6.5 (F1-PR7, ADR 0010): eleicao.modo (manual or automatic) and eleicao.fase (applies in manual) are keys of their own and the phase inside the calendar stays as a fallback; atualizacao.cadencia appears in the \"About this report\" ⓘ; the indicadores feature hides the entries of the Indicators destination (maintenance only). What does not exist on the site yet (mandatos, promessas, checagens, imprensa, scores, score.preset, cobertura.minima) joins this list when the screen that uses it arrives."
@@ -19,6 +19,18 @@
       "onde": {
         "pt": "Entrada contextual em Hoje, item do ☰, busca e AssistONE; telas Colinha, Presidência, Congresso (afinidade), planos, macrotemas, posições e prioridades. Desligado: vira arquivo histórico acessível por link direto; nenhum infográfico ou comparador é afetado.",
         "en": "Contextual entry on Today, ☰ item, search and AssistONE; Cheat sheet, Presidency, Congress (affinity), plans, macro-themes, positions and priorities screens. Off: becomes a historical archive reachable by direct link; no chart or comparator is affected."
+      }
+    },
+    {
+      "id": "mandatos",
+      "padrao": true,
+      "nome": {
+        "pt": "Mandatos (Presidência e Congresso)",
+        "en": "Terms in office (Presidency and Congress)"
+      },
+      "onde": {
+        "pt": "Cartão \"Acompanhar o mandato\" em Hoje, entradas em Explorar e as telas Presidência → Mandato (#mandato) e Quem está no Congresso (#congresso/mandato). Desligado só em manutenção: as entradas somem e o link direto continua abrindo.",
+        "en": "\"Follow the term in office\" card on Today, entries in Explore and the screens Presidency → In office (#mandato) and Who is in Congress (#congresso/mandato). Off only for maintenance: the entries disappear and the direct link keeps working."
       }
     },
     {
