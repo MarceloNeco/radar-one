@@ -82,7 +82,10 @@ const visivel = (p, sel) => p.evaluate(s => { const e = document.querySelector(s
     await ctx.close(); }
   /* 5. offline.json e versoes.json batem com o repositório */
   { const o = JSON.parse(fs.readFileSync(path.join(RAIZ, 'offline.json'), 'utf8')), dados = JSON.parse(fs.readFileSync(path.join(RAIZ, 'dados/dados.json'), 'utf8'));
-    const ruins = o.arquivos.filter(a => { try { return fs.statSync(path.join(RAIZ, a.a)).size !== a.b; } catch (e) { return true; } }).map(a => a.a);
+    /* as pastas que o robô diário (congresso-sync.yml) regrava mudam de tamanho todo dia: delas só se exige que o arquivo exista;
+       o robô refaz o offline.json ao gravar, mas um PR aberto antes do robô ainda traria o tamanho de ontem no checkout do CI */
+    const doRobo = a => /^(presidencia|cola|congresso)\//.test(a);
+    const ruins = o.arquivos.filter(a => { try { const t = fs.statSync(path.join(RAIZ, a.a)).size; return !doRobo(a.a) && t !== a.b; } catch (e) { return true; } }).map(a => a.a);
     const temModulos = ['index.html', 'modulos/app.js', 'modulos/offline.js', 'dados/ig.json', 'dados/en/ig.json', 'i18n/en.json', 'fontes/nunito-latin.woff2', 'manifest.json'].filter(f => !o.arquivos.some(a => a.a === f));
     conferir(o.versao === dados.versao && ruins.length === 0 && temModulos.length === 0, 'offline.json: versão ' + o.versao + ', ' + o.arquivos.length + ' arquivos iguais aos do repositório' + (ruins.length ? ' (diferentes: ' + ruins.slice(0, 3).join(', ') + ')' : '') + (temModulos.length ? ' (faltam: ' + temModulos.join(', ') + ')' : ''));
     const v = JSON.parse(fs.readFileSync(path.join(RAIZ, 'versoes.json'), 'utf8')), en = JSON.parse(fs.readFileSync(path.join(RAIZ, 'dados/en/dados.json'), 'utf8'));
