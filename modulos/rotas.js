@@ -58,6 +58,10 @@ function pinta(){
 function cartaoEleicao(){
   var t=document.getElementById("hoje-el-t"),s=document.getElementById("hoje-el-s");if(!t||!window.Calendario)return;
   try{t.textContent=Calendario.cabecalho();
+    /* 05/11/2026: o cartão do mandato ("Presidência · mandato 2027-2030") e a linha do arquivo ("Arquivo da eleição 2026 ›") vêm do calendário */
+    var md=document.getElementById("hoje-md-t"),li=document.getElementById("hoje-el-linha"),p=String(Calendario.posse()||"").slice(0,4);
+    if(md&&p)md.textContent=T("Presidência · mandato ","Presidency · term ")+p+"-"+(+p+3);
+    if(li)li.textContent=T("Arquivo da eleição ","Election archive ")+Calendario.ano()+" ›";
     /* F1-PR7: a linha de baixo acompanha a fase (ADR 0010): antes da eleição não há Colinha nem resultado para prometer */
     if(s){var f=Calendario.fase();s.textContent=f==="pre-campanha"?T("Candidaturas, planos e Congresso","Candidates, plans and Congress")
       :typeof f==="number"?T("Colinha, planos, Congresso e Presidência","Cheat sheet, plans, Congress and Presidency")

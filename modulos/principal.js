@@ -1095,22 +1095,9 @@ document.getElementById("prog").textContent=TR("prog-1")+D.macrotemas.length+
   TR("prog-2")+cit+TR("prog-3")+verb+TR("prog-4")+verb+TR("prog-5");
 (function(){
   function br(iso){var p=String(iso||"").split("-");return p.length===3?p[2]+"/"+p[1]+"/"+p[0]:iso;}
-  function ajustesTxt(){
-    var p=[];
-    if(PREFS.ordem==="sobrenome")p.push(TR("aj-sobrenome"));
-    var n=Object.keys(PREFS.cores||{}).length;
-    if(n)p.push(n===1?TR("aj-cor1"):(n+TR("aj-corN")));
-    if(PREFS.tema==="claro")p.push(TR("aj-claro"));
-    if(PREFS.tema==="escuro")p.push(TR("aj-escuro"));
-    if(PREFS.marcos===false)p.push(TR("aj-marcos"));
-    if(PREFS.fotos===false)p.push(TR("aj-fotos"));
-    if(PREFS.som===false)p.push(TR("aj-som"));
-    if(PREFS.pesos)p.push(TR("aj-pesos"));
-    return p.length?(TR("aj-pref")+p.join(", ")):"";
-  }
   function escreveVer(){
     document.getElementById("ver").textContent=
-      TR("ver-v")+D.versao+TR("ver-criado")+dataLonga(D.criado_em)+TR("ver-atual")+dataLonga(D.atualizado_em)+ajustesTxt();
+      TR("ver-v")+D.versao+TR("ver-criado")+dataLonga(D.criado_em)+TR("ver-atual")+dataLonga(D.atualizado_em);   /* 05/11/2026: os ajustes do navegador saíram da linha (ficam nas Configurações) */
   }
   escreveVer();
   window.escreveVer=escreveVer;

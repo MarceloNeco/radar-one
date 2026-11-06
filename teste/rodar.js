@@ -19,12 +19,13 @@
     16. offline.js (F1-PR8: manifesto e ícones, service worker de verdade, Salvar no aparelho, segunda visita sem rede com o selo, aviso da Samsung, iPhone, offline.json e versoes.json)
     17. migracao.js (F1-PR9, ADR 0008: planos2026:* → radar-one:* com esquema, duplo gravar ao trocar de tela, abrir de novo não reconverte, Voltar para a versão anterior)
     18. aliases.js (F1-PR10, ADR 0009: cada âncora antiga de dados/aliases.json abre a vista certa e rola até o bloco; as páginas de redirecionamento preservam o #)
+    19. hoje.js (05/11/2026: Hoje começa pelo mandato, a eleição encerrada vira linha, Explorar com o mandato primeiro, rodapé de uma linha, versão sem os ajustes)
    Uso: node teste/rodar.js   (precisa do Playwright: npm install -D playwright) */
 const { spawnSync } = require('child_process');
 const path = require('path');
 let falhou = false;
 
-for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js', 'links-antigos.js', 'resultado.js', 'ciclo.js', 'offline.js', 'migracao.js', 'aliases.js']) {
+for (const t of ['idioma.js', 'caracterizacao.js', 'voz-cofre.js', 'colinha-interruptor.js', 'janelas.js', 'cofre-protecao.js', 'calendario.js', 'cofre-entrada.js', 'colinha-barra.js', 'dados-offline.js', 'navegacao.js', 'saiba.js', 'links-antigos.js', 'resultado.js', 'ciclo.js', 'offline.js', 'migracao.js', 'aliases.js', 'hoje.js']) {
   console.log('\n▶ ' + t);
   if (spawnSync(process.execPath, [path.join(__dirname, t)], { stdio: 'inherit' }).status !== 0) falhou = true;
 }

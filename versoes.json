@@ -2,6 +2,19 @@
   "app": "radar-one",
   "versoes": [
     {
+      "versao": "2.6.9",
+      "data": "05/Nov/2026",
+      "hora": "14:34:51",
+      "itens": {
+        "pt": [
+          "Hoje começa pelo mandato: o cartão \"Acompanhar o mandato\" (Presidência) e \"Quem está no Congresso\" vêm primeiro; a eleição encerrada vira uma linha discreta no fim (\"Arquivo da eleição 2026\"). Menos texto em Hoje, em Explorar e no rodapé"
+        ],
+        "en": [
+          "Today starts with the term in office: the \"Follow the term in office\" card (Presidency) and \"Who is in Congress\" come first; the finished election becomes a discreet line at the end (\"Election archive 2026\"). Less text on Today, Explore and the footer"
+        ]
+      }
+    },
+    {
       "versao": "2.6.8",
       "data": "31/Out/2026",
       "hora": "12:40:42",
