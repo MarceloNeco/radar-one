@@ -1351,14 +1351,17 @@ thead .i{vertical-align:0;margin-left:5px;width:15px;height:15px;font-size:9.5px
 <div class="view dest" id="v-hoje">
   <div class="wrap">
     <h1 class="dest-t">Hoje</h1>
-    <p class="dest-s">O que mudou nas pessoas e nos temas que você acompanha vai aparecer aqui.</p>
-    <a class="cartao cartao-el" id="hoje-eleicao" href="#hub" data-recurso="eleicoes"><span class="ic" aria-hidden="true">🗳️</span><span><span class="eyebrow" id="hoje-el-t">Eleição 2026</span><b id="hoje-el-s">Arquivo da eleição: resultado, planos, Colinha e Congresso</b></span><span class="seta" aria-hidden="true">›</span></a>
+    <p class="dest-s">Quem foi eleito e o que está sendo feito.</p>
+    <a class="cartao cartao-mandato" id="hoje-mandato" href="#mandato" data-recurso="mandatos"><span class="ic" aria-hidden="true">🏛️</span><span><span class="eyebrow" id="hoje-md-t">Presidência</span><b>Acompanhar o mandato</b><small>Posse, o que foi prometido e o que foi feito.</small></span><span class="seta" aria-hidden="true">›</span></a>
+<a class="cartao cartao-el" id="hoje-eleicao" href="#hub" data-recurso="eleicoes"><span class="ic" aria-hidden="true">🗳️</span><span><span class="eyebrow" id="hoje-el-t">Eleição 2026</span><b id="hoje-el-s">Arquivo da eleição: resultado, planos, Colinha e Congresso</b></span><span class="seta" aria-hidden="true">›</span></a>
     <h2 class="dest-h">Comece por um nome, tema ou território</h2>
     <div class="atalhos">
+      <a class="atalho" href="#congresso/mandato" data-recurso="mandatos"><span class="ic" aria-hidden="true">⚖️</span><span><b>Quem está no Congresso</b><small>Eleitos do seu estado, presença e votações</small></span></a>
       <a class="atalho" href="#explorar"><span class="ic" aria-hidden="true">🔎</span><span><b>Explorar</b><small>Pessoas, mandatos e temas</small></span></a>
       <a class="atalho" href="#infograficos" data-recurso="indicadores"><span class="ic" aria-hidden="true">📈</span><span><b>Indicadores</b><small>43 infográficos e comparadores</small></span></a>
       <a class="atalho" href="#salvos"><span class="ic" aria-hidden="true">⭐</span><span><b>Salvos</b><small>Seus favoritos e painéis</small></span></a>
     </div>
+    <p class="hoje-arquivo" data-recurso="eleicoes"><a href="#hub" id="hoje-el-linha">Arquivo da eleição</a></p>
   </div>
 </div>
 <div class="view dest" id="v-explorar">
@@ -1366,12 +1369,13 @@ thead .i{vertical-align:0;margin-left:5px;width:15px;height:15px;font-size:9.5px
     <h1 class="dest-t">Explorar</h1>
     <p class="dest-s">Comece por um nome, tema ou território.</p>
     <div class="atalhos">
-      <a class="atalho" href="#resultado" data-recurso="eleicoes"><span class="ic" aria-hidden="true">🗳️</span><span><b>Resultado da eleição de 2026</b><small>Votos e % por candidatura, por cargo e lugar</small></span></a>
-      <a class="atalho" href="#congresso/mandato" data-recurso="eleicoes"><span class="ic" aria-hidden="true">⚖️</span><span><b>Quem está no Congresso</b><small>Eleitos do seu estado, presença e votações</small></span></a>
+      <a class="atalho" href="#mandato" data-recurso="mandatos"><span class="ic" aria-hidden="true">🏛️</span><span><b>Acompanhar o mandato</b><small>Posse, o que foi prometido e o que foi feito.</small></span></a>
+      <a class="atalho" href="#congresso/mandato" data-recurso="mandatos"><span class="ic" aria-hidden="true">⚖️</span><span><b>Quem está no Congresso</b><small>Eleitos do seu estado, presença e votações</small></span></a>
       <a class="atalho" href="#macrotemas" data-recurso="eleicoes"><span class="ic" aria-hidden="true">📑</span><span><b>Planos por tema</b><small>O que cada candidatura prometeu, tema a tema</small></span></a>
+      <a class="atalho" href="#resultado" data-recurso="eleicoes"><span class="ic" aria-hidden="true">🗳️</span><span><b>Resultado da eleição de 2026</b><small>Votos e % por candidatura, por cargo e lugar</small></span></a>
       <a class="atalho" href="#infograficos" data-recurso="indicadores"><span class="ic" aria-hidden="true">📈</span><span><b>Indicadores por nome</b><small>Procure uma série ou um comparador</small></span></a>
     </div>
-    <p class="dest-n">A busca por nome, cargo, partido e cidade chega em breve, junto com os dados dos mandatos.</p>
+    <p class="dest-n">Busca por nome, cargo, partido e cidade: em breve.</p>
   </div>
 </div>
 <div class="view dest" id="v-salvos">
@@ -1800,8 +1804,8 @@ thead .i{vertical-align:0;margin-left:5px;width:15px;height:15px;font-size:9.5px
 
 <footer class="foot"><div class="wrap in">
   <p><b>Sobre este relatório.</b> Comparação dos oito planos de governo da eleição presidencial de 2026, só a parte factual. <button class="ibtn-i" type="button" data-i="i-sobre" aria-label="Ler mais sobre o relatório, a finalidade, as correções e os créditos das fotos" aria-expanded="false" aria-controls="i-sobre">ⓘ</button></p>
-  <p>Nenhuma nota vira índice único. Não há ranking, nota geral nem recomendação de voto.</p>
   <div class="i-pop" id="i-sobre" hidden>
+    <p>Nenhuma nota vira índice único. Não há ranking, nota geral nem recomendação de voto.</p>
     <p>Comparação dos oito planos de governo registrados para a eleição presidencial de 2026, mandato 2027-2030. Publica só a parte factual: o trecho literal conferido no PDF, a página, o tipo, o grau de especificidade e as onze dimensões de forma. Os oito PDFs originais estão no repositório do projeto.</p>
     <p><b>Finalidade.</b> Trabalho de pesquisa feito por iniciativa particular, sem ligação com candidatura, partido, campanha, empresa ou órgão público. Não pede voto, não recomenda candidato e não faz ranking: publica o que está escrito nos planos, com a página de cada trecho, sob o mesmo critério para os oito. As escolhas editoriais (quais trechos citar, em que tema encaixar, quem agrupar no Currículo) estão na aba Método, porque é aí que este estudo pode errar.</p>
     <p><b>Correções e atualizações.</b> Este material pode ser corrigido ou atualizado a qualquer momento, sem aviso: trechos, datas, classificações e séries podem mudar quando aparece fonte melhor, dado revisado ou erro. O que está aqui vale para a versão indicada abaixo. O repositório é público para consulta e conferência; não aceita edição de terceiros.</p>
@@ -2623,8 +2627,14 @@ body{padding-bottom:calc(var(--nav-h) + 24px + env(safe-area-inset-bottom,0px))}
 .atalho b,.cartao b{display:block;font-weight:600}
 .atalho small,.cartao small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .cartao-el{margin:4px 0 8px;background:var(--surface-2)}
-.cartao-el .eyebrow{display:block;font-family:var(--f-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.cartao .eyebrow{display:block;font-family:var(--f-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
 .cartao .seta{margin-left:auto;color:var(--muted);font-size:22px}
+/* Hoje (05/11/2026, pedido do dono): o mandato é o primeiro e maior cartão; a eleição só é cartão enquanto está em curso */
+.cartao-mandato{margin:4px 0 8px;padding:18px 16px;background:var(--accent-soft);border-color:var(--accent)}
+.cartao-mandato b{font-size:19px}.cartao-mandato .ic{font-size:28px}
+.hoje-arquivo{display:none;margin:22px 0 0;font-size:14px}.hoje-arquivo a{color:var(--muted)}
+html[data-fase="pos"] .hoje-arquivo{display:block}
+html[data-fase="pos"] #hoje-eleicao{display:none}
 .dest-n{color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:18px}
 .rotas-aviso{position:fixed;left:50%;bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,8px);z-index:70;background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100vw - 32px);box-sizing:border-box;text-align:center}
 .rotas-aviso.on{opacity:1;transform:translate(-50%,0)}

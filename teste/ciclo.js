@@ -42,7 +42,8 @@ const grupos = async p => { await p.click('#nav-h'); await p.waitForTimeout(500)
     /* 1. automático, dia seguinte ao 2º turno: pós-eleição */
     { const { ctx, p } = await abrir(browser, arq, { data: '2026-10-26T15:00:00Z' }, erros);
       const t = await p.evaluate(() => (document.getElementById('hoje-el-t') || {}).textContent || '');
-      conferir(await attr(p, 'data-fase') === 'pos' && await temAttr(p, 'data-colinha-pos') && /encerrada|concluded/.test(t) && await vis(p, '#hoje-eleicao') === 1, L + 'automático em 26/10/2026: fase "pos", Colinha escondida, cartão "' + t + '" continua em Hoje');
+      const linha = await p.evaluate(() => (document.getElementById('hoje-el-linha') || {}).textContent || '');
+      conferir(await attr(p, 'data-fase') === 'pos' && await temAttr(p, 'data-colinha-pos') && /encerrada|concluded/.test(t) && await vis(p, '#hoje-eleicao') === 0 && await vis(p, '.hoje-arquivo') === 1 && /2026/.test(linha) && await vis(p, '#hoje-mandato') === 1, L + 'automático em 26/10/2026: fase "pos", Colinha escondida; em Hoje o mandato é o cartão e a eleição vira a linha "' + linha + '"');
       const cad = await p.evaluate(() => (document.getElementById('cadencia') || {}).textContent || '');
       conferir((en ? /indicators daily/ : /indicadores diária/).test(cad) && /manual/.test(cad), L + 'a cadência de atualização por família aparece no ⓘ Sobre este relatório: "' + cad.slice(0, 80) + '…"');
       await p.goto(BASE + '/' + arq + '#infograficos'); await p.waitForTimeout(800);
@@ -51,7 +52,7 @@ const grupos = async p => { await p.click('#nav-h'); await p.waitForTimeout(500)
     /* 2. automático, dia da posse: acompanhamento */
     { const { ctx, p } = await abrir(browser, arq, { data: '2027-01-05T15:00:00Z', largura: 390 }, erros);   /* celular: o ☰ existe */
       const g = await grupos(p);
-      conferir(await attr(p, 'data-fase') === 'acompanhamento' && await vis(p, '#hoje-eleicao') === 0 && !g.some(x => /Eleições 2026|Elections 2026/.test(x)) && await p.evaluate(() => typeof window.CongressoV2 === 'undefined'), L + 'automático na posse (05/01/2027): acompanhamento, sem cartão nem grupo da eleição, módulo fora (' + g.length + ' itens no ☰)');
+      conferir(await attr(p, 'data-fase') === 'acompanhamento' && await vis(p, '#hoje-eleicao') === 0 && await vis(p, '.hoje-arquivo') === 0 && await vis(p, '#hoje-mandato') === 1 && !g.some(x => /Eleições 2026|Elections 2026/.test(x)) && await p.evaluate(() => typeof window.CongressoV2 === 'undefined'), L + 'automático na posse (05/01/2027): acompanhamento, sem cartão nem linha da eleição, mandato em Hoje, módulo fora (' + g.length + ' itens no ☰)');
       await p.goto(BASE + '/' + arq + '#hub');
       const chegou = await p.waitForFunction(() => window.CongressoV2 && document.getElementById('v-hub').classList.contains('on'), null, { timeout: 15000 }).then(() => true, () => false);
       conferir(chegou, L + 'no acompanhamento, o link direto #hub ainda abre o arquivo da eleição');
@@ -66,7 +67,7 @@ const grupos = async p => { await p.click('#nav-h'); await p.waitForTimeout(500)
     /* 4. manual em pré-campanha: Eleições ligadas, Colinha escondida */
     { const { ctx, p } = await abrir(browser, arq, { data: '2026-09-01T15:00:00Z', comp: { 'eleicao.modo': 'manual', 'eleicao.fase': 'pre-campanha' } }, erros);
       const t = await p.evaluate(() => (document.getElementById('hoje-el-t') || {}).textContent || ''), sub = await p.evaluate(() => (document.getElementById('hoje-el-s') || {}).textContent || '');
-      conferir(await attr(p, 'data-fase') === 'pre-campanha' && await temAttr(p, 'data-colinha-pos') && await vis(p, '#hoje-eleicao') === 1 && /pré-campanha|pre-campaign/.test(t) && /Candidaturas|Candidates/.test(sub) && await p.evaluate(() => colinhaOff()), L + 'manual em pré-campanha: cartão "' + t + ' · ' + sub + '" em Hoje e Colinha escondida');
+      conferir(await attr(p, 'data-fase') === 'pre-campanha' && await temAttr(p, 'data-colinha-pos') && await vis(p, '#hoje-eleicao') === 1 && await vis(p, '.hoje-arquivo') === 0 && /pré-campanha|pre-campaign/.test(t) && /Candidaturas|Candidates/.test(sub) && await p.evaluate(() => colinhaOff()), L + 'manual em pré-campanha: cartão "' + t + ' · ' + sub + '" em Hoje (sem a linha do arquivo) e Colinha escondida');
       await ctx.close(); }
     /* 5. automático ignora eleicao.fase */
     { const { ctx, p } = await abrir(browser, arq, { data: '2026-09-01T15:00:00Z', comp: { 'eleicao.modo': 'automatico', 'eleicao.fase': '2' } }, erros);
