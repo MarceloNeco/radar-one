@@ -2,14 +2,14 @@
  "posse": "2027-01-05",
  "eleito": "lul",
  "resultado": {
-  "bol": "NÃO ELEITO",
   "lul": "ELEITO",
-  "cai": "NÃO ELEITO",
   "cur": "NÃO ELEITO",
   "mar": "NÃO ELEITO",
   "zem": "NÃO ELEITO",
+  "bol": "NÃO ELEITO",
+  "rui": "NÃO ELEITO",
   "ren": "NÃO ELEITO",
-  "rui": "NÃO ELEITO"
+  "cai": "NÃO ELEITO"
  },
  "segundo_turno": [],
  "atos": []
